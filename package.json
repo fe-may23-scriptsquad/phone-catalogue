@@ -32,8 +32,10 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "src/**/*.ts": "npm run lint",
-    "src/**/*.tsx": "npm run lint"
+    "src/**/*.{js,jsx}": [
+        "eslint --fix",
+        "prettier --write"
+      ]
   },
   "eslintConfig": {
     "extends": [
