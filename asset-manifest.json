@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/phone-catalogue/static/js/main.b04cd2c0.js",
-    "index.html": "/phone-catalogue/index.html",
-    "main.b04cd2c0.js.map": "/phone-catalogue/static/js/main.b04cd2c0.js.map"
+    "main.js": "/phone-catalogue-fe/static/js/main.b04cd2c0.js",
+    "index.html": "/phone-catalogue-fe/index.html",
+    "main.b04cd2c0.js.map": "/phone-catalogue-fe/static/js/main.b04cd2c0.js.map"
   },
   "entrypoints": [
     "static/js/main.b04cd2c0.js"
