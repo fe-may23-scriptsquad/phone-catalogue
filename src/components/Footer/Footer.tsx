@@ -1,7 +1,7 @@
 import './Footer.scss';
 
 import logo from '../../assets/img/Logo.png';
-import arrow from '../../assets/img/arow_up.svg';
+import arrow from '../../assets/img/Arrow-button.svg';
 
 export const Footer = () => {
   return (
@@ -10,8 +10,8 @@ export const Footer = () => {
         <img src={logo} alt="Logo" />
       </a>
 
-      <nav className="nav__list">
-        <ul>
+      <nav className="nav">
+        <ul className="nav__list">
           <li className="nav__item">
             <a href="index.html" className="nav__link">
               Github
@@ -30,8 +30,8 @@ export const Footer = () => {
         </ul>
       </nav>
 
-      <button className="butto-up" type="button">
-        <img src={arrow} alt="back to top" />
+      <button className="button" type="button">
+        <img src={arrow} alt="back to top" className="button-arrow" />
       </button>
     </footer>
   );

@@ -1,28 +1,9 @@
 .footer {
   display: flex;
   justify-content: space-between;
-}
-
-.nav {
-  &__list {
-    display: flex;
-    justify-content: space-between;
-    width: 379px;
-  }
-
-  &__item {
-    list-style-type: none;
-  }
-
-  &__link {
-    text-decoration: none;
-    color: #89939a;
-    font-family: Mont;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
-  }
+  align-items: center;
+  margin: 0 auto;
+  max-width: 1136px;
 }
 
 .logo {
@@ -33,4 +14,37 @@
     width: 100%;
     height: 100%;
   }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 379px;
+    list-style: none;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #89939a;
+    font-family: Mont;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+  }
+}
+
+.button {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  transform: rotate(-90deg);
+  border: none;
 }
