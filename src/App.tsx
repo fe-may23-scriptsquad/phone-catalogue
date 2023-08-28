@@ -1,13 +1,10 @@
 import React from 'react';
+import { HomePage } from './components/HomePage';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Group project of ScriptSquad is still loading...
-        </p>
-      </header>
+      <HomePage />
     </div>
   );
 }
