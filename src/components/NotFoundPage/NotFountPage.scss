@@ -1,0 +1,12 @@
+@import '../../utils/variables.scss';
+
+@font-face {
+  font-family: 'Mont';
+  src: url(../../assets/fonts/Mont-Bold.otf);
+}
+
+.notfoundpage {
+  box-sizing: border-box;
+  color: $color-primary;
+  font-family: 'Mont';
+}
