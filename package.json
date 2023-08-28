@@ -2,7 +2,7 @@
   "name": "phone-catalog",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://fe-may23-scriptsquad.github.io/phone-catalogue",
+  "homepage": "https://fe-may23-scriptsquad.github.io/phone-catalogue-fe/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
