@@ -1,10 +1,14 @@
 {
   "files": {
-    "main.js": "/phone-catalogue-fe/static/js/main.b04cd2c0.js",
+    "main.css": "/phone-catalogue-fe/static/css/main.76131e61.css",
+    "main.js": "/phone-catalogue-fe/static/js/main.58630692.js",
+    "static/media/Mont-Bold.otf": "/phone-catalogue-fe/static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
     "index.html": "/phone-catalogue-fe/index.html",
-    "main.b04cd2c0.js.map": "/phone-catalogue-fe/static/js/main.b04cd2c0.js.map"
+    "main.76131e61.css.map": "/phone-catalogue-fe/static/css/main.76131e61.css.map",
+    "main.58630692.js.map": "/phone-catalogue-fe/static/js/main.58630692.js.map"
   },
   "entrypoints": [
-    "static/js/main.b04cd2c0.js"
+    "static/css/main.76131e61.css",
+    "static/js/main.58630692.js"
   ]
 }
