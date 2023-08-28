@@ -1,1 +1,1 @@
-export * from './NotFountPage';
+export * from './NotFoundPage';
