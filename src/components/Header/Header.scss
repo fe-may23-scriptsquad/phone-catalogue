@@ -34,7 +34,7 @@ body {
   }
 
   &__link {
-    color: #89939A;
+    color:  $color-secondary;
     text-decoration: none;
     list-style: hover;
     display: flex;
@@ -43,7 +43,7 @@ body {
     font-weight: 700;
 
     &:hover {
-      color: #89939A;
+      color:  $color-secondary;
       text-decoration: none;
     }
   }
