@@ -1,5 +1,3 @@
-import './Footer.scss';
-
 import logo from '../../assets/img/Logo.png';
 
 export const Footer = () => {
@@ -30,6 +28,7 @@ export const Footer = () => {
       </nav>
 
       <button className="button" type="button">
+        <div className="button__content">Back to top</div>
         <svg
           width="32"
           height="32"
