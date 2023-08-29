@@ -1,6 +1,6 @@
 import React from 'react';
 import './app.scss';
-import { HomePage } from './components/HomePage';
+import { NotFoundPage } from './components/NotFoundPage';
 import { CardItem } from './components/CardItem';
 
 const testData = {
@@ -22,7 +22,7 @@ const testData = {
 function App() {
   return (
     <div className="App">
-      <HomePage />
+      <NotFoundPage />
       <CardItem phone={testData} />
     </div>
   );
