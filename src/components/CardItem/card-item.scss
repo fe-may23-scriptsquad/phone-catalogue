@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .card {
   width: 272px;
   padding: 32px;
@@ -7,7 +9,7 @@
   flex-direction: column;
 
   border-radius: 8px;
-  border: 1px solid #e2e6e9;
+  border: 1px solid $color-elements;
 
   &__image {
     width: 100%;
@@ -16,7 +18,7 @@
 
   &__title {
     margin-top: 24px;
-    color: #0f0f11;
+    color: $color-primary;
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
@@ -27,7 +29,7 @@
     position: relative;
 
     &--bold {
-      color: #0f0f11;
+      color: $color-primary;
       font-size: 22px;
       font-style: normal;
       font-weight: 800;
@@ -36,7 +38,7 @@
 
     &--grey {
       margin-left: 8px;
-      color: #89939a;
+      color: $color-secondary;
       font-size: 22px;
       font-style: normal;
       font-weight: 500;
@@ -51,7 +53,7 @@
       content: '';
       width: 100%;
       height: 1px;
-      background-color: #e2e6e9;
+      background-color: $color-elements;
     }
   }
 
@@ -68,7 +70,7 @@
     margin: 8px 0;
 
     &__name {
-      color: #89939a;
+      color: $color-secondary;
       font-weight: 600;
     }
   }
@@ -82,8 +84,22 @@
     margin-left: 8px;
     width: 40px;
     height: 40px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-    border: 1px solid #b4bdc3;
+    border: 1px solid $color-icons;
     border-radius: 48%;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $color-primary;
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+    }
   }
 }

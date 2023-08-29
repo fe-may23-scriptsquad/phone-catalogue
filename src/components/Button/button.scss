@@ -1,5 +1,7 @@
+@import '../../styles/variables.scss';
+
 .button {
-  background-color: #216cff;
+  background-color: $color-accent;
   display: flex;
 
   height: 40px;
@@ -12,8 +14,13 @@
   text-align: center;
 
   font-family: 'Mont';
-  color: #fff;
+  color: $color-white;
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+  }
 }
