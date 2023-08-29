@@ -1,4 +1,9 @@
-@import './styles/variables.scss';
+@import './styles/variables';
+@import './styles/fonts';
+
+@import './App.scss';
+@import './components/Header/Header.scss';
+@import './components/Footer/Footer.scss';
 @import './components/NotFoundPage/NotFoundPage.scss';
 @import './components/CardItem/CardItem.scss';
 @import './components/Button/Button.scss';

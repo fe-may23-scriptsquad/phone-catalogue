@@ -1,5 +1,4 @@
 import React from 'react';
-import './Header.scss';
 import logoImage from '../../assets/img/Logo.png';
 import likeImage from '../../assets/icons/Favourites.svg';
 import cartImage from '../../assets/icons/Shopping-cart.svg';
@@ -22,22 +21,34 @@ export const Header: React.FC = () => {
             <div className="nav">
               <ul className="nav__list">
                 <li>
-                  <a href="#apple" className="link nav__link nav__is-active">
+                  <a
+                    href="#home"
+                    className="link nav__link nav__is-active"
+                  >
                     Home
                   </a>
                 </li>
                 <li className="nav__wraper">
-                  <a href="#Samsung" className="link nav__link">
+                  <a
+                    href="#samsung"
+                    className="link nav__link"
+                  >
                     Phones
                   </a>
                 </li>
                 <li className="nav__wraper">
-                  <a href="#Smartphones" className="link nav__link">
+                  <a
+                    href="#smartphones"
+                    className="link nav__link"
+                  >
                     Tablets
                   </a>
                 </li>
                 <li className="nav__wraper">
-                  <a href="#Laptops & Computers" className="link nav__link">
+                  <a
+                    href="#accessories"
+                    className="link nav__link"
+                  >
                     Accessories
                   </a>
                 </li>
@@ -56,11 +67,13 @@ export const Header: React.FC = () => {
               />
             </a>
           </div>
+
           <div className="icon__right">
             <a href="#Cart" className="icon__logo">
               <img src={cartImage} alt="Cart" className="icon__logo-img" />
             </a>
           </div>
+
           <div className="icon__burger">
             <a href="#home" className="icon__logo">
               <img src={menuImage} alt="Menu" className="icon__logo-img" />
