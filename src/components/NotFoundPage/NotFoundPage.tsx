@@ -3,7 +3,7 @@ import './NotFoundPage.scss';
 
 export const NotFoundPage: React.FC = () => {
   return (
-    <div className="notfoundpage">
+    <div className="not-found-page">
       <h1>Page is not found</h1>
     </div>
   );
