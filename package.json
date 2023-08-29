@@ -33,8 +33,10 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "src/**/*.ts": "npm run lint",
-    "src/**/*.tsx": "npm run lint"
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -58,7 +60,7 @@
     "@mate-academy/eslint-config-react-typescript": "^1.0.11",
     "eslint": "^8.48.0",
     "husky": "^8.0.3",
-    "lint-staged": "^13.0.0",
+    "lint-staged": "~13.2.0",
     "prettier": "3.0.2"
   }
 }
