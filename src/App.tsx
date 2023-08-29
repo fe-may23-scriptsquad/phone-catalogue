@@ -1,5 +1,5 @@
 import React from 'react';
-import './app.scss';
+import './App.scss';
 import { NotFoundPage } from './components/NotFoundPage';
 import { CardItem } from './components/CardItem';
 
@@ -16,7 +16,7 @@ const testData = {
   color: 'black',
   ram: '2GB',
   year: 2016,
-  image: 'img / phones / apple - iphone - 7 / black /00.jpg',
+  image: 'img/phones/apple-iphone-7/black/00.jpg',
 };
 
 function App() {

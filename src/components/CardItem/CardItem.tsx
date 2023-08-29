@@ -7,11 +7,15 @@ type Props = {
   phone: Phone;
 };
 
+// eslint-disable-next-line max-len
+const testImg = 'https://www.91-img.com/pictures/143993-v4-apple-iphone-14-mobile-phone-large-4.jpg';
+
 export const CardItem: React.FC<Props> = ({ phone }) => {
   return (
     <div className="card">
       <img
-        src={`../../assets${phone.image}`}
+        // src="../../assets/img/phones/apple-iphone-11/black/00.jpg"
+        src={testImg}
         alt={phone.name}
         className="card__image"
       />
