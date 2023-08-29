@@ -33,7 +33,7 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx}": [
+    "src/**/*.{ts,tsx}": [
       "eslint --fix",
       "prettier --write"
     ]
