@@ -1,5 +1,5 @@
 import React from 'react';
-import './main.scss';
+import './Header.scss';
 import logoImage from '../../assets/img/Logo.png';
 import likeImage from '../../assets/icons/Favourites.svg';
 import cartImage from '../../assets/icons/Shopping-cart.svg';
