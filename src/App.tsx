@@ -1,10 +1,12 @@
 import React from 'react';
-import { NotFoundPage } from './components/NotFoundPage';
+import { HomePage } from './components/HomePage';
+import { Header } from './components/Header';
 
 function App() {
   return (
     <div className="App">
-      <NotFoundPage />
+      <Header />
+      <HomePage />
     </div>
   );
 }
