@@ -31,15 +31,15 @@ export const CardItem: React.FC<Props> = ({ phone }) => {
 
       <div className="card__stats">
         <p className="card__stat">
-          <span className="card__stat__name">Screen</span>
+          <span className="card__stat--name">Screen</span>
           {phone.screen}
         </p>
         <p className="card__stat">
-          <span className="card__stat__name">Capacity</span>
+          <span className="card__stat--name">Capacity</span>
           {phone.capacity}
         </p>
         <p className="card__stat">
-          <span className="card__stat__name">RAM</span>
+          <span className="card__stat--name">RAM</span>
           {phone.ram}
         </p>
       </div>
@@ -49,7 +49,7 @@ export const CardItem: React.FC<Props> = ({ phone }) => {
 
         <button
           type="button"
-          className="button-like"
+          className="card__button-like"
           onClick={() => setIsActive((prev) => !prev)}
         >
           <img

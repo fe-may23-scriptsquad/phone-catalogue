@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
 
 type Props = {

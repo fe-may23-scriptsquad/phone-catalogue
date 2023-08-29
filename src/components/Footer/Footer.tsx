@@ -7,29 +7,32 @@ export const Footer = () => {
         <img src={logo} alt="Logo" />
       </a>
 
-      <nav className="nav">
-        <ul className="nav__list">
-          <li className="nav__item">
-            <a href="index.html" className="nav__link">
+      <nav className="footer__nav">
+        <ul className="footer__nav-list">
+          <li className="footer__nav-item">
+            <a href="index.html" className="footer__nav-link">
               Github
             </a>
           </li>
           <li className="nav__item">
-            <a href="index.html" className="nav__link">
+            <a href="index.html" className="footer__nav-link">
               Contacts
             </a>
           </li>
           <li className="nav__item">
-            <a href="index.html" className="nav__link">
+            <a href="index.html" className="footer__nav-link">
               Rights
             </a>
           </li>
         </ul>
       </nav>
 
-      <button className="button" type="button">
-        <div className="button__content">Back to top</div>
-        <div className="botton__icon">
+      <button className="footer__button" type="button">
+        <div className="footer__button-content">
+          Back to top
+        </div>
+
+        <div className="footer__botton-icon">
           <svg
             width="32"
             height="32"

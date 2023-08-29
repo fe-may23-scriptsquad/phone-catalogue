@@ -67,7 +67,7 @@
     justify-content: space-between;
     margin: 8px 0;
 
-    &__name {
+    &--name {
       color: $color-secondary;
       font-weight: 600;
     }
@@ -75,14 +75,14 @@
 
   &__btns {
     display: flex;
+    gap: 8px;
     justify-content: space-between;
   }
 
-  .button-like {
+  &__button-like {
     box-sizing: content-box;
-    width: 40px;
-    height: 40px;
-    margin-left: 8px;
+    min-width: 40px;
+    min-height: 40px;
     text-decoration: none;
     display: flex;
     justify-content: center;
