@@ -47,4 +47,9 @@
   height: 32px;
   transform: rotate(-90deg);
   border: none;
+  cursor: pointer;
+
+  &:hover svg rect {
+    stroke: black;
+  }
 }
