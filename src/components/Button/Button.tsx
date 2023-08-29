@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import classNames from 'classnames';
+import cn from 'classnames';
 
 type Props = {
   text: string;
@@ -10,7 +10,7 @@ export const Button: React.FC<Props> = ({ text }) => {
 
   return (
     <button
-      className={classNames('button', {
+      className={cn('button', {
         'button--outlined': toggled,
       })}
       type="button"
