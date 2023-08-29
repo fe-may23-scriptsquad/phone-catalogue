@@ -1,10 +1,10 @@
 import React from 'react';
-import { HomePage } from './components/HomePage';
+import { NotFoundPage } from './components/NotFoundPage';
 
 function App() {
   return (
     <div className="App">
-      <HomePage />
+      <NotFoundPage />
     </div>
   );
 }
