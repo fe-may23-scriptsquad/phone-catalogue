@@ -9,10 +9,7 @@ export const Header: React.FC = () => {
     <header className="header">
       <div className="container">
         <div className="container__left">
-          <a
-            href="#home"
-            className="container__logo"
-          >
+          <a href="#home" className="container__logo">
             <img
               src={logoImage}
               alt="NICE gadgets"
@@ -62,10 +59,7 @@ export const Header: React.FC = () => {
 
         <div className="icon">
           <div className="icon__left">
-            <a
-              href="#favourites"
-              className="icon__logo"
-            >
+            <a href="#favourites" className="icon__logo">
               <img
                 src={likeImage}
                 alt="favourites"
@@ -75,28 +69,14 @@ export const Header: React.FC = () => {
           </div>
 
           <div className="icon__right">
-            <a
-              href="#Cart"
-              className="icon__logo"
-            >
-              <img
-                src={cartImage}
-                alt="Cart"
-                className="icon__logo-img"
-              />
+            <a href="#Cart" className="icon__logo">
+              <img src={cartImage} alt="Cart" className="icon__logo-img" />
             </a>
           </div>
 
           <div className="icon__burger">
-            <a
-              href="#home"
-              className="icon__logo"
-            >
-              <img
-                src={menuImage}
-                alt="Menu"
-                className="icon__logo-img"
-              />
+            <a href="#home" className="icon__logo">
+              <img src={menuImage} alt="Menu" className="icon__logo-img" />
             </a>
           </div>
         </div>

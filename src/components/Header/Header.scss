@@ -32,7 +32,7 @@ body {
   }
 
   &__link {
-    color:  $color-secondary;
+    color: $color-secondary;
     text-decoration: none;
     list-style: hover;
     display: flex;
@@ -41,7 +41,7 @@ body {
     font-weight: 700;
 
     &:hover {
-      color:  $color-secondary;
+      color: $color-secondary;
       text-decoration: none;
     }
   }
@@ -53,7 +53,7 @@ body {
     font-weight: 800;
 
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       bottom: 0;
       left: 0;
@@ -85,7 +85,7 @@ body {
 
     &::before,
     &::after {
-      content: "";
+      content: '';
       position: absolute;
       width: 1px;
       height: 100%;
@@ -112,7 +112,7 @@ body {
     position: relative;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       width: 1px;
       height: 100%;
