@@ -1,5 +1,4 @@
 import React from 'react';
-import './Header.scss';
 import logoImage from '../../assets/img/Logo.png';
 import likeImage from '../../assets/icons/Favourites.svg';
 import cartImage from '../../assets/icons/Shopping-cart.svg';
@@ -26,7 +25,7 @@ export const Header: React.FC = () => {
               <ul className="nav__list">
                 <li>
                   <a
-                    href="#apple"
+                    href="#home"
                     className="link nav__link nav__is-active"
                   >
                     Home
@@ -34,7 +33,7 @@ export const Header: React.FC = () => {
                 </li>
                 <li className="nav__wraper">
                   <a
-                    href="#Samsung"
+                    href="#samsung"
                     className="link nav__link"
                   >
                     Phones
@@ -42,7 +41,7 @@ export const Header: React.FC = () => {
                 </li>
                 <li className="nav__wraper">
                   <a
-                    href="#Smartphones"
+                    href="#smartphones"
                     className="link nav__link"
                   >
                     Tablets
@@ -50,7 +49,7 @@ export const Header: React.FC = () => {
                 </li>
                 <li className="nav__wraper">
                   <a
-                    href="#Laptops & Computers"
+                    href="#accessories"
                     className="link nav__link"
                   >
                     Accessories
@@ -74,6 +73,7 @@ export const Header: React.FC = () => {
               />
             </a>
           </div>
+
           <div className="icon__right">
             <a
               href="#Cart"
@@ -86,6 +86,7 @@ export const Header: React.FC = () => {
               />
             </a>
           </div>
+
           <div className="icon__burger">
             <a
               href="#home"
