@@ -29,8 +29,7 @@
     "eject": "react-scripts eject",
     "format": "prettier --write . --ignore-path .gitignore",
     "lint": "eslint . --ignore-path .gitignore",
-    "fix-style": "npm run format && npm run lint -- --fix",
-    "prepare": "husky install"
+    "fix-style": "npm run format && npm run lint -- --fix"
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
