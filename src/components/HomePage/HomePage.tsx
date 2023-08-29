@@ -1,5 +1,6 @@
 import React from 'react';
+import { Footer } from '../Footer';
 
 export const HomePage: React.FC = () => {
-  return <p>Delete it when you start coding</p>;
+  return <Footer />;
 };
