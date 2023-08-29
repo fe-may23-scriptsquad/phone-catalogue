@@ -18,6 +18,13 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
+  transition: box-shadow 0.3s;
+
+  &--outlined {
+    background-color: $color-white;
+    color: $color-accent;
+    border: 1px solid $color-elements;
+  }
 
   &:hover {
     cursor: pointer;

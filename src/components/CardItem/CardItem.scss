@@ -1,5 +1,3 @@
-@import '../../styles/variables.scss';
-
 .card {
   width: 272px;
   padding: 32px;
@@ -81,16 +79,19 @@
   }
 
   .button-like {
-    margin-left: 8px;
+    box-sizing: content-box;
     width: 40px;
     height: 40px;
+    margin-left: 8px;
     text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: $color-white;
 
     border: 1px solid $color-icons;
-    border-radius: 48%;
+    border-radius: 50%;
+    transition: border 0.3s;
 
     &:hover {
       cursor: pointer;
@@ -100,6 +101,7 @@
     .icon {
       width: 16px;
       height: 16px;
+      flex-shrink: 0;
     }
   }
 }

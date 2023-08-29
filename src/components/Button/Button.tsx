@@ -1,14 +1,22 @@
-import './button.scss';
+import { useState } from 'react';
+import classNames from 'classnames';
 
 type Props = {
   text: string;
-  handler: () => void;
 };
 
-export const Button: React.FC<Props> = ({ text, handler }) => {
+export const Button: React.FC<Props> = ({ text }) => {
+  const [toggled, setToggled] = useState(false);
+
   return (
-    <button className="button" type="button" onClick={handler}>
-      {text}
+    <button
+      className={classNames('button', {
+        'button--outlined': toggled,
+      })}
+      type="button"
+      onClick={() => setToggled((prev) => !prev)}
+    >
+      {!toggled ? text : 'Added'}
     </button>
   );
 };
