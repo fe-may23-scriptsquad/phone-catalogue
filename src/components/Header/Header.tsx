@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import cn from 'classnames';
 import logoImage from '../../assets/img/Logo.png';
 import likeImage from '../../assets/icons/Favourites.svg';
 import cartImage from '../../assets/icons/Shopping-cart.svg';
 import menuImage from '../../assets/icons/Burger-menu.svg';
 
 export const Header: React.FC = () => {
+  const [activeLink, setActiveLink] = useState('');
+
   return (
     <header className="header">
       <div className="container">
@@ -23,14 +27,17 @@ export const Header: React.FC = () => {
                 <li>
                   <a
                     href="#home"
-                    className="link nav__link nav__is-active"
+                    className={cn('link', 'nav__link', {
+                      'nav__is-active': activeLink === 'home',
+                    })}
+                    onClick={() => setActiveLink('home')}
                   >
                     Home
                   </a>
                 </li>
                 <li className="nav__wraper">
                   <a
-                    href="#samsung"
+                    href="#Phones"
                     className="link nav__link"
                   >
                     Phones
@@ -38,7 +45,7 @@ export const Header: React.FC = () => {
                 </li>
                 <li className="nav__wraper">
                   <a
-                    href="#smartphones"
+                    href="#Tablets"
                     className="link nav__link"
                   >
                     Tablets
