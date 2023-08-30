@@ -1,17 +1,21 @@
-import React, { HTMLProps } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import cn from 'classnames';
 
-type Props = HTMLProps<HTMLAnchorElement>;
-
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
+  active?: boolean;
+};
 export const SliderButton = ({
   className,
   children,
   disabled,
-  ...props
+  active,
+  onClick,
 }: Props) => {
+  const customClassName = cn('page-link', className, { active, disabled });
+
   return (
-    <a className={cn(className, { disabled })} {...props}>
+    <button className={customClassName} type="button" onClick={onClick}>
       {children}
-    </a>
+    </button>
   );
 };
