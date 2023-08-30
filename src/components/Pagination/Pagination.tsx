@@ -1,17 +1,46 @@
-import React, { useState } from 'react';
+/* eslint-disable no-console */
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { SliderButton } from '../SliderButton';
 
-export const Pagination: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(0);
+export const Pagination = () => {
+  const totalPhones = 56;
+  const phonesPerPage = 4;
+  const totalPages = Math.ceil(totalPhones / phonesPerPage);
+  const maxPageToShow = 4;
 
-  const pageNums = [1, 2, 3, 4];
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pageNumers, setPageNumbers] = useState<number[]>([]);
+
+  const startPage = Math.max(1, currentPage - Math.floor(maxPageToShow / 2));
+  const endPage = Math.min(totalPages, startPage + maxPageToShow - 1);
+
+  useEffect(() => {
+    const newPageNumbers = [];
+
+    for (let i = startPage; i <= endPage; i += 1) {
+      newPageNumbers.push(i);
+    }
+
+    setPageNumbers(newPageNumbers as number[]);
+  }, [currentPage, startPage, endPage]);
+
+  const handlePagination = (pageNumber: number) => {
+    if (
+      pageNumber < pageNumers[0] ||
+      pageNumber > pageNumers[pageNumers.length - 1]
+    ) {
+      return;
+    }
+
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <nav className="pagination" aria-label="Pagination">
       <SliderButton
-        className={cn({ disabled: currentPage === 0 })}
-        onClick={() => setCurrentPage(currentPage > 0 ? currentPage - 1 : 0)}
+        className={cn({ disabled: currentPage <= 1 })}
+        onClick={() => handlePagination(currentPage - 1)}
       >
         <svg
           width="16"
@@ -19,7 +48,7 @@ export const Pagination: React.FC = () => {
           viewBox="0 0 16 16"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className={cn('page-link__logo', { disabled: currentPage === 0 })}
+          className={cn('page-link__logo', { disabled: currentPage <= 1 })}
         >
           <path
             fillRule="evenodd"
@@ -30,18 +59,18 @@ export const Pagination: React.FC = () => {
           />
         </svg>
       </SliderButton>
-      {pageNums.map((pageNum) => (
+      {pageNumers.map((pageNum) => (
         <SliderButton
           key={pageNum}
           className={cn({ active: pageNum === currentPage })}
-          onClick={() => setCurrentPage(pageNum)}
+          onClick={() => handlePagination(pageNum)}
         >
           {pageNum}
         </SliderButton>
       ))}
       <SliderButton
-        className={cn({ disabled: currentPage === 4 })}
-        onClick={() => setCurrentPage(currentPage < 4 ? currentPage + 1 : 4)}
+        className={cn({ disabled: currentPage >= totalPages })}
+        onClick={() => handlePagination(currentPage + 1)}
       >
         <svg
           width="16"
@@ -49,7 +78,9 @@ export const Pagination: React.FC = () => {
           viewBox="0 0 16 16"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className={cn('page-link__logo', { disabled: currentPage === 4 })}
+          className={cn('page-link__logo', {
+            disabled: currentPage >= totalPages,
+          })}
         >
           <path
             fillRule="evenodd"

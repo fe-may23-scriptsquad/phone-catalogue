@@ -39,7 +39,7 @@
 
   &.disabled {
     border: 1px solid $color-elements;
-    cursor: not-allowed;
+    pointer-events: none;
   }
 
   &.disabled path {
