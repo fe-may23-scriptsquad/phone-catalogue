@@ -1,6 +1,7 @@
 .cart {
   width: 100%;
   @include flex(column, flex-start, inherit);
+  grid-column: 1 / -1;
 
   &__back {
     margin-top: 40px;
@@ -53,7 +54,7 @@
   &__content {
     width: 100%;
 
-    // @include pageGrid;
+    @include pageGrid;
 
     @include onTablet {
       row-gap: 32px;
@@ -63,12 +64,10 @@
   &__list {
     width: 100%;
     grid-column: span 16;
-
     display: grid;
     row-gap: 16px;
 
     @include onTablet {
-      // grid-template-columns: 1fr;
       grid-column: 1 / -1;
     }
   }
@@ -87,10 +86,7 @@
     grid-column: span 8;
 
     @include onTablet {
-      display: grid;
-      width: 100%;
-
-      grid-column: 1/-1;
+      grid-column: 1 / -1;
     }
 
     &-price {
