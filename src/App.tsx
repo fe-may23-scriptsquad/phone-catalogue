@@ -1,10 +1,9 @@
-import React from 'react';
-import { NotFoundPage } from './components/NotFoundPage';
+import { SwiperPhones } from './components/SwiperPhones';
 
 function App() {
   return (
     <div className="App">
-      <NotFoundPage />
+      <SwiperPhones />
     </div>
   );
 }
