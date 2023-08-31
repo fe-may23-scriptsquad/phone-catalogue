@@ -1,6 +1,8 @@
 import React from 'react';
 import { Header } from './components/Header';
 import { CardItem } from './components/CardItem';
+import { CartPage } from './components/CartPage';
+import { Footer } from './components/Footer';
 
 const phone = {
   id: '1',
@@ -23,6 +25,10 @@ function App() {
     <div className="App">
       <Header />
       <CardItem phone={phone} />
+      <div className="container">
+        <CartPage />
+      </div>
+      <Footer />
     </div>
   );
 }
