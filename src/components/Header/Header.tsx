@@ -65,7 +65,10 @@ export const Header: React.FC = () => {
         </div>
 
         <div className="icon">
-          <div className="icon__left">
+          <div className="icon__left
+                          icon__left--borders
+                          icon__left--invisible"
+          >
             <a href="#favourites" className="icon__logo">
               <img
                 src={likeImage}
@@ -75,7 +78,7 @@ export const Header: React.FC = () => {
             </a>
           </div>
 
-          <div className="icon__right">
+          <div className="icon__right  icon__right--invisible">
             <a href="#Cart" className="icon__logo">
               <img src={cartImage} alt="Cart" className="icon__logo-img" />
             </a>

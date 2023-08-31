@@ -1,0 +1,25 @@
+.burger {
+  box-sizing: border-box;
+  height: 100vh;
+  overflow: auto;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid black 1px;
+  }
+
+  &__left {
+    height: 48px;
+    width: 64px;
+    padding: 0px 16px;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    border-top: solid black 1px;
+  }
+}
+
+
