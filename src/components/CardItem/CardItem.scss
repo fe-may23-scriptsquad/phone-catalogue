@@ -10,8 +10,21 @@
   border: 1px solid $color-elements;
 
   &__image {
-    width: 100%;
-    height: auto;
+    align-self: center;
+    object-fit: contain;
+    display: block;
+    width: 196px;
+    height: 208px;
+
+    @include onTablet {
+      width: 173px;
+      height: 202px;
+    }
+
+    @include onMobile {
+      width: 148px;
+      height: 130px;
+    }
   }
 
   &__title {

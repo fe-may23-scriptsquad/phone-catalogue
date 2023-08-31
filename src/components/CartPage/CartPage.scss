@@ -52,8 +52,6 @@
   }
 
   &__content {
-    width: 100%;
-
     @include pageGrid;
 
     @include onTablet {
@@ -62,10 +60,10 @@
   }
 
   &__list {
-    width: 100%;
-    grid-column: span 16;
     display: grid;
     row-gap: 16px;
+
+    grid-column: span 16;
 
     @include onTablet {
       grid-column: 1 / -1;

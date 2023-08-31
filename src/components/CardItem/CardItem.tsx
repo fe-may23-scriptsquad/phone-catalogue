@@ -25,7 +25,9 @@ export const CardItem: React.FC<Props> = ({ phone }) => {
       <div className="card__price">
         <>
           <span className="card__price--bold">{`$${phone.price}`}</span>
-          <span className="card__price--grey">{`$${phone.fullPrice}`}</span>
+          {phone.fullPrice && (
+            <span className="card__price--grey">{`$${phone.fullPrice}`}</span>
+          )}
         </>
       </div>
 
