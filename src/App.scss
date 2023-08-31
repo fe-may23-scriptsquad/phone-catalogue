@@ -8,3 +8,23 @@ iframe {
   padding: 0;
   box-sizing: border-box;
 }
+
+.App {
+  width: 100%;
+  @include flex(column, center, center);
+}
+
+.container {
+  box-sizing: border-box;
+  max-width: 1136px;
+
+  @include pageGrid;
+
+  @include onTablet {
+    max-width: 592px;
+  }
+
+  @include onMobile {
+    max-width: 288px;
+  }
+}

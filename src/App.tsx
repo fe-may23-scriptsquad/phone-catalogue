@@ -1,10 +1,17 @@
 import React from 'react';
-import { NotFoundPage } from './components/NotFoundPage';
+// import { NotFoundPage } from './components/NotFoundPage';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { CartPage } from './components/CartPage';
 
 function App() {
   return (
     <div className="App">
-      <NotFoundPage />
+      <Header />
+      <div className="container">
+        <CartPage />
+      </div>
+      <Footer />
     </div>
   );
 }
