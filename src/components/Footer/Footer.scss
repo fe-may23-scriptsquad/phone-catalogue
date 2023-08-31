@@ -3,14 +3,11 @@
   justify-content: space-between;
   align-items: center;
   grid-column: 1 / -1;
-  width: 100%;
   grid-row: 1 / -1;
+  width: 100%;
+
   &__container {
     @include pageGrid;
-
-    @include onMobile {
-      grid-template-rows: 1fr 1fr 1fr;
-    }
   }
 
   padding: 32px 0;
@@ -22,30 +19,17 @@
   }
 
   @include onMobile {
-    // grid-template-columns: repeat(1, 1fr);
     gap: 32px;
-    margin: 0 auto;
-    max-width: 288px;
-  }
-
-  .logo {
-    @include onMobile {
-      grid-row: 1 / 2;
-    }
+    flex-direction: column;
+    align-items: unset;
   }
 
   &__nav {
     width: 379px;
-    // grid-column: 10 / 17;
     align-items: center;
 
     @include onTablet {
       width: 192px;
-      // grid-column: 7 / 8;
-    }
-
-    @include onMobile {
-      grid-row: 2 / 3;
     }
 
     &-list {
@@ -83,7 +67,6 @@
   }
 
   &__button {
-    // grid-column: -2;
     background-color: $color-white;
     width: 118px;
     display: flex;
@@ -125,7 +108,7 @@
     }
 
     @include onMobile {
-      grid-row: 3 / 4;
+      margin: 0 auto;
     }
   }
 }

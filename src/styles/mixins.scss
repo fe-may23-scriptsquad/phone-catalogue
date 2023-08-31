@@ -16,10 +16,12 @@
 
   @include onTablet {
     --columns: 12;
+    margin-inline: 24px;
   }
 
   @include onMobile {
     --columns: 4;
+    margin-inline: 16px;
   }
 }
 
