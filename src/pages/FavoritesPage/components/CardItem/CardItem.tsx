@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Phone } from '../../types/Phone';
-import { Button } from '../Button';
-import like from '../../assets/icons/Favourites.svg';
-import likeFilled from '../../assets/icons/Favourites-filled.svg';
+import { Phone } from '../../../../types/Phone';
+import { Button } from '../../../../components/Button';
+import like from '../../../../assets/icons/Favourites.svg';
+import likeFilled from '../../../../assets/icons/Favourites-filled.svg';
 
 type Props = {
   phone: Phone;

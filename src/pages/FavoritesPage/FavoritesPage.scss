@@ -1,6 +1,7 @@
 @import '../../styles/mixins.scss';
 
-.favourites { 
+.favorites { 
+  grid-column: 1 / -1;
 
   &__header {
     font-size: 48px;
@@ -12,14 +13,14 @@
 
   &__grid {
     @include pageGrid;
-    row-gap: 40px;
+    grid-row-gap: 40px;
+    margin: 0;
   }
 
   &__card {
     grid-column: span 6;
 
-
-    @media (min-width: 639px) {
+    @include onMobile {
       grid-column: span 4;
     }
   }
