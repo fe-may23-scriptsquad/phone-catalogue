@@ -119,7 +119,9 @@ export const CartPage: React.FC = () => {
             <p className="cart__info-label">Total for 3 items</p>
           </div>
 
-          <Button text="Checkout" />
+          <div className="cart__buybutton">
+            <Button text="Checkout" />
+          </div>
         </div>
       </div>
     </div>

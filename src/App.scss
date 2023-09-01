@@ -16,10 +16,12 @@ iframe {
   @include pageGrid;
 
   @include onTablet {
-    max-width: 592px;
+    // max-width: 592px;
+    margin-inline: 24px;
   }
 
   @include onMobile {
-    max-width: 288px;
+    // max-width: 288px;
+    margin-inline: 16px;
   }
 }

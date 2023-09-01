@@ -123,4 +123,11 @@
       line-height: 21px;
     }
   }
+
+  &__buybutton {
+    width: 100%;
+    @include onTablet {
+      max-width: 544px;
+    }
+  }
 }
