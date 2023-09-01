@@ -1,6 +1,7 @@
 @import './styles/variables';
 @import './styles/fonts';
 @import './styles/mixins.scss';
+@import './styles/normalize.scss';
 
 @import './App.scss';
 @import './components/Header/Header.scss';
@@ -10,3 +11,5 @@
 @import './components/SliderButton/SliderButton.scss';
 @import './components/CardItem/CardItem.scss';
 @import './components/Button/Button.scss';
+@import './pages/CartPage/components/CartItem/CartItem.scss';
+@import './pages/CartPage/CartPage.scss';
