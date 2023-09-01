@@ -6,7 +6,7 @@
   margin: 0 auto;
   max-width: 1136px;
 
-  &__nav{
+  &__nav {
     &-list {
       display: flex;
       justify-content: space-between;
@@ -15,7 +15,7 @@
       list-style: none;
 
       @media (max-width: 768px) {
-        width: 192px;
+        width: 40vw;
       }
     }
 
@@ -56,23 +56,23 @@
     border: none;
     transition: 0.3s;
     cursor: pointer;
-  
+
     svg {
       display: flex;
       justify-content: center;
       align-items: center;
       transform: rotate(-90deg);
     }
-  
+
     &:hover > &__content {
       color: $color-primary;
     }
-  
+
     &:hover svg rect {
       transition: 0.3s;
       stroke: $color-primary;
     }
-  
+
     &-content {
       color: $color-secondary;
       text-align: center;
@@ -81,7 +81,7 @@
       font-weight: 700;
       transition: 0.3s;
     }
-  
+
     &-icon {
       width: 31px;
       height: 31px;
@@ -99,6 +99,14 @@
     & > :nth-child(3) {
       align-self: center;
     }
+  }
+
+  @include onTablet {
+    margin-inline: 24px;
+  }
+
+  @include onMobile {
+    margin-inline: 16px;
   }
 }
 
