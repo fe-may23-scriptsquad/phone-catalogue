@@ -1,10 +1,16 @@
-import React from 'react';
-import { Footer } from './components/Footer';
+import { Outlet } from 'react-router-dom';
+
+import { HomePage } from './components/HomePage';
+import { Header } from './components/Header';
 
 function App() {
   return (
     <div className="App">
-      <Footer />
+      <Header />
+
+      <div className="container">
+        <Outlet />
+      </div>
     </div>
   );
 }
