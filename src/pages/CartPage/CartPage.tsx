@@ -1,7 +1,6 @@
-import { Button } from '../Button';
-import { CartItem } from '../CartItem';
-
 import arrowLeft from '../../assets/icons/Arrow-left.svg';
+import { Button } from '../../components/Button';
+import { CartItem } from './components/CartItem';
 
 const testData = [
   {

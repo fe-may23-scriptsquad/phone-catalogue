@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Phone } from '../../types/Phone';
+import { Phone } from '../../../../types/Phone';
 
-import close from '../../assets/icons/Close.svg';
-import minus from '../../assets/icons/Minus.svg';
-import plus from '../../assets/icons/Plus.svg';
+import close from '../../../../assets/icons/Close.svg';
+import minus from '../../../../assets/icons/Minus.svg';
+import plus from '../../../../assets/icons/Plus.svg';
 
 type Props = {
   phone: Phone;
@@ -34,7 +34,7 @@ export const CartItem: React.FC<Props> = ({ phone }) => {
             type="button"
             className="cart__item-btn"
             onClick={() => setNumber((prev) => prev - 1)}
-            disabled
+            disabled={number === 1}
           >
             <img src={minus} alt="decrement" />
           </button>
