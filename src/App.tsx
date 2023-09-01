@@ -4,7 +4,9 @@ import { Banner } from './pages/HomePage/сomponents/Banner';
 function App() {
   return (
     <div className="App">
-      <Banner />
+      <div className="container">
+        <Banner />
+      </div>
     </div>
   );
 }

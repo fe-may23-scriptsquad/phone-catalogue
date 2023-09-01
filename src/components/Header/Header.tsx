@@ -21,34 +21,22 @@ export const Header: React.FC = () => {
             <div className="nav">
               <ul className="nav__list">
                 <li>
-                  <a
-                    href="#home"
-                    className="link nav__link nav__is-active"
-                  >
+                  <a href="#home" className="link nav__link nav__is-active">
                     Home
                   </a>
                 </li>
                 <li className="nav__wraper">
-                  <a
-                    href="#samsung"
-                    className="link nav__link"
-                  >
+                  <a href="#samsung" className="link nav__link">
                     Phones
                   </a>
                 </li>
                 <li className="nav__wraper">
-                  <a
-                    href="#smartphones"
-                    className="link nav__link"
-                  >
+                  <a href="#smartphones" className="link nav__link">
                     Tablets
                   </a>
                 </li>
                 <li className="nav__wraper">
-                  <a
-                    href="#accessories"
-                    className="link nav__link"
-                  >
+                  <a href="#accessories" className="link nav__link">
                     Accessories
                   </a>
                 </li>

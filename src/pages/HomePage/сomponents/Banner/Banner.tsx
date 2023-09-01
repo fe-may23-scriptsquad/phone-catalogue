@@ -15,9 +15,9 @@ export const Banner: React.FC = () => {
     slidesPerView: 1,
     loop: true,
     pagination: true,
-    // autoplay: {
-    //   delay: 5000,
-    // },
+    autoplay: {
+      delay: 5000,
+    },
   };
 
   const swiperRef = useRef<SwiperClass>();
@@ -51,6 +51,7 @@ export const Banner: React.FC = () => {
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
+        className="swiperbanner"
       >
         <SwiperSlide>
           <img

@@ -1,0 +1,39 @@
+@mixin flex($direction: row, $align: initial, $justify: initial) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin pageGrid {
+  --columns: 24;
+  display: grid;
+  column-gap: 16px;
+  max-width: 1136px;
+  margin: 0 auto;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 12;
+  }
+
+  @include onMobile {
+    margin-inline: 16px;
+    --columns: 4;
+
+    max-width: 0;
+  }
+}
+
+@mixin onTablet {
+  @media (max-width: $tablet-max-width) {
+    @content;
+  }
+}
+
+@mixin onMobile {
+  @media (max-width: $mobile-max-width) {
+    @content;
+  }
+}

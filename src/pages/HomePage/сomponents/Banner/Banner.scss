@@ -1,14 +1,27 @@
 .swiper {
+  overflow-y: visible;
+
   &-wrapper {
     width: 1040px;
     height: 400px;
     border-radius: 8px;
+
+    @include onTablet {
+      width: 490px;
+      height: 189px;
+    }
+
+    @include onMobile {
+      height: 320px;
+      margin: 0;
+    }
   }
 
   &-horizontal > .swiper-pagination-bullets, 
   .swiper-pagination-bullets.swiper-pagination-horizontal {
     left: 50%;
-    // top: 110%;
+    bottom: 0;
+    transform: translateY(18px);
   }
 
   &-pagination {
@@ -34,6 +47,10 @@
 .swiperblock {
   display: flex;
   width: fit-content;
+  gap: 16px;
+  width: 100%;
+
+  grid-column: 1 / -1;
 
   &__image {
     display: block;
@@ -48,6 +65,9 @@
     border: 1px solid $color-icons;
     transition: border-color 0.3s ease;
     cursor: pointer;
+    width: 32px;
+
+    grid-column: span 1;
 
     &:hover {
       border-color: $color-secondary;
@@ -58,5 +78,18 @@
         fill: $color-secondary;
       }
     }
+
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  @include onTablet {
+    gap: 19px;
+  }
+
+  @include onMobile {
+    width: 100%;
+    margin-inline: -16px;
   }
 }
