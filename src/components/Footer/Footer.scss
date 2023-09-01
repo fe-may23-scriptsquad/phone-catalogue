@@ -15,7 +15,7 @@
       list-style: none;
 
       @media (max-width: 768px) {
-        width: 192px;
+        width: 40vw;
       }
     }
 
@@ -99,6 +99,14 @@
     & > :nth-child(3) {
       align-self: center;
     }
+  }
+
+  @include onTablet {
+    margin-inline: 24px;
+  }
+
+  @include onMobile {
+    margin-inline: 16px;
   }
 }
 
