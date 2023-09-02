@@ -1,10 +1,11 @@
-import React from 'react';
-import { Footer } from './components/Footer';
+import { ProductPage } from './pages/ProductPage';
 
 function App() {
   return (
     <div className="App">
-      <Footer />
+      <div className="container">
+        <ProductPage />
+      </div>
     </div>
   );
 }

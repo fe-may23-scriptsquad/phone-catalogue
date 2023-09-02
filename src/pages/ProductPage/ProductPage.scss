@@ -1,0 +1,235 @@
+.product {
+  // width: 100%;
+  grid-column: 1 / -1;
+  &__section {
+    @include pageGrid;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    color: $color-primary;
+
+    line-height: 41px;
+    letter-spacing: -0.32px;
+  }
+
+  &__preview {
+    margin-top: 40px;
+  }
+
+  &__imgs {
+    display: grid;
+    row-gap: 16px;
+
+    grid-column: 2;
+
+    &-item {
+      box-sizing: content-box;
+      width: 80px;
+      height: 80px;
+      border: 1px solid #c4c4c4;
+    }
+
+    &-img {
+      width: 80px;
+      height: 80px;
+      display: block;
+      object-fit: contain;
+    }
+  }
+
+  &__img-main {
+    grid-column: 3 / 13;
+    display: block;
+    width: 422px;
+    height: 422px;
+    object-fit: contain;
+  }
+
+  &__info {
+    grid-column: 14 / 21;
+
+    &-label {
+      color: $color-secondary;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+
+  &__colors {
+    position: relative;
+    width: 100%;
+
+    &-list {
+      margin-top: 8px;
+      @include flex(row, center, flex-start);
+
+      gap: 8px;
+    }
+
+    &-item {
+      box-sizing: border-box;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid #c4c4c4;
+      @include flex(row, center, center);
+
+      transition: border 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        border-color: $color-primary;
+      }
+    }
+
+    &-color {
+      box-sizing: content-box;
+      display: block;
+      width: 27px;
+      height: 27px;
+      border-radius: 50%;
+    }
+
+    .spacegray {
+      background-color: gray;
+    }
+
+    .gold {
+      background-color: gold;
+    }
+
+    .silver {
+      background-color: silver;
+    }
+
+    &::after {
+      position: absolute;
+      left: 0;
+      bottom: -24px;
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: $color-elements;
+    }
+  }
+
+  &__capacity {
+    position: relative;
+    width: 100%;
+
+    margin-top: 48px;
+
+    &-list {
+      margin-top: 8px;
+      @include flex(row, center, flex-start);
+
+      gap: 8px;
+    }
+
+    &-item {
+      padding: 8px;
+      box-sizing: border-box;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 14px;
+
+      border-radius: 4px;
+      border: 1px solid $color-icons;
+      background-color: transparent;
+
+      transition: border 0.3s;
+
+      &:hover {
+        cursor: pointer;
+        border-color: $color-primary;
+      }
+    }
+
+    .active {
+      color: $color-white;
+      background-color: $color-primary;
+    }
+
+    &::after {
+      position: absolute;
+      left: 0;
+      bottom: -24px;
+      content: '';
+      width: 100%;
+      height: 1px;
+      background-color: $color-elements;
+    }
+  }
+
+  &__price {
+    @include flex(row, center, flex-start);
+    margin-top: 56px;
+
+    &--bold {
+      color: $color-primary;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.32px;
+    }
+
+    &--grey {
+      margin-left: 8px;
+      color: $color-secondary;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__btns {
+    margin-top: 16px;
+    gap: 8px;
+    @include flex(row, center, space-between);
+  }
+
+  &__button-like {
+    box-sizing: content-box;
+    min-width: 40px;
+    min-height: 40px;
+    text-decoration: none;
+    @include flex(row, center, center);
+    background-color: $color-white;
+
+    border: 1px solid $color-icons;
+    border-radius: 50%;
+    transition: border 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $color-primary;
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+  }
+
+  &__stats {
+    margin-top: 32px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &__stat {
+    @include flex(row, center, space-between);
+    margin-bottom: 8px;
+
+    &--name {
+      color: $color-secondary;
+      font-weight: 600;
+    }
+  }
+}

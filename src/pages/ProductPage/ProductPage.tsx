@@ -1,0 +1,197 @@
+/* eslint-disable max-len */
+import { useState } from 'react';
+import classNames from 'classnames';
+
+import homeIcon from '../../assets/icons/Home.svg';
+import arrowRight from '../../assets/icons/Arrow-right.svg';
+import like from '../../assets/icons/Favourites.svg';
+import likeFilled from '../../assets/icons/Favourites-filled.svg';
+
+import { ButtonBack } from '../../components/ButtonBack';
+import { Button } from '../../components/Button';
+
+const testData = {
+  id: 'apple-iphone-8-64gb-gold',
+  namespaceId: 'apple-iphone-8',
+  name: 'Apple iPhone 8 64GB Gold',
+  capacityAvailable: ['64GB'],
+  capacity: '64GB',
+  priceRegular: 600,
+  priceDiscount: 550,
+  colorsAvailable: ['spacegray', 'gold', 'silver'],
+  color: 'gold',
+  images: [
+    'img/phones/apple-iphone-8/gold/00.jpg',
+    'img/phones/apple-iphone-8/gold/01.jpg',
+    'img/phones/apple-iphone-8/gold/02.jpg',
+    'img/phones/apple-iphone-8/gold/03.jpg',
+  ],
+  description: [
+    {
+      title: 'And then there was Pro',
+      text: [
+        'A transformative triple-camera system that adds tons of capability without complexity.',
+        'An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.',
+      ],
+    },
+    {
+      title: 'Camera',
+      text: [
+        'Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.',
+      ],
+    },
+    {
+      title:
+        'Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.',
+      text: [
+        'iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.',
+      ],
+    },
+  ],
+  screen: "4.7' IPS",
+  resolution: '1334x750',
+  processor: 'Apple A11 Bionic',
+  ram: '2GB',
+  camera: '12 Mp + 7 Mp',
+  zoom: 'Digital, 5x',
+  cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
+};
+
+const testImgs = [
+  'https://bigmag.ua/image/cache/catalog/new/kumunren/Iphone%20BU/1/iphone8-plus-spgray-select-2017_1_2_1_2_1-650x540.jpg',
+  'https://f.ua/statik/images/products/400x600/apple/apple_iphone_8_plus_128gb_product_red_1028772534254.png',
+  'https://cdn21vek.by/img/galleries/5722/743/preview_b/iphone8plus128gbgoldmx262_apple_5da41a7fd634a.png',
+  'https://i.ebayimg.com/images/g/yQUAAOSwrjRk0CyL/s-l1200.webp',
+  'https://i0.wp.com/cliktodeal.com/wp-content/uploads/2021/03/iphone-se-2020-white.jpg?fit=834%2C1000&ssl=1',
+];
+
+export const ProductPage = () => {
+  const [mainImg] = useState(testImgs[0]);
+
+  const [isActive, setIsActive] = useState(false);
+
+  return (
+    <div className="product">
+      <div className="page__nav">
+        <img src={homeIcon} alt="back" className="page__nav-icon" />
+        <img src={arrowRight} alt="back" className="page__nav-icon" />
+        <span className="page__nav-label">Phones</span>
+        <img src={arrowRight} alt="back" className="page__nav-icon" />
+        <span className="page__nav-label">Phones</span>
+      </div>
+
+      <ButtonBack />
+
+      <h2 className="product__title">{testData.name}</h2>
+
+      <section className="product__section product__preview">
+        <div className="product__imgs">
+          {testImgs.map((img) => (
+            <button
+              type="button"
+              className="product__imgs-item"
+              onClick={() => {}}
+            >
+              <img
+                key={img}
+                src={img}
+                alt="img"
+                className="product__imgs-img"
+              />
+            </button>
+          ))}
+        </div>
+
+        <img src={mainImg} alt={testData.name} className="product__img-main" />
+
+        <div className="product__info">
+          <div className="product__colors">
+            <h5 className="product__colors-label product__info-label">
+              Avaible Colors
+            </h5>
+
+            <div className="product__colors-list">
+              {testData.colorsAvailable.map((color) => (
+                <button
+                  key={color}
+                  type="button"
+                  className="product__colors-item"
+                  onClick={() => {}}
+                >
+                  <div className={classNames('product__colors-color', color)} />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="product__capacity">
+            <h5 className="product__capacity-label product__info-label">
+              Select Capacity
+            </h5>
+
+            <div className="product__capacity-list">
+              {testData.capacityAvailable.map((capacity) => (
+                <button
+                  key={capacity}
+                  type="button"
+                  className={classNames('product__capacity-item', {
+                    active: testData.capacity === capacity,
+                  })}
+                  onClick={() => {}}
+                >
+                  {testData.capacity}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="product__price">
+            <>
+              <span className="product__price--bold">
+                {`$${testData.priceDiscount}`}
+              </span>
+              {testData.priceRegular && (
+                <span className="product__price--grey">{`$${testData.priceRegular}`}</span>
+              )}
+            </>
+          </div>
+
+          <div className="product__btns">
+            <Button text="Add to cart" />
+
+            <button
+              type="button"
+              className="product__button-like"
+              onClick={() => setIsActive((prev) => !prev)}
+            >
+              <img
+                className="icon"
+                src={!isActive ? like : likeFilled}
+                alt="like"
+              />
+            </button>
+          </div>
+
+          <div className="product__stats">
+            <p className="product__stat">
+              <span className="product__stat--name">Screen</span>
+              {testData.screen}
+            </p>
+            <p className="product__stat">
+              <span className="product__stat--name">Capacity</span>
+              {testData.capacity}
+            </p>
+            <p className="product__stat">
+              <span className="product__stat--name">RAM</span>
+              {testData.ram}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="product__section product__about">
+        {/* ABOUT SECTION */}
+      </section>
+    </div>
+  );
+};

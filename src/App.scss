@@ -23,3 +23,24 @@ iframe {
     margin-inline: 16px;
   }
 }
+
+.page__nav {
+  @include flex(row, center, flex-start);
+  line-height: 16px;
+
+  gap: 8px;
+
+  &-icon {
+    display: block;
+    object-fit: contain;
+    width: 16px;
+    height: 16px;
+  }
+
+  &-label {
+    color: $color-secondary;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: normal;
+  }
+}

@@ -1,5 +1,5 @@
-import arrowLeft from '../../assets/icons/Arrow-left.svg';
 import { Button } from '../../components/Button';
+import { ButtonBack } from '../../components/ButtonBack';
 import { CartItem } from './components/CartItem';
 
 const testData = [
@@ -98,10 +98,7 @@ const testData = [
 export const CartPage: React.FC = () => {
   return (
     <div className="cart">
-      <div className="cart__back">
-        <img src={arrowLeft} alt="back" className="cart__back-icon" />
-        <span className="cart__back-label">Back</span>
-      </div>
+      <ButtonBack />
 
       <h1 className="cart__title">Cart</h1>
 
