@@ -1,6 +1,6 @@
 import React from 'react';
-import { Favourites } from '../../components/Favourites/Favourites';
+import { Footer } from '../../components/Footer';
 
 export const HomePage: React.FC = () => {
-  return <Favourites />;
+  return <Footer />;
 };
