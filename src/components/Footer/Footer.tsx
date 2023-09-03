@@ -28,8 +28,8 @@ export const Footer = () => {
           </ul>
         </nav>
 
-      <button className="footer__button" type="button">
-        <div className="footer__button-content">Back to top</div>
+        <button className="footer__button" type="button">
+          <div className="footer__button-content">Back to top</div>
 
           <div className="footer__botton-icon">
             <svg
