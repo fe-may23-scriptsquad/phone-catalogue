@@ -3,7 +3,7 @@
   margin: 0 auto;
 
   &__content {
-    padding: 32px 0;
+    padding: 32px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -24,11 +24,11 @@
     }
   
     @include onTablet {
-      margin-inline: 24px;
+      padding-inline: 24px;
     }
   
     @include onMobile {
-      margin-inline: 16px;
+      margin: 0 16px;
     }
   }
 
@@ -125,14 +125,6 @@
     width: 100%;
     height: 1px;
     background-color: $color-secondary;
-  }
-
-  @include onTablet {
-    margin-inline: 24px;
-  }
-
-  @include onMobile {
-    margin-inline: 16px;
   }
 }
 
