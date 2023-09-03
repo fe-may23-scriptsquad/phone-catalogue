@@ -1,7 +1,5 @@
 import React from 'react';
 import { CardItem } from '../CardItem';
-import { Header } from '../Header';
-import { Footer } from '../Footer';
 
 const phone = {
   id: '1',
@@ -22,7 +20,6 @@ const phone = {
 export const Favourites = () => {
   return (
     <div className="favourites">
-      <Header />
       <h1 className="favourites__header">Favourites</h1>
       <div className="favourites__amount"> 5 items</div>
       <div className="favourites__grid">
@@ -42,7 +39,6 @@ export const Favourites = () => {
           <CardItem phone={phone} />
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

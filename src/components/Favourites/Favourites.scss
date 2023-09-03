@@ -1,6 +1,7 @@
 @import '../../styles/mixins.scss';
 
-.favourites { 
+.favourites {
+  grid-column: 1 / -1;
 
   &__header {
     font-size: 48px;

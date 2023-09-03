@@ -9,13 +9,16 @@ import cartImage from '../../assets/icons/Shopping-cart.svg';
 import menuImage from '../../assets/icons/Burger-menu.svg';
 
 export const Header: React.FC = () => {
-  const [activeLink, setActiveLink] = useState('');
+  const [activeLink, setActiveLink] = useState('home');
 
   return (
     <header className="header">
       <div className="header__container">
         <div className="header__container--left">
-          <a href="#home" className="header__logo">
+          <a
+            href="#home"
+            className="header__logo"
+          >
             <img
               src={logoImage}
               alt="NICE gadgets"
