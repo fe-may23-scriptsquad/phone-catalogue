@@ -9,6 +9,7 @@ import likeFilled from '../../assets/icons/Favourites-filled.svg';
 
 import { ButtonBack } from '../../components/ButtonBack';
 import { Button } from '../../components/Button';
+import { LineElement } from '../../components/LineElement';
 
 const testData = {
   id: 'apple-iphone-8-64gb-gold',
@@ -66,9 +67,16 @@ const testImgs = [
 ];
 
 export const ProductPage = () => {
-  const [mainImg] = useState(testImgs[0]);
+  const [mainImg, setMainImg] = useState(testImgs[0]);
+  // const [selectedColor, setSelectedColor] = useState(testData.color);
 
   const [isActive, setIsActive] = useState(false);
+
+  const changeMainImg = (img: string) => {
+    if (img !== mainImg) {
+      setMainImg(img);
+    }
+  };
 
   return (
     <div className="product">
@@ -89,8 +97,10 @@ export const ProductPage = () => {
           {testImgs.map((img) => (
             <button
               type="button"
-              className="product__imgs-item"
-              onClick={() => {}}
+              className={classNames('product__imgs-item', {
+                'img-active': img === mainImg,
+              })}
+              onClick={() => changeMainImg(img)}
             >
               <img
                 key={img}
@@ -122,6 +132,8 @@ export const ProductPage = () => {
                 </button>
               ))}
             </div>
+
+            <LineElement />
           </div>
 
           <div className="product__capacity">
@@ -143,6 +155,7 @@ export const ProductPage = () => {
                 </button>
               ))}
             </div>
+            <LineElement />
           </div>
 
           <div className="product__price">
@@ -189,8 +202,78 @@ export const ProductPage = () => {
         </div>
       </section>
 
-      <section className="product__section product__about">
-        {/* ABOUT SECTION */}
+      <section className="product__section product__information">
+        <div className="product__about">
+          <h2 className="product__about-title product__information-title">
+            About
+          </h2>
+
+          <LineElement />
+
+          <div className="product__about-description">
+            {testData.description.map(({ title, text }) => (
+              <div className="product__about-content">
+                <h3 className="product__about-subtitle">{title}</h3>
+
+                <div className="product__about-text">
+                  {text.map((paragraph) => (
+                    <p className="product__about-paragraph">{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="product__specs">
+          <h2 className="product__specs-title product__information-title">
+            Tech specs
+          </h2>
+
+          <LineElement />
+
+          <ul className="product__specs-list">
+            <li className="product__specs-item">
+              <span className="product__specs-item--name">Screen</span>
+              {testData.screen}
+            </li>
+
+            <li className="product__specs-item">
+              <span className="product__specs-item--name">Resolution</span>
+              {testData.resolution}
+            </li>
+
+            <li className="product__specs-item">
+              <span className="product__specs-item--name">Processor</span>
+              {testData.processor}
+            </li>
+
+            <li className="product__specs-item">
+              <span className="product__specs-item--name">RAM</span>
+              {testData.ram}
+            </li>
+
+            <li className="product__specs-item">
+              <span className="product__specs-item--name">Built in memory</span>
+              {testData.capacity}
+            </li>
+
+            <li className="product__specs-item">
+              <span className="product__specs-item--name">Camera</span>
+              {testData.camera}
+            </li>
+
+            <li className="product__specs-item">
+              <span className="product__specs-item--name">Zoom</span>
+              {testData.zoom}
+            </li>
+
+            <li className="product__specs-item">
+              <span className="product__specs-item--name">Ceel</span>
+              {testData.cell.join(', ')}
+            </li>
+          </ul>
+        </div>
       </section>
     </div>
   );
