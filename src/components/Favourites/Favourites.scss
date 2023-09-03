@@ -1,0 +1,27 @@
+@import '../../styles/mixins.scss';
+
+.favourites {
+  grid-column: 1 / -1;
+
+  &__header {
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 56px; 
+    letter-spacing: -0.01em;
+  }
+
+  &__grid {
+    @include pageGrid;
+    row-gap: 40px;
+  }
+
+  &__card {
+    grid-column: span 6;
+
+
+    @media (min-width: 639px) {
+      grid-column: span 4;
+    }
+  }
+}

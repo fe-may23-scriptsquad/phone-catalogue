@@ -8,3 +8,18 @@ iframe {
   padding: 0;
   box-sizing: border-box;
 }
+
+.container {
+  box-sizing: border-box;
+  max-width: 1136px;
+
+  @include pageGrid;
+
+  @include onTablet {
+    margin-inline: 24px;
+  }
+
+  @include onMobile {
+    margin-inline: 16px;
+  }
+}
