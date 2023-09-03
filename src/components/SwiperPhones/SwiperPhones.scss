@@ -1,4 +1,88 @@
 .swiperPhones {
+  .swiper {
+    margin: 0;
+    margin-top: 24px;
+    width: 1136px;
+    position: relative;
+    overflow-y: visible;
+  
+    &-button-prev {
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      top: -36px;
+      left: 1040px;
+  
+      &::after {
+        content: '';
+        width: 32px;
+        height: 32px;
+        background-image: url('../../assets/icons/Arrow-button.svg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        transform: rotate(-180deg);
+        transition: 0.3s;
+      }
+  
+      &:hover::after {
+        background-image: url('../../assets/icons/Arrow-button-Hover.svg');
+      }
+    }
+  
+    &-button-next {
+      width: 32px;
+      height: 32px;
+      position: absolute;
+      top: -36px;
+      right: 16px;
+  
+      &::after {
+        content: '';
+        width: 32px;
+        height: 32px;
+        background-image: url('../../assets/icons/Arrow-button.svg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        transition: 0.3s;
+      }
+  
+      &:hover::after {
+        background-image: url('../../assets/icons/Arrow-button-Hover.svg');
+      }
+    }
+  
+    @media (max-width: 1199px) {
+      & {
+        width: 592px;
+      }
+  
+      &-button-prev {
+        left: 484px;
+      }
+  
+      &-button-next {
+        right: 24px;
+      }
+    }
+  
+    @media (max-width: 639px) {
+      & {
+        width: 288px;
+        margin-top: 30px;
+      }
+  
+      &-button-prev {
+        left: 200px;
+        top: -14px;
+      }
+  
+      &-button-next {
+        right: 16px;
+        top: -14px;
+      }
+    }
+  }
+
   &__title {
     color: #000;
     font-family: Mont;
@@ -12,90 +96,6 @@
         font-size: 22px;
         line-height: 32px;
       }
-    }
-  }
-}
-
-.swiper {
-  margin: 0;
-  margin-top: 24px;
-  width: 1136px;
-  position: relative;
-  overflow-y: visible;
-
-  &-button-prev {
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    top: -36px;
-    left: 1040px;
-
-    &::after {
-      content: '';
-      width: 32px;
-      height: 32px;
-      background-image: url('../../assets/icons/Arrow-button.svg');
-      background-position: center center;
-      background-repeat: no-repeat;
-      transform: rotate(-180deg);
-      transition: 0.3s;
-    }
-
-    &:hover::after {
-      background-image: url('../../assets/icons/Arrow-button-Hover.svg');
-    }
-  }
-
-  &-button-next {
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    top: -36px;
-    right: 16px;
-
-    &::after {
-      content: '';
-      width: 32px;
-      height: 32px;
-      background-image: url('../../assets/icons/Arrow-button.svg');
-      background-position: center center;
-      background-repeat: no-repeat;
-      transition: 0.3s;
-    }
-
-    &:hover::after {
-      background-image: url('../../assets/icons/Arrow-button-Hover.svg');
-    }
-  }
-
-  @media (max-width: 1199px) {
-    & {
-      width: 592px;
-    }
-
-    &-button-prev {
-      left: 484px;
-    }
-
-    &-button-next {
-      right: 24px;
-    }
-  }
-
-  @media (max-width: 639px) {
-    & {
-      width: 288px;
-      margin-top: 30px;
-    }
-
-    &-button-prev {
-      left: 200px;
-      top: -14px;
-    }
-
-    &-button-next {
-      right: 16px;
-      top: -14px;
     }
   }
 }
