@@ -1,6 +1,6 @@
 import React from 'react';
-import { Footer } from '../../components/Footer';
+import { SwiperPhones } from '../../components/SwiperPhones';
 
 export const HomePage: React.FC = () => {
-  return <Footer />;
+  return <SwiperPhones />;
 };
