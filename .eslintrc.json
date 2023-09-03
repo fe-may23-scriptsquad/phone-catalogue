@@ -10,6 +10,6 @@
   },
   "rules": {
     "linebreak-style": "off",
-    "import/no-extaneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off"
   }
 }
