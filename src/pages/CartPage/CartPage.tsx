@@ -70,28 +70,24 @@ export const CartPage: React.FC = () => {
   const [fullOrder, setFullOrder] = useState<Order[]>(testData);
 
   const deleteOrderItem = (prodId: string) => {
-    setFullOrder((prevOrder) =>
-      prevOrder.filter(({ product }) => {
-        return product.id !== prodId;
-      }),
-    );
+    setFullOrder((prevOrder) => {
+      return prevOrder.filter(({ product }) => product.id !== prodId);
+    });
   };
 
   const changeOrderItemQuantity = (value: number, prodId: string) => {
-    setFullOrder((prevOrder) =>
-      prevOrder.map((orderItem) => {
-        const { product } = orderItem;
+    setFullOrder((prevOrder) => prevOrder.map((orderItem) => {
+      const { product } = orderItem;
 
-        if (product.id === prodId) {
-          return {
-            product,
-            quantity: value,
-          };
-        }
+      if (product.id === prodId) {
+        return {
+          product,
+          quantity: value,
+        };
+      }
 
-        return orderItem;
-      }),
-    );
+      return orderItem;
+    }));
   };
 
   const calculateTotalPrice = () => {
