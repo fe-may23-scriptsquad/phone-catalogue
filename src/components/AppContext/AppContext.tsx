@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { AppContextType } from '../../types/AppContextType';
 
-export const AppContext = React.createContext(null);
+export const AppContext = React.createContext<AppContextType | null>(null);
 
 type Props = {
   children: React.ReactNode;
 };
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
-  return <AppContext.Provider value={null}>{children}</AppContext.Provider>;
+  const [activeLink, setActiveLink] = useState('');
+
+  return (
+    <AppContext.Provider
+      value={{
+        activeLink,
+        setActiveLink,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 };

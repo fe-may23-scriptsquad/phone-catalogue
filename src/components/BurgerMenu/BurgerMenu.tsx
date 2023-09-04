@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
 import logoImage from '../../assets/img/Logo.png';
 import likeImage from '../../assets/icons/Favourites.svg';
 import cartImage from '../../assets/icons/Shopping-cart.svg';
 import closeImage from '../../assets/icons/Close.svg';
+import { AppContext } from '../AppContext/AppContext';
+import { AppContextType } from '../../types/AppContextType';
 
 export const BurgerMenu: React.FC = () => {
-  const [activeLink, setActiveLink] = useState('');
+  const context = useContext(AppContext) as AppContextType;
+  const { activeLink, setActiveLink } = context;
 
   return (
     <aside className="burger">
@@ -47,26 +50,17 @@ export const BurgerMenu: React.FC = () => {
             </a>
           </li>
           <li>
-            <a
-              href="#Phones"
-              className="link nav__link"
-            >
+            <a href="#Phones" className="link nav__link">
               Phones
             </a>
           </li>
           <li>
-            <a
-              href="#Tablets"
-              className="link nav__link"
-            >
+            <a href="#Tablets" className="link nav__link">
               Tablets
             </a>
           </li>
           <li>
-            <a
-              href="#accessories"
-              className="link nav__link"
-            >
+            <a href="#accessories" className="link nav__link">
               Accessories
             </a>
           </li>
