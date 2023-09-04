@@ -10,6 +10,7 @@ import likeFilled from '../../assets/icons/Favourites-filled.svg';
 import { ButtonBack } from '../../components/ButtonBack';
 import { Button } from '../../components/Button';
 import { LineElement } from '../../components/LineElement';
+import { SwiperPhones } from '../../components/SwiperPhones';
 
 const testData = {
   id: 'apple-iphone-8-64gb-gold',
@@ -122,7 +123,7 @@ export const ProductPage = () => {
         <img src={arrowRight} alt="back" className="page__nav-icon" />
         <span className="page__nav-label">Phones</span>
         <img src={arrowRight} alt="back" className="page__nav-icon" />
-        <span className="page__nav-label">Phones</span>
+        <span className="page__nav-label">{testData.name}</span>
       </div>
 
       <ButtonBack />
@@ -345,6 +346,10 @@ export const ProductPage = () => {
             </li>
           </ul>
         </div>
+      </section>
+
+      <section className="product__section product__swiper">
+        <SwiperPhones customTitle="You may also like" />
       </section>
     </div>
   );

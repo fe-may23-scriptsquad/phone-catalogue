@@ -12,6 +12,7 @@ iframe {
 .container {
   box-sizing: border-box;
   max-width: 1136px;
+  margin: 0 auto;
 
   @include pageGrid;
 
@@ -44,5 +45,12 @@ iframe {
     font-size: 12px;
     font-weight: 700;
     line-height: normal;
+
+    transition: color 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-primary;
+    }
   }
 }

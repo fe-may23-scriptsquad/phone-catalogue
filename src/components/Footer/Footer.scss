@@ -1,10 +1,36 @@
 .footer {
-  padding: 32px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  max-width: $large-screen-resolution;
   margin: 0 auto;
-  max-width: 1136px;
+
+  &__content {
+    padding: 32px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1136px;
+    margin: 0 auto;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+      gap: 32px;
+      align-items: flex-start;
+      margin: 0 auto;
+      max-width: 1136px;
+  
+      & > :nth-child(3) {
+        align-self: center;
+      }
+    }
+  
+    @include onTablet {
+      padding-inline: 24px;
+    }
+  
+    @include onMobile {
+      padding-inline: 16px;
+    }
+  }
 
   &__nav {
     &-list {
@@ -89,28 +115,21 @@
     }
   }
 
-  @media (max-width: 576px) {
-    flex-direction: column;
-    gap: 32px;
-    align-items: flex-start;
-    margin: 0 auto;
-    max-width: 1136px;
-
-    & > :nth-child(3) {
-      align-self: center;
-    }
+  @media (min-width: $large-screen-resolution) {
+    border-inline: 1px solid $color-secondary;
   }
 
-  @include onTablet {
-    margin-inline: 24px;
-  }
-
-  @include onMobile {
-    margin-inline: 16px;
+  &::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: $color-secondary;
   }
 }
 
 .logo {
+  display: block;
   width: 89px;
   height: 32px;
 
