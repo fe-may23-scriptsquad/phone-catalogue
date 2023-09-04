@@ -19,7 +19,6 @@
   }
 
   @include onMobile {
-    margin-inline: 16px;
     --columns: 4;
   }
 }
