@@ -7,25 +7,28 @@ import {
 import App from './App';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { AppProvider } from './components/AppContext/AppContext';
 import { Favourites } from './components/Favourites/Favourites';
 import { CartPage } from './pages/CartPage';
 
 export const Root = () => (
   <Router>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route index path="home" element={<HomePage />} />
-        <Route path="" element={<Navigate to="home" replace />} />
-        <Route path="phones">
-          <Route path=":phoneId?" />
+    <AppProvider>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index path="home" element={<HomePage />} />
+          <Route path="" element={<Navigate to="home" replace />} />
+          <Route path="phones">
+            <Route path=":phoneId?" />
+          </Route>
+          <Route path="tablets" />
+          <Route path="accessories" />
+          <Route path="favorites" element={<Favourites />} />
+          <Route path="cart" element={<CartPage />} />
         </Route>
-        <Route path="tablets" />
-        <Route path="accessories" />
-        <Route path="favorites" element={<Favourites />} />
-        <Route path="cart" element={<CartPage />} />
-      </Route>
 
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </AppProvider>
   </Router>
 );
