@@ -8,6 +8,7 @@ import App from './App';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Favourites } from './components/Favourites/Favourites';
+import { CartPage } from './pages/CartPage';
 
 export const Root = () => (
   <Router>
@@ -21,7 +22,7 @@ export const Root = () => (
         <Route path="tablets" />
         <Route path="accessories" />
         <Route path="favorites" element={<Favourites />} />
-        <Route path="cart" />
+        <Route path="cart" element={<CartPage />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
