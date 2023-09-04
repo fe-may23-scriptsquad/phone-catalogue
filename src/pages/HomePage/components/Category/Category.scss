@@ -1,0 +1,43 @@
+.category {
+  margin-top: 24px;
+  transition: all 0.3s ease;
+  grid-column: span 1;
+
+  &__image {
+    width: 368px;
+    height: 386px;
+    display: block;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+
+    img {
+      height: 100%;
+      object-fit: contain;
+      margin: 0 auto;
+      display: block;
+    }
+
+    &:hover {
+      transform: translate(-8px, -8px);
+      box-shadow: 3px 2px 6px;
+      border-radius: 12px;
+    }
+  }
+
+  &__title {
+    margin-top: 24px;
+    display: block;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $color-white;
+      text-shadow: 3px 1px 3.5px $color-primary;
+    }
+  }
+
+  &__products-amount {
+    color: $color-secondary;
+    font-weight: 500;
+    font-family: "Mont";
+  }
+}
