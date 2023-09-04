@@ -1,22 +1,26 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
+import { Link, NavLink } from 'react-router-dom';
 import logoImage from '../../assets/img/Logo.png';
 import likeImage from '../../assets/icons/Favourites.svg';
 import cartImage from '../../assets/icons/Shopping-cart.svg';
 import menuImage from '../../assets/icons/Burger-menu.svg';
 
-export const Header: React.FC = () => {
-  const [activeLink, setActiveLink] = useState('home');
+const buildClassnames = ({ isActive }: { isActive: boolean }): string => (
+  cn('link', 'nav__link', {
+    'nav__is-active': isActive,
+  }));
 
+export const Header: React.FC = () => {
   return (
     <header className="header">
       <div className="header__container">
         <div className="header__container--left">
-          <a
-            href="#home"
+          <NavLink
+            to="/"
             className="header__logo"
           >
             <img
@@ -24,54 +28,42 @@ export const Header: React.FC = () => {
               alt="NICE gadgets"
               className="header__logo-img"
             />
-          </a>
+          </NavLink>
 
           <nav>
             <div className="nav">
               <ul className="nav__list">
                 <li>
-                  <a
-                    href="#home"
-                    className={cn('link', 'nav__link', {
-                      'nav__is-active': activeLink === 'home',
-                    })}
-                    onClick={() => setActiveLink('home')}
+                  <NavLink
+                    to="home"
+                    className={buildClassnames}
                   >
                     Home
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="nav__wraper">
-                  <a
-                    href="#phones"
-                    className={cn('link', 'nav__link', {
-                      'nav__is-active': activeLink === 'phones',
-                    })}
-                    onClick={() => setActiveLink('phones')}
+                  <NavLink
+                    to="phones"
+                    className={buildClassnames}
                   >
                     Phones
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="nav__wraper">
-                  <a
-                    href="#tablets"
-                    className={cn('link', 'nav__link', {
-                      'nav__is-active': activeLink === 'tablets',
-                    })}
-                    onClick={() => setActiveLink('tablets')}
+                  <NavLink
+                    to="tablets"
+                    className={buildClassnames}
                   >
                     Tablets
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="nav__wraper">
-                  <a
-                    href="#accessories"
-                    className={cn('link', 'nav__link', {
-                      'nav__is-active': activeLink === 'accessories',
-                    })}
-                    onClick={() => setActiveLink('accessories')}
+                  <NavLink
+                    to="accessories"
+                    className={buildClassnames}
                   >
                     Accessories
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </div>
@@ -79,43 +71,38 @@ export const Header: React.FC = () => {
         </div>
 
         <div className="icon">
-          <div className={`icon__left
-                icon__left--borders
-                ${activeLink === 'favourites' ? 'icon__left--active' : 'icon__left--invisible'}`}
+          <NavLink
+            to="favorites"
+            className={(isActive) => (cn('icon__left', 'icon__left--borders', {
+              'icon__left--active': isActive,
+              'icon__left--invisible': !isActive,
+            }))}
           >
-            <a href="#favourites" className="icon__logo">
+            <span className="icon__logo">
               <img
                 src={likeImage}
                 alt="favourites"
                 className="icon__logo-img icon__logo-img--margins"
-                onClick={() => setActiveLink('favourites')}
               />
-            </a>
-          </div>
+            </span>
+          </NavLink>
 
-          <div className={`
-                          icon__right
-                        ${activeLink === 'cart' ? 'icon__right--active'
-      : 'icon__right--invisible'
-    }
-            `}
-          >
-            <a href="#cart" className="icon__logo">
+          <div className="icon__right">
+            <Link to="cart" className="icon__logo">
               <img
                 src={cartImage}
                 alt="Cart"
                 className="icon__logo-img icon__logo-img--margins"
-                onClick={() => setActiveLink('cart')}
               />
-            </a>
+            </Link>
           </div>
 
           <div
             className="icon__burger"
           >
-            <a href="#home" className="icon__logo">
+            <Link to="home" className="icon__logo">
               <img src={menuImage} alt="Menu" className="icon__logo-img" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

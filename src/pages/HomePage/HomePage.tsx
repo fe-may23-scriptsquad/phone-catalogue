@@ -1,6 +1,7 @@
 import React from 'react';
 import { SwiperPhones } from '../../components/SwiperPhones';
 import { Category } from './components/Category';
+import { Banner } from './components/Banner';
 
 const tempData = [{
   linkTo: '/phones',
@@ -21,9 +22,7 @@ export const HomePage: React.FC = () => {
           Welcome to Nice Gadgets store!
         </h1>
 
-        <span className="homepage__header-futurebanner">
-          there will be the banner
-        </span>
+        <Banner />
       </div>
 
       <div className="homepage__body">

@@ -21,8 +21,6 @@
   @include onMobile {
     margin-inline: 16px;
     --columns: 4;
-
-    max-width: 0;
   }
 }
 

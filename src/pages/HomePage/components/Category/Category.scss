@@ -1,17 +1,19 @@
 .category {
+  display: block;
   margin-top: 24px;
   transition: all 0.3s ease;
-  grid-column: span 1;
+  grid-column: span 4;
 
   &__image {
-    width: 368px;
-    height: 386px;
+    max-width: 368px;
+    max-height: 386px;
     display: block;
     transition: all 0.3s ease;
     border-radius: 8px;
 
     img {
       height: 100%;
+      width: 100%;
       object-fit: contain;
       margin: 0 auto;
       display: block;
@@ -28,6 +30,8 @@
     margin-top: 24px;
     display: block;
     transition: all 0.3s ease;
+    font-size: 20px;
+    font-weight: 700;
 
     &:hover {
       color: $color-white;

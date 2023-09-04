@@ -1,34 +1,42 @@
+import { Link } from 'react-router-dom';
 import logo from '../../assets/img/Logo.png';
 
 export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__content">
-        <a href="#home" className="logo">
+        <Link to="/" className="logo">
           <img src={logo} alt="Logo" />
-        </a>
+        </Link>
 
         <nav className="footer__nav">
           <ul className="footer__nav-list">
             <li className="footer__nav-item">
-              <a href="index.html" className="footer__nav-link">
+              <Link
+                to="https://github.com/fe-may23-scriptsquad"
+                className="footer__nav-link"
+              >
                 Github
-              </a>
+              </Link>
             </li>
             <li className="nav__item">
-              <a href="index.html" className="footer__nav-link">
+              <Link to="/" className="footer__nav-link">
                 Contacts
-              </a>
+              </Link>
             </li>
             <li className="nav__item">
-              <a href="index.html" className="footer__nav-link">
+              <Link to="/" className="footer__nav-link">
                 Rights
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>
 
-        <button className="footer__button" type="button">
+        <button
+          className="footer__button"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          type="button"
+        >
           <div className="footer__button-content">Back to top</div>
 
           <div className="footer__botton-icon">

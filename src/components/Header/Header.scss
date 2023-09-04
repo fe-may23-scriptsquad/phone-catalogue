@@ -193,10 +193,8 @@ body {
       border-bottom: 2px solid $color-primary;
     }
 
-    &--invisible {
-      @media (max-width: 639px) {
-        display: none;
-      }
+    @media (max-width: 639px) {
+      display: none;
     }
 
     @media (max-width: 1200px) {
