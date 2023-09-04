@@ -12,6 +12,7 @@ iframe {
 .container {
   box-sizing: border-box;
   max-width: 1136px;
+  margin: 0 auto;
 
   @include pageGrid;
 
