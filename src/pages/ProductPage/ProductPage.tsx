@@ -66,15 +66,52 @@ const testImgs = [
   'https://i0.wp.com/cliktodeal.com/wp-content/uploads/2021/03/iphone-se-2020-white.jpg?fit=834%2C1000&ssl=1',
 ];
 
+interface ColorsHex {
+  spacegray: '#4c4c4c';
+  gold: '#fcdbc1';
+  silver: '#f0f0f0';
+  midnightgreen: '#5f7170';
+}
+
+const colorsHex: ColorsHex = {
+  spacegray: '#4c4c4c',
+  gold: '#fcdbc1',
+  silver: '#f0f0f0',
+  midnightgreen: '#5f7170',
+};
+
+const setHexColor = (color: string) => {
+  if (color in colorsHex) {
+    return (colorsHex as ColorsHex)[color as keyof ColorsHex];
+  }
+
+  return '#fff';
+};
+
 export const ProductPage = () => {
   const [mainImg, setMainImg] = useState(testImgs[0]);
-  // const [selectedColor, setSelectedColor] = useState(testData.color);
+  const [selectedColor, setSelectedColor] = useState<string>(testData.color);
+  const [selectedCapacity, setSelectedCapacity] = useState<string>(
+    testData.capacity,
+  );
 
   const [isActive, setIsActive] = useState(false);
 
-  const changeMainImg = (img: string) => {
+  const changeMainImgHandler = (img: string) => {
     if (img !== mainImg) {
       setMainImg(img);
+    }
+  };
+
+  const changeColorHandler = (color: string) => {
+    if (color !== selectedColor) {
+      setSelectedColor(color);
+    }
+  };
+
+  const changeCapacityHandler = (capacity: string) => {
+    if (capacity !== selectedCapacity) {
+      setSelectedCapacity(capacity);
     }
   };
 
@@ -100,14 +137,20 @@ export const ProductPage = () => {
               className={classNames('product__imgs-item', {
                 'img-active': img === mainImg,
               })}
-              onClick={() => changeMainImg(img)}
+              style={{
+                backgroundImage: `url(${img})`,
+                backgroundSize: '80%',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+              }}
+              onClick={() => changeMainImgHandler(img)}
             >
-              <img
+              {/* <img
                 key={img}
                 src={img}
                 alt="img"
                 className="product__imgs-img"
-              />
+              /> */}
             </button>
           ))}
         </div>
@@ -116,9 +159,12 @@ export const ProductPage = () => {
 
         <div className="product__info">
           <div className="product__colors">
-            <h5 className="product__colors-label product__info-label">
-              Avaible Colors
-            </h5>
+            <div className="product__colors-heading">
+              <h5 className="product__colors-label product__info-label">
+                Avaible Colors
+              </h5>
+              <h6 className="product__colors-id">{`ID: ${testData.id}`}</h6>
+            </div>
 
             <div className="product__colors-list">
               {testData.colorsAvailable.map((color) => (
@@ -126,9 +172,34 @@ export const ProductPage = () => {
                   key={color}
                   type="button"
                   className="product__colors-item"
-                  onClick={() => {}}
+                  onClick={() => changeColorHandler(color)}
                 >
-                  <div className={classNames('product__colors-color', color)} />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                  >
+                    <rect
+                      x="2"
+                      y="2"
+                      width="28"
+                      height="28"
+                      rx="14"
+                      fill={`${setHexColor(color)}`}
+                      stroke="white"
+                      strokeWidth="2"
+                    />
+                    <rect
+                      x="0.5"
+                      y="0.5"
+                      width="31"
+                      height="31"
+                      rx="15.5"
+                      stroke={color === selectedColor ? '#0F0F11' : 'E2E6E9'}
+                    />
+                  </svg>
                 </button>
               ))}
             </div>
@@ -147,9 +218,9 @@ export const ProductPage = () => {
                   key={capacity}
                   type="button"
                   className={classNames('product__capacity-item', {
-                    active: testData.capacity === capacity,
+                    active: selectedCapacity === capacity,
                   })}
-                  onClick={() => {}}
+                  onClick={() => changeCapacityHandler(capacity)}
                 >
                   {testData.capacity}
                 </button>
