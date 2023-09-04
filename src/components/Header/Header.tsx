@@ -73,10 +73,11 @@ export const Header: React.FC = () => {
         <div className="icon">
           <NavLink
             to="favorites"
-            className={(isActive) => (cn('icon__left', 'icon__left--borders', {
-              'icon__left--active': isActive,
-              'icon__left--invisible': !isActive,
-            }))}
+            className={({ isActive }) => {
+              return cn('icon__left', 'icon__left--borders', {
+                'icon__left--active': isActive,
+              });
+            }}
           >
             <span className="icon__logo">
               <img
@@ -87,15 +88,22 @@ export const Header: React.FC = () => {
             </span>
           </NavLink>
 
-          <div className="icon__right">
-            <Link to="cart" className="icon__logo">
+          <NavLink
+            to="cart"
+            className={({ isActive }) => {
+              return cn('icon__right', {
+                'icon__left--active': isActive,
+              });
+            }}
+          >
+            <span className="icon__logo">
               <img
                 src={cartImage}
                 alt="Cart"
                 className="icon__logo-img icon__logo-img--margins"
               />
-            </Link>
-          </div>
+            </span>
+          </NavLink>
 
           <div
             className="icon__burger"

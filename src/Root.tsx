@@ -7,6 +7,7 @@ import {
 import App from './App';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { Favourites } from './components/Favourites/Favourites';
 
 export const Root = () => (
   <Router>
@@ -19,7 +20,7 @@ export const Root = () => (
         </Route>
         <Route path="tablets" />
         <Route path="accessories" />
-        <Route path="favorites" />
+        <Route path="favorites" element={<Favourites />} />
         <Route path="cart" />
       </Route>
 

@@ -24,6 +24,17 @@
       box-shadow: 3px 2px 6px;
       border-radius: 12px;
     }
+
+    @include onTablet {
+      max-width: 187px;
+      max-height: 187px;
+    }
+
+    @include onTablet {
+      max-width: 288px;
+      max-height: 288px;
+    }
+
   }
 
   &__title {

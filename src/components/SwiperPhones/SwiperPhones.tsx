@@ -33,7 +33,7 @@ export const SwiperPhones: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 639) {
+      if (window.innerWidth < 639) {
         setNumberOfSlides(1);
       } else if (window.innerWidth <= 1199) {
         setNumberOfSlides(2);
