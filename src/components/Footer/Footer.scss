@@ -2,6 +2,7 @@
   max-width: $large-screen-resolution;
   margin: 0 auto;
   margin-top: 80px;
+  background-color: $color-white;
 
   &__content {
     padding: 32px;
@@ -117,7 +118,7 @@
   }
 
   @media (min-width: $large-screen-resolution) {
-    border-inline: 1px solid $color-secondary;
+    border-inline: 1px solid $color-icons;
   }
 
   &::before {
@@ -125,7 +126,7 @@
     display: block;
     width: 100%;
     height: 1px;
-    background-color: $color-secondary;
+    background-color: $color-icons;
   }
 
   @include onTablet {

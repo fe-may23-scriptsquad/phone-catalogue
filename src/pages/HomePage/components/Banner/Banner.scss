@@ -65,7 +65,7 @@
 
   &__button {
     border-radius: 48px;
-    background: transparent;
+    background-color: $color-white;
     border: 1px solid $color-icons;
     transition: border-color 0.3s ease;
     cursor: pointer;
