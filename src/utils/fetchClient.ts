@@ -28,6 +28,7 @@ function request<T>(
 }
 
 export const client = {
+  getImg: (url: string) => `${BASE_URL}/${url}`,
   get: <T>(url: string) => request<T>(url),
   post: <T>(url: string, data: any) => request<T>(url, 'POST', data),
 };

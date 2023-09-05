@@ -1,19 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { Phone } from '../../types/Phone';
 import { Button } from '../Button';
 import { ButtonLike } from '../ButtonLike';
 import { LineElement } from '../LineElement';
+import { getImgUrl } from '../../api/products';
 
 type Props = {
   phone: Phone;
 };
 
 // eslint-disable-next-line max-len
-const one = 'https://www.91-img.com/pictures/';
-const two = '143993-v4-apple-iphone-14-mobile-phone-large-4.jpg';
-const testImg = `${one}${two}`;
+// const one = 'https://www.91-img.com/pictures/';
+// const two = '143993-v4-apple-iphone-14-mobile-phone-large-4.jpg';
+// const testImg = `${one}${two}`;
 
 export const CardItem: React.FC<Props> = ({ phone }) => {
   return (
@@ -22,7 +22,11 @@ export const CardItem: React.FC<Props> = ({ phone }) => {
         to={`/phones/${phone.itemId}`}
         onClick={() => window.scrollTo({ top: 0 })}
       >
-        <img src={testImg} alt={phone.name} className="card__image" />
+        <img
+          src={getImgUrl(phone.image)}
+          alt={phone.name}
+          className="card__image"
+        />
       </Link>
 
       <Link
