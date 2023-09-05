@@ -15,10 +15,7 @@ export const Header: React.FC = () => {
     <header className="header">
       <div className="header__container">
         <div className="header__container--left">
-          <a
-            href="#home"
-            className="header__logo"
-          >
+          <a href="#home" className="header__logo">
             <img
               src={logoImage}
               alt="NICE gadgets"
@@ -79,9 +76,14 @@ export const Header: React.FC = () => {
         </div>
 
         <div className="icon">
-          <div className={`icon__left
+          <div
+            className={`icon__left
                 icon__left--borders
-                ${activeLink === 'favourites' ? 'icon__left--active' : 'icon__left--invisible'}`}
+                ${
+                  activeLink === 'favourites'
+                    ? 'icon__left--active'
+                    : 'icon__left--invisible'
+                }`}
           >
             <a href="#favourites" className="icon__logo">
               <img
@@ -93,11 +95,14 @@ export const Header: React.FC = () => {
             </a>
           </div>
 
-          <div className={`
+          <div
+            className={`
                           icon__right
-                        ${activeLink === 'cart' ? 'icon__right--active'
-      : 'icon__right--invisible'
-    }
+                        ${
+                          activeLink === 'cart'
+                            ? 'icon__right--active'
+                            : 'icon__right--invisible'
+                        }
             `}
           >
             <a href="#cart" className="icon__logo">
@@ -110,9 +115,7 @@ export const Header: React.FC = () => {
             </a>
           </div>
 
-          <div
-            className="icon__burger"
-          >
+          <div className="icon__burger">
             <a href="#home" className="icon__logo">
               <img src={menuImage} alt="Menu" className="icon__logo-img" />
             </a>

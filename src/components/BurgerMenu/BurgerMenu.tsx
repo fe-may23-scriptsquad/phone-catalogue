@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
 import logoImage from '../../assets/img/Logo.png';
