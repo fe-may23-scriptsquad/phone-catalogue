@@ -246,30 +246,6 @@
     @include flex(row, center, space-between);
   }
 
-  &__button-like {
-    box-sizing: content-box;
-    min-width: 40px;
-    min-height: 40px;
-    text-decoration: none;
-    @include flex(row, center, center);
-    background-color: $color-white;
-
-    border: 1px solid $color-icons;
-    border-radius: 50%;
-    transition: border 0.3s;
-
-    &:hover {
-      cursor: pointer;
-      border: 1px solid $color-primary;
-    }
-
-    .icon {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-    }
-  }
-
   &__stats {
     margin-top: 32px;
     font-size: 12px;

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { Phone } from '../../types/Phone';
 import { Button } from '../Button';
-import like from '../../assets/icons/Favourites.svg';
-import likeFilled from '../../assets/icons/Favourites-filled.svg';
+import { ButtonLike } from '../ButtonLike';
+import { LineElement } from '../LineElement';
 
 type Props = {
   phone: Phone;
@@ -14,13 +16,15 @@ const two = '143993-v4-apple-iphone-14-mobile-phone-large-4.jpg';
 const testImg = `${one}${two}`;
 
 export const CardItem: React.FC<Props> = ({ phone }) => {
-  const [isActive, setIsActive] = useState(false);
-
   return (
     <div className="card">
-      <img src={testImg} alt={phone.name} className="card__image" />
+      <Link to={`/phones/${phone.itemId}`}>
+        <img src={testImg} alt={phone.name} className="card__image" />
+      </Link>
 
-      <h2 className="card__title">{phone.name}</h2>
+      <Link to={`/phones/${phone.itemId}`}>
+        <h2 className="card__title">{phone.name}</h2>
+      </Link>
 
       <div className="card__price">
         <>
@@ -30,6 +34,8 @@ export const CardItem: React.FC<Props> = ({ phone }) => {
           )}
         </>
       </div>
+
+      <LineElement />
 
       <div className="card__stats">
         <p className="card__stat">
@@ -48,18 +54,7 @@ export const CardItem: React.FC<Props> = ({ phone }) => {
 
       <div className="card__btns">
         <Button text="Add to cart" />
-
-        <button
-          type="button"
-          className="card__button-like"
-          onClick={() => setIsActive((prev) => !prev)}
-        >
-          <img
-            className="icon"
-            src={!isActive ? like : likeFilled}
-            alt="like"
-          />
-        </button>
+        <ButtonLike />
       </div>
     </div>
   );
