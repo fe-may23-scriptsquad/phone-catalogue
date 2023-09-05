@@ -10,6 +10,12 @@ export const AppContext = React.createContext<AppContextType>({
   setActiveLink: () => {},
   products: [],
   setProducts: () => {},
+  cart: [],
+  toggleCartItem: () => {},
+  changeOrderItemQuantity: () => {},
+  favouriteArr: [],
+  setFavouriteArr: () => {},
+  toggleFavouriteArr: () => {},
 });
 
 type Props = {

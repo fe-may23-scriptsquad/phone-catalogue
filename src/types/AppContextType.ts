@@ -1,13 +1,12 @@
-import { SetStateAction } from 'react';
-import { Phone } from './Phone';
 import { CartProduct } from './CartProduct';
 import { Order } from './Order';
+import { Phone } from './Phone';
 
 export interface AppContextType {
   activeLink: string;
-  setActiveLink: React.Dispatch<SetStateAction<string>>;
+  setActiveLink: React.Dispatch<React.SetStateAction<string>>;
   products: Phone[],
-  setProducts: React.Dispatch<SetStateAction<Phone[]>>,
+  setProducts: React.Dispatch<React.SetStateAction<Phone[]>>,
   cart: Order[];
   toggleCartItem: (product: CartProduct) => void;
   changeOrderItemQuantity: (value: number, prodId: string) => void;
