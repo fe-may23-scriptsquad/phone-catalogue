@@ -54,25 +54,13 @@ export const Banner: React.FC = () => {
         className="swiperbanner"
       >
         <SwiperSlide>
-          <img
-            className="swiperblock__image"
-            src={testImg1}
-            alt="test"
-          />
+          <img className="swiperblock__image" src={testImg1} alt="test" />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            className="swiperblock__image"
-            src={testImg2}
-            alt="test"
-          />
+          <img className="swiperblock__image" src={testImg2} alt="test" />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            className="swiperblock__image"
-            src={testImg3}
-            alt="test"
-          />
+          <img className="swiperblock__image" src={testImg3} alt="test" />
         </SwiperSlide>
       </Swiper>
 
