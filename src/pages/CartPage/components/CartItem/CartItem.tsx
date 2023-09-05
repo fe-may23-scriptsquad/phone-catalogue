@@ -1,22 +1,19 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import close from '../../../../assets/icons/Close.svg';
 import minus from '../../../../assets/icons/Minus.svg';
 import plus from '../../../../assets/icons/Plus.svg';
 import { Order } from '../../../../types/Order';
+import { AppContext } from '../../../../components/AppContext/AppContext';
 
 type Props = {
   orderItem: Order;
-  deleteOrderItem: (prodId: string) => void;
-  changeOrderItemQuantity: (value: number, prodId: string) => void;
 };
 
-export const CartItem: React.FC<Props> = ({
-  orderItem,
-  deleteOrderItem,
-  changeOrderItemQuantity,
-}) => {
+export const CartItem: React.FC<Props> = ({ orderItem }) => {
   const { product, quantity } = orderItem;
+
+  const value = useContext(AppContext);
 
   const one = 'https://www.91-img.com/pictures/';
   const two = '143993-v4-apple-iphone-14-mobile-phone-large-4.jpg';
@@ -25,7 +22,7 @@ export const CartItem: React.FC<Props> = ({
   const [number, setNumber] = useState(quantity);
 
   useEffect(() => {
-    changeOrderItemQuantity(number, product.id);
+    value?.changeOrderItemQuantity(number, product.id);
   }, [number]);
 
   return (
@@ -34,7 +31,7 @@ export const CartItem: React.FC<Props> = ({
         <button
           type="button"
           className="cart__item-delete"
-          onClick={() => deleteOrderItem(product.id)}
+          onClick={() => value?.toggleCartItem(product)}
         >
           <img src={close} alt="Close" />
         </button>

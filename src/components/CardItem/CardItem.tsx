@@ -52,7 +52,15 @@ export const CardItem: React.FC<Props> = ({ phone }) => {
       </div>
 
       <div className="card__btns">
-        <Button text="Add to cart" />
+        <Button
+          text="Add to cart"
+          product={{
+            id: phone.itemId,
+            name: phone.name,
+            price: phone.price,
+            img: testImg,
+          }}
+        />
         <ButtonLike itemId={phone.itemId} />
       </div>
     </div>
