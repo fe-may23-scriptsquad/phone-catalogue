@@ -11,6 +11,7 @@ import { AppProvider } from './components/AppContext/AppContext';
 import { CartPage } from './pages/CartPage';
 import { Catalog } from './components/Catalog';
 import { ProductPage } from './pages/ProductPage';
+import { Favourites } from './pages/Favourites';
 
 export const Root = () => (
   <Router>
@@ -27,23 +28,18 @@ export const Root = () => (
           </Route>
           <Route
             path="tablets"
-            element={(
-              <Catalog
-                productName="Tablets"
-                pathName={['Tablets']}
-              />
-            )}
+            element={<Catalog productName="Tablets" pathName={['Tablets']} />}
           />
           <Route
             path="accessories"
-            element={(
-              <Catalog
-                productName="Accessories"
-                pathName={['Accessories']}
-              />
-            )}
+            element={
+              <Catalog productName="Accessories" pathName={['Accessories']} />
+            }
           />
-          <Route path="favorites" />
+          <Route
+            path="favorites"
+            element={<Favourites pathName={['Favourites']} />}
+          />
           <Route path="cart" element={<CartPage />} />
         </Route>
 
