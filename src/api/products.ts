@@ -1,7 +1,7 @@
 import { client } from '../utils/fetchClient';
 
-export const getAll = async <T>(url = ''): Promise<T> => {
-  const data = await client.get(`/products/${url}`);
+export const getAll = async <T>(params = ''): Promise<T> => {
+  const data = await client.get(`/products${params}`);
 
   return data as T;
 };
