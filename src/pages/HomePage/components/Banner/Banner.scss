@@ -13,8 +13,8 @@
     margin: 0;
   
     &-wrapper {
-      width: 1040px;
-      height: 400px;
+      max-width: 1040px;
+      max-height: 400px;
       border-radius: 8px;
   
       @include onTablet {
@@ -65,7 +65,7 @@
 
   &__button {
     border-radius: 48px;
-    background: transparent;
+    background-color: $color-white;
     border: 1px solid $color-icons;
     transition: border-color 0.3s ease;
     cursor: pointer;

@@ -15,6 +15,7 @@
       position: absolute;
       top: -36px;
       left: 1040px;
+      background-color: $color-white;
   
       &::after {
         content: '';
@@ -38,6 +39,7 @@
       position: absolute;
       top: -36px;
       right: 16px;
+      background-color: $color-white;
   
       &::after {
         content: '';
