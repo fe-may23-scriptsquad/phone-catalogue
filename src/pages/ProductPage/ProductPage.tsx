@@ -1,4 +1,5 @@
 /* eslint-disable max-len */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { useState } from 'react';
 import classNames from 'classnames';
 
@@ -142,14 +143,7 @@ export const ProductPage = () => {
                 backgroundRepeat: 'no-repeat',
               }}
               onClick={() => changeMainImgHandler(img)}
-            >
-              {/* <img
-                key={img}
-                src={img}
-                alt="img"
-                className="product__imgs-img"
-              /> */}
-            </button>
+            />
           ))}
         </div>
 
@@ -239,9 +233,17 @@ export const ProductPage = () => {
           </div>
 
           <div className="product__btns">
-            <Button text="Add to cart" />
+            <Button
+              text="Add to cart"
+              product={{
+                id: testData.id,
+                name: testData.name,
+                price: testData.priceDiscount || testData.priceRegular,
+                img: testImgs[0],
+              }}
+            />
 
-            <ButtonLike />
+            <ButtonLike itemId={testData.id} />
           </div>
 
           <div className="product__stats">

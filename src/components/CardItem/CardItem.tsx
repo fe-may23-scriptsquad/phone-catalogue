@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Phone } from '../../types/Phone';
 import { Button } from '../Button';
@@ -63,8 +62,16 @@ export const CardItem: React.FC<Props> = ({ phone }) => {
       </div>
 
       <div className="card__btns">
-        <Button text="Add to cart" />
-        <ButtonLike />
+        <Button
+          text="Add to cart"
+          product={{
+            id: phone.itemId,
+            name: phone.name,
+            price: phone.price,
+            img: testImg,
+          }}
+        />
+        <ButtonLike itemId={phone.itemId} />
       </div>
     </div>
   );
