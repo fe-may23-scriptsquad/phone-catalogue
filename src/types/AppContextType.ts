@@ -7,4 +7,7 @@ export interface AppContextType {
   cart: Order[];
   toggleCartItem: (product: CartProduct) => void;
   changeOrderItemQuantity: (value: number, prodId: string) => void;
+  favouriteArr: string[];
+  setFavouriteArr: (value: string[]) => void;
+  toggleFavouriteArr: (id: string) => void;
 }

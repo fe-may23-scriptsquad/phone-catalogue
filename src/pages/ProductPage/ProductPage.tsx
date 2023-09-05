@@ -243,7 +243,7 @@ export const ProductPage = () => {
               }}
             />
 
-            <ButtonLike />
+            <ButtonLike itemId={testData.id} />
           </div>
 
           <div className="product__stats">

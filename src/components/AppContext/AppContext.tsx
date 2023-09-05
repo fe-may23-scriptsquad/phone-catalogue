@@ -10,42 +10,22 @@ type Props = {
   children: React.ReactNode;
 };
 
-const testCartData = [
-  {
-    product: {
-      id: 'apple-iphone-7-plus-32gb-black',
-      name: 'Apple iPhone 7 Plus 32GB Black',
-      price: 500,
-      img: 'img/phones/apple-iphone-7-plus/black/00.jpg',
-    },
-
-    quantity: 2,
-  },
-  {
-    product: {
-      id: 'apple-iphone-8-64gb-gold',
-      name: 'Apple iPhone 8 64GB Gold',
-      price: 550,
-      img: 'img/phones/apple-iphone-8/gold/00.jpg',
-    },
-
-    quantity: 1,
-  },
-  {
-    product: {
-      id: 'apple-iphone-11-64gb-black',
-      name: 'Apple iPhone 11 64GB Black',
-      price: 880,
-      img: 'img/phones/apple-iphone-11/black/00.jpg',
-    },
-
-    quantity: 1,
-  },
-];
-
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [activeLink, setActiveLink] = useState('');
-  const [cart, setCart] = useLocalStarage<Order[]>('cart', testCartData);
+  const [favouriteArr, setFavouriteArr] = useLocalStarage<string[]>(
+    'favPhone',
+    [],
+  );
+
+  const toggleFavouriteArr = (id: string) => {
+    if (!favouriteArr.includes(id)) {
+      setFavouriteArr([...favouriteArr, id]);
+    } else {
+      setFavouriteArr(favouriteArr.filter((phoneId: string) => id !== phoneId));
+    }
+  };
+
+  const [cart, setCart] = useLocalStarage<Order[]>('cart', []);
 
   const toggleCartItem = (product: CartProduct) => {
     const findedProduct = cart.find((order) => order.product.id === product.id);
@@ -81,6 +61,9 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
       value={{
         activeLink,
         setActiveLink,
+        favouriteArr,
+        setFavouriteArr,
+        toggleFavouriteArr,
         cart,
         toggleCartItem,
         changeOrderItemQuantity,

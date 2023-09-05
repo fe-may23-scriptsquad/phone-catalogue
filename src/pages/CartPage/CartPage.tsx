@@ -3,14 +3,17 @@ import { Button } from '../../components/Button';
 import { ButtonBack } from '../../components/ButtonBack';
 import { CartItem } from './components/CartItem';
 import { AppContext } from '../../components/AppContext/AppContext';
+import { EmptyValueComponent } from '../../components/EmptyValueComponent';
+import { Order } from '../../types/Order';
+import { AppContextType } from '../../types/AppContextType';
 
 export const CartPage: React.FC = () => {
-  const value = useContext(AppContext);
+  const { cart } = useContext(AppContext) as AppContextType;
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
   const calculateTotalPrice = () => {
     return (
-      value?.cart.reduce((a, b) => {
+      cart.reduce((a: number, b: Order) => {
         return a + b.quantity * b.product.price;
       }, 0) || 0
     );
@@ -18,7 +21,7 @@ export const CartPage: React.FC = () => {
 
   useEffect(() => {
     setTotalPrice(calculateTotalPrice());
-  }, [value?.cart]);
+  }, [cart]);
 
   return (
     <div className="cart">
@@ -28,22 +31,28 @@ export const CartPage: React.FC = () => {
 
       <div className="cart__content">
         <ul className="cart__list">
-          {value?.cart.map((orderItm) => (
-            <CartItem key={orderItm.product.id} orderItem={orderItm} />
-          ))}
+          {cart.length ? (
+            cart.map((orderItm) => (
+              <CartItem key={orderItm.product.id} orderItem={orderItm} />
+            ))
+          ) : (
+            <EmptyValueComponent />
+          )}
         </ul>
 
-        <div className="cart__info">
-          <div className="cart__info-price">
-            <h2 className="cart__info-value">{`$${totalPrice}`}</h2>
+        {cart.length > 0 && (
+          <div className="cart__info">
+            <div className="cart__info-price">
+              <h2 className="cart__info-value">{`$${totalPrice}`}</h2>
 
-            <p className="cart__info-label">Total for 3 items</p>
-          </div>
+              <p className="cart__info-label">Total for 3 items</p>
+            </div>
 
-          <div className="cart__buybutton">
-            <Button text="Checkout" />
+            <div className="cart__buybutton">
+              <Button text="Checkout" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
