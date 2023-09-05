@@ -1,6 +1,6 @@
-import { Phone } from './Phone';
+import { CartProduct } from './CartProduct';
 
 export interface Order {
-  product: Phone;
+  product: CartProduct;
   quantity: number;
 }
