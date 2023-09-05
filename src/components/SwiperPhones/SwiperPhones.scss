@@ -15,7 +15,7 @@
       position: absolute;
       top: -36px;
       left: 1040px;
-      background-color: $color-white;
+      background-color: $color-hover-bg;
   
       &::after {
         content: '';
@@ -39,7 +39,7 @@
       position: absolute;
       top: -36px;
       right: 16px;
-      background-color: $color-white;
+      background-color: $color-hover-bg;
   
       &::after {
         content: '';
@@ -56,7 +56,7 @@
       }
     }
   
-    @media (max-width: 1199px) {
+    @include onTablet {
       & {
         width: 592px;
       }
@@ -70,20 +70,20 @@
       }
     }
   
-    @media (max-width: 639px) {
+    @include onMobile {
       & {
         width: 288px;
-        margin-top: 30px;
+        margin-top: 50px;
       }
   
       &-button-prev {
-        left: 200px;
-        top: -14px;
+        left: 30%;
+        top: -20px;
       }
   
       &-button-next {
-        right: 16px;
-        top: -14px;
+        right: 30%;
+        top: -20px;
       }
     }
   }
@@ -96,11 +96,10 @@
     line-height: 41px;
     letter-spacing: -0.32px;
 
-    @media (max-width: 639px) {
-      & {
-        font-size: 22px;
-        line-height: 32px;
-      }
+    @include onMobile {
+      text-align: center;
+      font-size: 22px;
+      line-height: 32px;
     }
   }
 }

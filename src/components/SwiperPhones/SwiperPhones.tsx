@@ -33,6 +33,7 @@ export const SwiperPhones: React.FC<Props> = ({ customTitle }) => {
     modules: [Navigation],
     slidesPerView: numberOfSlides,
     navigation: true,
+    spaceBetween: 16,
   };
 
   useEffect(() => {
