@@ -67,7 +67,10 @@ export const Favourites = ({ pathName }: FavouritesProps) => {
           </div>
           <h1 className="favourites__title">Favourites</h1>
 
-          <p className="favourites__subtitle">0 items</p>
+          <p className="favourites__subtitle">
+            {` ${favouriteItems.length}
+            items `}
+          </p>
 
           <div className="favourites__list">
             {favouriteItems.map((phone) => (
