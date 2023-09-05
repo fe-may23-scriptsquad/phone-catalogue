@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-
-import arrowLeft from '../../assets/icons/Arrow-left.svg';
 import { Button } from '../../components/Button';
+import { ButtonBack } from '../../components/ButtonBack';
 import { CartItem } from './components/CartItem';
 import { Order } from '../../types/Order';
 
@@ -76,18 +75,20 @@ export const CartPage: React.FC = () => {
   };
 
   const changeOrderItemQuantity = (value: number, prodId: string) => {
-    setFullOrder((prevOrder) => prevOrder.map((orderItem) => {
-      const { product } = orderItem;
+    setFullOrder((prevOrder) => {
+      return prevOrder.map((orderItem) => {
+        const { product } = orderItem;
 
-      if (product.id === prodId) {
-        return {
-          product,
-          quantity: value,
-        };
-      }
+        if (product.id === prodId) {
+          return {
+            product,
+            quantity: value,
+          };
+        }
 
-      return orderItem;
-    }));
+        return orderItem;
+      });
+    });
   };
 
   const calculateTotalPrice = () => {
@@ -102,10 +103,7 @@ export const CartPage: React.FC = () => {
 
   return (
     <div className="cart">
-      <div className="cart__back">
-        <img src={arrowLeft} alt="back" className="cart__back-icon" />
-        <span className="cart__back-label">Back</span>
-      </div>
+      <ButtonBack />
 
       <h1 className="cart__title">Cart</h1>
 

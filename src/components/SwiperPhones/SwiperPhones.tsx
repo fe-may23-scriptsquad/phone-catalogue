@@ -22,7 +22,11 @@ const phone = {
   image: 'img/phones/apple-iphone-7/black/00.jpg',
 };
 
-export const SwiperPhones: React.FC = () => {
+type Props = {
+  customTitle?: string;
+};
+
+export const SwiperPhones: React.FC<Props> = ({ customTitle }) => {
   const [numberOfSlides, setNumberOfSlides] = useState(4);
 
   const swiperOptions = {
@@ -33,7 +37,7 @@ export const SwiperPhones: React.FC = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth <= 639) {
+      if (window.innerWidth < 639) {
         setNumberOfSlides(1);
       } else if (window.innerWidth <= 1199) {
         setNumberOfSlides(2);
@@ -52,7 +56,9 @@ export const SwiperPhones: React.FC = () => {
 
   return (
     <div className="swiperPhones">
-      <div className="swiperPhones__title">Brand new models</div>
+      <div className="swiperPhones__title">
+        {customTitle || 'Brand new models'}
+      </div>
 
       <Swiper {...swiperOptions}>
         <SwiperSlide>
