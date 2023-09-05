@@ -122,15 +122,13 @@ export const Catalog = ({ productName, phones, pathName }: CatalogProps) => {
           </div>
 
           <div className="catalog__list">
-            {visiblePhones.map(phone => {
-              return (
-                <div className="catalog__list--item" key={phone.id}>
-                  <CardItem
-                    phone={phone}
-                  />
-                </div>
-              );
-            })}
+            {visiblePhones.map(phone => (
+              <div className="catalog__list--item" key={phone.id}>
+                <CardItem
+                  phone={phone}
+                />
+              </div>
+            ))}
           </div>
           <div className="catalog__pagination">
             <Pagination

@@ -9,6 +9,10 @@ iframe {
   box-sizing: border-box;
 }
 
+body {
+  background-color: $color-hover-bg;
+}
+
 .container {
   box-sizing: border-box;
   max-width: 1136px;
