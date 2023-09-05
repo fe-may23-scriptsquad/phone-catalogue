@@ -5,6 +5,7 @@ import phonesFromServer from '../../api/phones.json';
 import { CardItem } from '../../components/CardItem';
 import { AppContext } from '../../components/AppContext/AppContext';
 import { AppContextType } from '../../types/AppContextType';
+import { EmptyValueComponent } from '../../components/EmptyValueComponent';
 
 type FavouritesProps = {
   pathName: string[];
@@ -73,11 +74,15 @@ export const Favourites = ({ pathName }: FavouritesProps) => {
           </p>
 
           <div className="favourites__list">
-            {favouriteItems.map((phone) => (
-              <div className="favourites__list--item" key={phone.id}>
-                <CardItem phone={phone} />
-              </div>
-            ))}
+            {favouriteItems.length === 0 ? (
+              <EmptyValueComponent />
+            ) : (
+              favouriteItems.map((phone) => (
+                <div className="favourites__list--item" key={phone.id}>
+                  <CardItem phone={phone} />
+                </div>
+              ))
+            )}
           </div>
         </div>
       </div>
