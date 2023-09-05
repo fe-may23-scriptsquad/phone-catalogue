@@ -1,12 +1,22 @@
+import { useContext } from 'react';
+
 import home from '../../assets/icons/Home.svg';
 import phonesFromServer from '../../api/phones.json';
 import { CardItem } from '../../components/CardItem';
+import { AppContext } from '../../components/AppContext/AppContext';
+import { AppContextType } from '../../types/AppContextType';
 
 type FavouritesProps = {
   pathName: string[];
 };
 
 export const Favourites = ({ pathName }: FavouritesProps) => {
+  const { favouriteArr } = useContext(AppContext) as AppContextType;
+
+  const favouriteItems = phonesFromServer.filter((phone) => {
+    return favouriteArr.includes(phone.itemId);
+  });
+
   return (
     <>
       <div className="favourites">
@@ -57,10 +67,10 @@ export const Favourites = ({ pathName }: FavouritesProps) => {
           </div>
           <h1 className="favourites__title">Favourites</h1>
 
-          <p className="favourites__subtitle">5 items</p>
+          <p className="favourites__subtitle">0 items</p>
 
           <div className="favourites__list">
-            {phonesFromServer.map((phone) => (
+            {favouriteItems.map((phone) => (
               <div className="favourites__list--item" key={phone.id}>
                 <CardItem phone={phone} />
               </div>

@@ -241,7 +241,7 @@ export const ProductPage = () => {
           <div className="product__btns">
             <Button text="Add to cart" />
 
-            <ButtonLike />
+            <ButtonLike itemId={testData.id} />
           </div>
 
           <div className="product__stats">
