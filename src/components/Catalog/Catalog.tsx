@@ -1,12 +1,14 @@
 /* eslint-disable max-len */
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Pagination } from '../Pagination';
 import { CardItem } from '../CardItem';
 import { Phone } from '../../types/Phone';
 import home from '../../assets/icons/Home.svg';
 import { Dropdown } from '../Dropdown';
+import { getAll } from '../../api/products';
 
 import phonesFromServer from '../../api/phones.json';
+import { AppContext } from '../AppContext/AppContext';
 
 type CatalogProps = {
   productName?: string;
@@ -36,6 +38,15 @@ export const Catalog = ({
   const [sortOption, setSortOption] = useState('Newest');
   const [phonesPerPage, setPhonesPerPage] = useState('8');
 
+  const {
+    products,
+    setProducts,
+  } = useContext(AppContext);
+
+  useEffect(() => {
+    getAll<Phone[]>().then(setProducts);
+  }, [pathName]);
+
   function handleChangeItemsPerPage(
     event: React.ChangeEvent<HTMLSelectElement>,
   ) {
@@ -48,29 +59,29 @@ export const Catalog = ({
     setCurrentPage(1);
   }
 
-  const visiblePhones = phones
-    .slice()
-    .sort((a, b) => {
-      switch (sortOption) {
-        case 'Newest':
-          return b.year - a.year;
-        case 'Alphabetically':
-          return a.name.localeCompare(b.name);
-        case 'Cheapest':
-          return a.price - b.price;
-        default:
-          return 0;
-      }
-    })
-    .filter((_item, index) => {
-      if (phonesPerPage === 'All') {
-        return true;
-      }
+  // const visiblePhones = phones
+  //   .slice()
+  //   .sort((a, b) => {
+  //     switch (sortOption) {
+  //       case 'Newest':
+  //         return b.year - a.year;
+  //       case 'Alphabetically':
+  //         return a.name.localeCompare(b.name);
+  //       case 'Cheapest':
+  //         return a.price - b.price;
+  //       default:
+  //         return 0;
+  //     }
+  //   })
+  //   .filter((_item, index) => {
+  //     if (phonesPerPage === 'All') {
+  //       return true;
+  //     }
 
-      const pageNumber = Math.ceil(index / +phonesPerPage);
+  //     const pageNumber = Math.ceil(index / +phonesPerPage);
 
-      return pageNumber === currentPage;
-    });
+  //     return pageNumber === currentPage;
+  //   });
 
   return (
     <>
@@ -119,16 +130,24 @@ export const Catalog = ({
           <div className="catalog__dropdown--container">
             <div className="catalog__dropdown">
               <label htmlFor="sortDropdown" className="dropdown__title">Sort by</label>
-              <Dropdown options={sortOptions} handleChange={handleChangeSortOption} value={sortOption} />
+              <Dropdown
+                options={sortOptions}
+                handleChange={handleChangeSortOption}
+                value={sortOption}
+              />
             </div>
             <div className="catalog__dropdown">
               <label htmlFor="sortDropdown" className="dropdown__title">Items on page</label>
-              <Dropdown options={itemsOnPageOptions} handleChange={handleChangeItemsPerPage} value={phonesPerPage} />
+              <Dropdown
+                options={itemsOnPageOptions}
+                handleChange={handleChangeItemsPerPage}
+                value={phonesPerPage}
+              />
             </div>
           </div>
 
           <div className="catalog__list">
-            {visiblePhones.map(phone => (
+            {products.map(phone => (
               <div className="catalog__list--item" key={phone.id}>
                 <CardItem
                   phone={phone}

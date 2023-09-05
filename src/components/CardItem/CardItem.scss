@@ -17,6 +17,7 @@
     display: block;
     width: 196px;
     height: 208px;
+    margin: 0 auto;
 
     @include onTablet {
       width: 173px;

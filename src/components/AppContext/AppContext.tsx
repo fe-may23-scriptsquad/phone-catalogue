@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import { AppContextType } from '../../types/AppContextType';
+import { Phone } from '../../types/Phone';
 import { useLocalStarage } from '../../hooks/useLocalStorage';
 import { Order } from '../../types/Order';
 import { CartProduct } from '../../types/CartProduct';
 
-export const AppContext = React.createContext<AppContextType | null>(null);
+export const AppContext = React.createContext<AppContextType>({
+  activeLink: '',
+  setActiveLink: () => {},
+  products: [],
+  setProducts: () => {},
+});
 
 type Props = {
   children: React.ReactNode;
@@ -12,6 +18,7 @@ type Props = {
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [activeLink, setActiveLink] = useState('');
+  const [products, setProducts] = useState<Phone[]>([]);
   const [favouriteArr, setFavouriteArr] = useLocalStarage<string[]>(
     'favPhone',
     [],
@@ -61,6 +68,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
       value={{
         activeLink,
         setActiveLink,
+        products,
+        setProducts,
         favouriteArr,
         setFavouriteArr,
         toggleFavouriteArr,
