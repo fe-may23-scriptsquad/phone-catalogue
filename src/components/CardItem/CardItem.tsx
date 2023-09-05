@@ -10,9 +10,9 @@ type Props = {
 };
 
 // eslint-disable-next-line max-len
-const one = 'https://www.91-img.com/pictures/';
-const two = '143993-v4-apple-iphone-14-mobile-phone-large-4.jpg';
-const testImg = `${one}${two}`;
+// const one = 'https://www.91-img.com/pictures/';
+// const two = '143993-v4-apple-iphone-14-mobile-phone-large-4.jpg';
+// const testImg = `${one}${two}`;
 
 export const CardItem: React.FC<Props> = ({ phone }) => {
   return (
@@ -68,7 +68,7 @@ export const CardItem: React.FC<Props> = ({ phone }) => {
             id: phone.itemId,
             name: phone.name,
             price: phone.price,
-            img: testImg,
+            img: getImgUrl(phone.image),
           }}
         />
         <ButtonLike itemId={phone.itemId} />

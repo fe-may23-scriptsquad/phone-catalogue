@@ -10,8 +10,11 @@ type Props = {
 };
 
 export const Button: React.FC<Props> = ({ text, product }) => {
-  const value = useContext(AppContext);
-  const isAdded = value?.cart.find((order) => order.product.id === product?.id);
+  const {
+    cart,
+    toggleCartItem,
+  } = useContext(AppContext);
+  const isAdded = cart.find((order) => order.product.id === product?.id);
 
   return product ? (
     <button
@@ -19,7 +22,7 @@ export const Button: React.FC<Props> = ({ text, product }) => {
         'button--outlined': isAdded,
       })}
       type="button"
-      onClick={() => value?.toggleCartItem(product)}
+      onClick={() => toggleCartItem(product)}
     >
       {!isAdded ? text : 'Added'}
     </button>

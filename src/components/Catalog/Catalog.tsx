@@ -59,30 +59,6 @@ export const Catalog = ({
     setCurrentPage(1);
   }
 
-  // const visiblePhones = phones
-  //   .slice()
-  //   .sort((a, b) => {
-  //     switch (sortOption) {
-  //       case 'Newest':
-  //         return b.year - a.year;
-  //       case 'Alphabetically':
-  //         return a.name.localeCompare(b.name);
-  //       case 'Cheapest':
-  //         return a.price - b.price;
-  //       default:
-  //         return 0;
-  //     }
-  //   })
-  //   .filter((_item, index) => {
-  //     if (phonesPerPage === 'All') {
-  //       return true;
-  //     }
-
-  //     const pageNumber = Math.ceil(index / +phonesPerPage);
-
-  //     return pageNumber === currentPage;
-  //   });
-
   return (
     <>
       <div className="catalog">
