@@ -1,15 +1,25 @@
-/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { SliderButton } from '../SliderButton';
 
-export const Pagination = () => {
-  const totalPhones = 56;
-  const phonesPerPage = 4;
-  const totalPages = Math.ceil(totalPhones / phonesPerPage);
+type PaginationProps = {
+  total:number;
+  perPage:string;
+  currentPage:number;
+  onPageChange: (page: number) => void,
+};
+
+export const Pagination = ({
+  total, perPage, currentPage, onPageChange,
+}:PaginationProps) => {
+  let totalPages = Math.ceil(total / +perPage);
+
+  if (perPage === 'All') {
+    totalPages = 1;
+  }
+
   const maxPageToShow = 4;
 
-  const [currentPage, setCurrentPage] = useState(1);
   const [pageNumers, setPageNumbers] = useState<number[]>([]);
 
   const startPage = Math.max(1, currentPage - Math.floor(maxPageToShow / 2));
@@ -27,13 +37,13 @@ export const Pagination = () => {
 
   const handlePagination = (pageNumber: number) => {
     if (
-      pageNumber < pageNumers[0] ||
-      pageNumber > pageNumers[pageNumers.length - 1]
+      pageNumber < pageNumers[0]
+      || pageNumber > pageNumers[pageNumers.length - 1]
     ) {
       return;
     }
 
-    setCurrentPage(pageNumber);
+    onPageChange(pageNumber);
   };
 
   return (
