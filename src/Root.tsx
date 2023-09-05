@@ -8,7 +8,6 @@ import App from './App';
 import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { AppProvider } from './components/AppContext/AppContext';
-import { Favourites } from './components/Favourites/Favourites';
 import { CartPage } from './pages/CartPage';
 
 export const Root = () => (
