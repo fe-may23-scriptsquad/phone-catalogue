@@ -75,8 +75,8 @@ export const CartPage: React.FC = () => {
   };
 
   const changeOrderItemQuantity = (value: number, prodId: string) => {
-    setFullOrder((prevOrder) =>
-      prevOrder.map((orderItem) => {
+    setFullOrder((prevOrder) => {
+      return prevOrder.map((orderItem) => {
         const { product } = orderItem;
 
         if (product.id === prodId) {
@@ -87,8 +87,8 @@ export const CartPage: React.FC = () => {
         }
 
         return orderItem;
-      }),
-    );
+      });
+    });
   };
 
   const calculateTotalPrice = () => {
