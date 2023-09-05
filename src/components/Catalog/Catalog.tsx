@@ -36,7 +36,7 @@ export const Catalog = ({
 }: CatalogProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOption, setSortOption] = useState('Newest');
-  const [phonesPerPage, setPhonesPerPage] = useState('8');
+  const [phonesPerPage, setPhonesPerPage] = useState('16');
 
   const {
     products,
