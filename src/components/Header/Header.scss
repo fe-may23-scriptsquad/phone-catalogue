@@ -25,6 +25,10 @@ body {
     list-style-type: none;
     padding: 0;
 
+    &--burger {
+      margin-top: 40px;
+    }
+
     &--column {
       flex-direction: column;
     }
@@ -100,9 +104,6 @@ body {
       }
     }
 
-    &--burger {
-      margin-top: 24px;
-    }
   }
 
   &__left {
@@ -134,7 +135,7 @@ body {
       }
     }
    
-    @media (max-width: 639px) {
+    @media (max-width: 640px) {
       display: none;
     }
 
@@ -191,7 +192,7 @@ body {
       border-bottom: 2px solid $color-primary;
     }
 
-    @media (max-width: 639px) {
+    @media (max-width: 640px) {
       display: none;
     }
 
@@ -220,6 +221,10 @@ body {
     width: 80px;
     height: 28px;
     line-height: 22px;
+
+    &--burger {
+      margin-top: 13px;
+    }
 
     @include onMobile {
       width: 64px;
