@@ -9,6 +9,7 @@ import { HomePage } from './pages/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { AppProvider } from './components/AppContext/AppContext';
 import { CartPage } from './pages/CartPage';
+import { ProductPage } from './pages/ProductPage';
 
 export const Root = () => (
   <Router>
@@ -18,7 +19,7 @@ export const Root = () => (
           <Route index path="home" element={<HomePage />} />
           <Route path="" element={<Navigate to="home" replace />} />
           <Route path="phones">
-            <Route path=":phoneId?" />
+            <Route path=":phoneId?" element={<ProductPage />} />
           </Route>
           <Route path="tablets" />
           <Route path="accessories" />

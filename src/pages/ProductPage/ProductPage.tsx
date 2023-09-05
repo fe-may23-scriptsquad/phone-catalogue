@@ -4,13 +4,12 @@ import classNames from 'classnames';
 
 import homeIcon from '../../assets/icons/Home.svg';
 import arrowRight from '../../assets/icons/Arrow-right.svg';
-import like from '../../assets/icons/Favourites.svg';
-import likeFilled from '../../assets/icons/Favourites-filled.svg';
 
 import { ButtonBack } from '../../components/ButtonBack';
 import { Button } from '../../components/Button';
 import { LineElement } from '../../components/LineElement';
 import { SwiperPhones } from '../../components/SwiperPhones';
+import { ButtonLike } from '../../components/ButtonLike';
 
 const testData = {
   id: 'apple-iphone-8-64gb-gold',
@@ -95,8 +94,6 @@ export const ProductPage = () => {
   const [selectedCapacity, setSelectedCapacity] = useState<string>(
     testData.capacity,
   );
-
-  const [isActive, setIsActive] = useState(false);
 
   const changeMainImgHandler = (img: string) => {
     if (img !== mainImg) {
@@ -244,17 +241,7 @@ export const ProductPage = () => {
           <div className="product__btns">
             <Button text="Add to cart" />
 
-            <button
-              type="button"
-              className="product__button-like"
-              onClick={() => setIsActive((prev) => !prev)}
-            >
-              <img
-                className="icon"
-                src={!isActive ? like : likeFilled}
-                alt="like"
-              />
-            </button>
+            <ButtonLike />
           </div>
 
           <div className="product__stats">
