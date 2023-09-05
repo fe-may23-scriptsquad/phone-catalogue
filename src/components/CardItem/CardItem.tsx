@@ -18,11 +18,17 @@ const testImg = `${one}${two}`;
 export const CardItem: React.FC<Props> = ({ phone }) => {
   return (
     <div className="card">
-      <Link to={`/phones/${phone.itemId}`}>
+      <Link
+        to={`/phones/${phone.itemId}`}
+        onClick={() => window.scrollTo({ top: 0 })}
+      >
         <img src={testImg} alt={phone.name} className="card__image" />
       </Link>
 
-      <Link to={`/phones/${phone.itemId}`}>
+      <Link
+        to={`/phones/${phone.itemId}`}
+        onClick={() => window.scrollTo({ top: 0 })}
+      >
         <h2 className="card__title">{phone.name}</h2>
       </Link>
 
