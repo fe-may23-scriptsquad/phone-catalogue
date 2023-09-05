@@ -1,10 +1,11 @@
 /* eslint-disable max-len */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Pagination } from '../Pagination';
 import { CardItem } from '../CardItem';
 import { Phone } from '../../types/Phone';
 import home from '../../assets/icons/Home.svg';
 import { Dropdown } from '../Dropdown';
+import { getAll } from '../../api/products';
 
 import phonesFromServer from '../../api/phones.json';
 
@@ -35,6 +36,10 @@ export const Catalog = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOption, setSortOption] = useState('Newest');
   const [phonesPerPage, setPhonesPerPage] = useState('8');
+
+  useEffect(() => {
+    getAll().then(console.log);
+  }, [pathName]);
 
   function handleChangeItemsPerPage(
     event: React.ChangeEvent<HTMLSelectElement>,
