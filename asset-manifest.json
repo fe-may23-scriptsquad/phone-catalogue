@@ -1,14 +1,43 @@
 {
   "files": {
-    "main.css": "/phone-catalogue-fe/static/css/main.76131e61.css",
-    "main.js": "/phone-catalogue-fe/static/js/main.58630692.js",
-    "static/media/Mont-Bold.otf": "/phone-catalogue-fe/static/media/Mont-Bold.03c8c2f6127c1da0fc39.otf",
+    "main.css": "/phone-catalogue-fe/static/css/main.46811490.css",
+    "main.js": "/phone-catalogue-fe/static/js/main.7084cccb.js",
+    "static/media/category-tablets.png": "/phone-catalogue-fe/static/media/category-tablets.51782e18205a1ca01ce8.png",
+    "static/media/banner-phones.png": "/phone-catalogue-fe/static/media/banner-phones.b4eeda8bd82b712057a2.png",
+    "static/media/banner-tablets.png": "/phone-catalogue-fe/static/media/banner-tablets.a962057c1043a08f7737.png",
+    "static/media/Mont-Bold.eot": "/phone-catalogue-fe/static/media/Mont-Bold.8cbc302cbcaf01cbe245.eot",
+    "static/media/Mont-Regular.eot": "/phone-catalogue-fe/static/media/Mont-Regular.37c884fa90ad7debecef.eot",
+    "static/media/Mont-Bold.ttf": "/phone-catalogue-fe/static/media/Mont-Bold.96feac9bbfbf9cd60af7.ttf",
+    "static/media/Mont-Regular.ttf": "/phone-catalogue-fe/static/media/Mont-Regular.b98fc1cb281f6fa7b4c7.ttf",
+    "static/media/Mont-SemiBold.eot": "/phone-catalogue-fe/static/media/Mont-SemiBold.40c58f6679e06c30b7f6.eot",
+    "static/media/Mont-SemiBold.ttf": "/phone-catalogue-fe/static/media/Mont-SemiBold.eb4ec46caeb3d818c818.ttf",
+    "static/media/Mont-SemiBold.woff": "/phone-catalogue-fe/static/media/Mont-SemiBold.54c461f1a4f80aea080c.woff",
+    "static/media/Mont-Regular.woff": "/phone-catalogue-fe/static/media/Mont-Regular.db22fbf6fd85f9648cd0.woff",
+    "static/media/Mont-Bold.woff": "/phone-catalogue-fe/static/media/Mont-Bold.562beef0913bb220a2f1.woff",
+    "static/media/banner-accessories.png": "/phone-catalogue-fe/static/media/banner-accessories.bdd2e0fca0159e52f41c.png",
+    "static/media/Mont-SemiBold.woff2": "/phone-catalogue-fe/static/media/Mont-SemiBold.8149a7bf48c364d07dd9.woff2",
+    "static/media/Mont-Regular.woff2": "/phone-catalogue-fe/static/media/Mont-Regular.6a5019e626fedb9a332b.woff2",
+    "static/media/Mont-Bold.woff2": "/phone-catalogue-fe/static/media/Mont-Bold.3e8bc65b088b2a041830.woff2",
+    "static/media/Logo.png": "/phone-catalogue-fe/static/media/Logo.f1a93e09718d393bdc52.png",
+    "static/media/Shopping-cart.svg": "/phone-catalogue-fe/static/media/Shopping-cart.0463874fa7338ffce131c991a273a3bf.svg",
+    "static/media/Favourites.svg": "/phone-catalogue-fe/static/media/Favourites.a6ae19238c42da9bf9fcd2bc5d33f5c6.svg",
+    "static/media/Home.svg": "/phone-catalogue-fe/static/media/Home.ece12b86618651cd0151f809302fb420.svg",
+    "static/media/Favourites-filled.svg": "/phone-catalogue-fe/static/media/Favourites-filled.19cc3bb52394ad1b86a29023f50fbbe1.svg",
+    "static/media/Close.svg": "/phone-catalogue-fe/static/media/Close.6d7ba7bf99b2d90a5bbde95013328dbe.svg",
+    "static/media/Burger-menu.svg": "/phone-catalogue-fe/static/media/Burger-menu.d9749b7108ad61ee68f43d4dae073f22.svg",
+    "static/media/Plus.svg": "/phone-catalogue-fe/static/media/Plus.024abc6205fb4b9549d35025742280fc.svg",
+    "static/media/Arrow-button.svg": "/phone-catalogue-fe/static/media/Arrow-button.4d4aa85654860c34f7a3.svg",
+    "static/media/Arrow-button-Hover.svg": "/phone-catalogue-fe/static/media/Arrow-button-Hover.0d07dae95a435fa4bf6b.svg",
     "index.html": "/phone-catalogue-fe/index.html",
-    "main.76131e61.css.map": "/phone-catalogue-fe/static/css/main.76131e61.css.map",
-    "main.58630692.js.map": "/phone-catalogue-fe/static/js/main.58630692.js.map"
+    "static/media/Arrow-left.svg": "/phone-catalogue-fe/static/media/Arrow-left.e539d9abebf1b6f6a4f9026f98d5dd96.svg",
+    "static/media/Arrow-right.svg": "/phone-catalogue-fe/static/media/Arrow-right.474a52a363ff8d27461871ed29939bc2.svg",
+    "static/media/Arrow-down.svg": "/phone-catalogue-fe/static/media/Arrow-down.24d44fed422f6846ee6b.svg",
+    "static/media/Minus.svg": "/phone-catalogue-fe/static/media/Minus.d9886bb317630447804c126ffc8a5dc2.svg",
+    "main.46811490.css.map": "/phone-catalogue-fe/static/css/main.46811490.css.map",
+    "main.7084cccb.js.map": "/phone-catalogue-fe/static/js/main.7084cccb.js.map"
   },
   "entrypoints": [
-    "static/css/main.76131e61.css",
-    "static/js/main.58630692.js"
+    "static/css/main.46811490.css",
+    "static/js/main.7084cccb.js"
   ]
 }
