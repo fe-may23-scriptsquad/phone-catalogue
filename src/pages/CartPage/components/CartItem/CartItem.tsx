@@ -15,10 +15,6 @@ export const CartItem: React.FC<Props> = ({ orderItem }) => {
 
   const value = useContext(AppContext);
 
-  const one = 'https://www.91-img.com/pictures/';
-  const two = '143993-v4-apple-iphone-14-mobile-phone-large-4.jpg';
-  const testImg = `${one}${two}`;
-
   const [number, setNumber] = useState(quantity);
 
   useEffect(() => {
@@ -36,7 +32,7 @@ export const CartItem: React.FC<Props> = ({ orderItem }) => {
           <img src={close} alt="Close" />
         </button>
 
-        <img className="cart__item-img" src={testImg} alt={product.name} />
+        <img className="cart__item-img" src={product.img} alt={product.name} />
 
         <h3 className="cart__item-title">{product.name}</h3>
       </div>
