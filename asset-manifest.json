@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/phone-catalogue-fe/static/css/main.46811490.css",
-    "main.js": "/phone-catalogue-fe/static/js/main.7084cccb.js",
+    "main.css": "/phone-catalogue-fe/static/css/main.114c292f.css",
+    "main.js": "/phone-catalogue-fe/static/js/main.2d2d0b96.js",
     "static/media/category-tablets.png": "/phone-catalogue-fe/static/media/category-tablets.51782e18205a1ca01ce8.png",
+    "static/media/category-phones.png": "/phone-catalogue-fe/static/media/category-phones.af93d992917380dfe206.png",
     "static/media/banner-phones.png": "/phone-catalogue-fe/static/media/banner-phones.b4eeda8bd82b712057a2.png",
+    "static/media/category-accessories.png": "/phone-catalogue-fe/static/media/category-accessories.e47d6d6df68a6548e82b.png",
     "static/media/banner-tablets.png": "/phone-catalogue-fe/static/media/banner-tablets.a962057c1043a08f7737.png",
     "static/media/Mont-Bold.eot": "/phone-catalogue-fe/static/media/Mont-Bold.8cbc302cbcaf01cbe245.eot",
     "static/media/Mont-Regular.eot": "/phone-catalogue-fe/static/media/Mont-Regular.37c884fa90ad7debecef.eot",
@@ -31,13 +33,12 @@
     "index.html": "/phone-catalogue-fe/index.html",
     "static/media/Arrow-left.svg": "/phone-catalogue-fe/static/media/Arrow-left.e539d9abebf1b6f6a4f9026f98d5dd96.svg",
     "static/media/Arrow-right.svg": "/phone-catalogue-fe/static/media/Arrow-right.474a52a363ff8d27461871ed29939bc2.svg",
-    "static/media/Arrow-down.svg": "/phone-catalogue-fe/static/media/Arrow-down.24d44fed422f6846ee6b.svg",
     "static/media/Minus.svg": "/phone-catalogue-fe/static/media/Minus.d9886bb317630447804c126ffc8a5dc2.svg",
-    "main.46811490.css.map": "/phone-catalogue-fe/static/css/main.46811490.css.map",
-    "main.7084cccb.js.map": "/phone-catalogue-fe/static/js/main.7084cccb.js.map"
+    "main.114c292f.css.map": "/phone-catalogue-fe/static/css/main.114c292f.css.map",
+    "main.2d2d0b96.js.map": "/phone-catalogue-fe/static/js/main.2d2d0b96.js.map"
   },
   "entrypoints": [
-    "static/css/main.46811490.css",
-    "static/js/main.7084cccb.js"
+    "static/css/main.114c292f.css",
+    "static/js/main.2d2d0b96.js"
   ]
 }
