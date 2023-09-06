@@ -13,12 +13,12 @@ type Props = {
 export const CartItem: React.FC<Props> = ({ orderItem }) => {
   const { product, quantity } = orderItem;
 
-  const value = useContext(AppContext);
+  const { changeOrderItemQuantity, toggleCartItem } = useContext(AppContext);
 
   const [number, setNumber] = useState(quantity);
 
   useEffect(() => {
-    value?.changeOrderItemQuantity(number, product.id);
+    changeOrderItemQuantity(number, product.id);
   }, [number]);
 
   return (
@@ -27,12 +27,16 @@ export const CartItem: React.FC<Props> = ({ orderItem }) => {
         <button
           type="button"
           className="cart__item-delete"
-          onClick={() => value?.toggleCartItem(product)}
+          onClick={() => toggleCartItem(product)}
         >
           <img src={close} alt="Close" />
         </button>
 
-        <img className="cart__item-img" src={product.img} alt={product.name} />
+        <img
+          className="cart__item-img"
+          src={orderItem.product.img}
+          alt={product.name}
+        />
 
         <h3 className="cart__item-title">{product.name}</h3>
       </div>

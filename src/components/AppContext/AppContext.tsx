@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppContextType } from '../../types/AppContextType';
 import { Phone } from '../../types/Phone';
 import { useLocalStarage } from '../../hooks/useLocalStorage';
 import { Order } from '../../types/Order';
 import { CartProduct } from '../../types/CartProduct';
+import { getQuantities } from '../../api/products';
+import { Quantities } from '../../types/Quantities';
 
 export const AppContext = React.createContext<AppContextType>({
   activeLink: '',
@@ -16,6 +18,7 @@ export const AppContext = React.createContext<AppContextType>({
   favouriteArr: [],
   setFavouriteArr: () => {},
   toggleFavouriteArr: () => {},
+  quantities: null,
   totalCartQuantity: 0,
   totalCartPrice: 0,
 });
@@ -32,6 +35,14 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     [],
   );
 
+  const [quantities, setQuantities] = useState<Quantities | null>(null);
+
+  const [cart, setCart] = useLocalStarage<Order[]>('cart', []);
+
+  useEffect(() => {
+    getQuantities<Quantities>().then(setQuantities);
+  }, [products]);
+
   const toggleFavouriteArr = (id: string) => {
     if (!favouriteArr.includes(id)) {
       setFavouriteArr([...favouriteArr, id]);
@@ -39,8 +50,6 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
       setFavouriteArr(favouriteArr.filter((phoneId: string) => id !== phoneId));
     }
   };
-
-  const [cart, setCart] = useLocalStarage<Order[]>('cart', []);
 
   const toggleCartItem = (product: CartProduct) => {
     const findedProduct = cart.find((order) => order.product.id === product.id);
@@ -92,6 +101,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
         cart,
         toggleCartItem,
         changeOrderItemQuantity,
+        quantities,
         totalCartQuantity,
         totalCartPrice,
       }}
