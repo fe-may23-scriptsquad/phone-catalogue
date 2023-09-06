@@ -14,5 +14,5 @@ export interface AppContextType {
   favouriteArr: string[];
   setFavouriteArr: (value: string[]) => void;
   toggleFavouriteArr: (id: string) => void;
-  quantities: Quantities,
+  quantities: Quantities | null,
 }

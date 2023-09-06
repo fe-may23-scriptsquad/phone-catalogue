@@ -18,7 +18,7 @@ export const AppContext = React.createContext<AppContextType>({
   favouriteArr: [],
   setFavouriteArr: () => {},
   toggleFavouriteArr: () => {},
-  quantities: {},
+  quantities: null,
 });
 
 type Props = {
@@ -33,7 +33,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     [],
   );
 
-  const [quantities, setQuantities] = useState<Quantities>({});
+  const [quantities, setQuantities] = useState<Quantities | null>(null);
 
   const [cart, setCart] = useLocalStarage<Order[]>('cart', []);
 
