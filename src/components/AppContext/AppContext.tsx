@@ -27,6 +27,7 @@ type Props = {
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [activeLink, setActiveLink] = useState('');
+  const [isBurgerMenuActive, setIsBurgerMenuActive] = useState(false);
   const [products, setProducts] = useState<Phone[]>([]);
   const [favouriteArr, setFavouriteArr] = useLocalStarage<string[]>(
     'favPhone',
@@ -81,6 +82,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        isBurgerMenuActive,
+        setIsBurgerMenuActive,
         activeLink,
         setActiveLink,
         products,
