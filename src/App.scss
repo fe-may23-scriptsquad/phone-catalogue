@@ -11,9 +11,11 @@ iframe {
 
 body {
   background-color: $color-hover-bg;
+  height: 100vh;
 }
 
 .container {
+  min-height: calc(100vh - 162px);
   box-sizing: border-box;
   max-width: 1136px;
   margin: 0 auto;
@@ -25,6 +27,7 @@ body {
   }
 
   @include onMobile {
+    min-height: calc(100vh - 307px);
     margin-inline: 16px;
   }
 }
