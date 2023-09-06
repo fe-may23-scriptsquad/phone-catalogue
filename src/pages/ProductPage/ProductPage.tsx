@@ -15,76 +15,40 @@ import { ButtonLike } from '../../components/ButtonLike';
 import { PhoneDetails } from '../../types/PhoneDetails';
 import { getDetailsById, getImgUrl } from '../../api/products';
 import { Loader } from '../../components/Loader';
-
-interface ColorsHex {
-  spacegray: '#4c4c4c';
-  gold: '#fcdbc1';
-  silver: '#f0f0f0';
-  midnightgreen: '#5f7170';
-  black: '#1F2020';
-  green: '#5bc236';
-  yellow: '#ffe983';
-  white: '#F9F6EF';
-  purple: '#B8AFE6';
-  red: '#BA0C2E';
-}
-
-const colorsHex: ColorsHex = {
-  spacegray: '#4c4c4c',
-  gold: '#fcdbc1',
-  silver: '#f0f0f0',
-  midnightgreen: '#5f7170',
-  black: '#1F2020',
-  green: '#5bc236',
-  yellow: '#ffe983',
-  white: '#F9F6EF',
-  purple: '#B8AFE6',
-  red: '#BA0C2E',
-};
-
-const setHexColor = (color: string) => {
-  if (color in colorsHex) {
-    return colorsHex[color as keyof ColorsHex];
-  }
-
-  return color;
-};
+import { ColorLink } from './components/ColorLink';
+import { CapacityLink } from './components/CapacityLink';
+import { SpecItem } from './components/SpecItem';
 
 export const ProductPage = () => {
   const [product, setProduct] = useState<PhoneDetails | null>(null);
+  const [loading, setLoading] = useState(false);
+
   const imgs = product?.images.map(getImgUrl) || [];
 
   const [mainImg, setMainImg] = useState(imgs[0]);
-  const [selectedColor, setSelectedColor] = useState<string | undefined>(
-    product?.color,
-  );
-  const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(
-    product?.capacity,
-  );
 
   const { phoneId } = useParams();
 
-  useEffect(() => {
-    if (phoneId) {
-      getDetailsById<PhoneDetails>(phoneId).then(setProduct);
-    }
-  }, []);
+  const preparedId = phoneId?.split('-').slice(0, -2) || [];
+
+  const changedId = (...params: string[]) => {
+    const normalizedParams = params.map((param) => param.toLowerCase());
+
+    return [...preparedId, ...normalizedParams].join('-');
+  };
 
   useEffect(() => {
-    setSelectedColor(product?.color);
-    setSelectedCapacity(product?.capacity);
+    setLoading(true);
+    if (phoneId) {
+      getDetailsById<PhoneDetails>(phoneId)
+        .then(setProduct)
+        .finally(() => setLoading(false));
+    }
+  }, [phoneId]);
+
+  useEffect(() => {
     setMainImg(imgs[0]);
   }, [product]);
-
-  // useEffect(() => {
-  //   const idArr = phoneId?.split('-').slice(0, -2);
-
-  //   if (idArr) {
-  //     const newId = [...idArr, selectedCapacity, selectedColor].join('-').toLowerCase();
-
-  //     console.log(newId);
-  //   }
-  // }, [selectedColor, selectedCapacity]);
 
   const changeMainImgHandler = (img: string) => {
     if (img !== mainImg) {
@@ -92,19 +56,7 @@ export const ProductPage = () => {
     }
   };
 
-  const changeColorHandler = (color: string) => {
-    if (color !== selectedColor) {
-      setSelectedColor(color);
-    }
-  };
-
-  const changeCapacityHandler = (capacity: string) => {
-    if (capacity !== selectedCapacity) {
-      setSelectedCapacity(capacity);
-    }
-  };
-
-  return !product ? (
+  return loading || !product ? (
     <Loader />
   ) : (
     <div className="product">
@@ -153,39 +105,13 @@ export const ProductPage = () => {
 
             <div className="product__colors-list">
               {product?.colorsAvailable.map((color) => (
-                <button
+                <ColorLink
                   key={color}
-                  type="button"
-                  className="product__colors-item"
-                  onClick={() => changeColorHandler(color)}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                  >
-                    <rect
-                      x="2"
-                      y="2"
-                      width="28"
-                      height="28"
-                      rx="14"
-                      fill={`${setHexColor(color)}`}
-                      stroke="white"
-                      strokeWidth="2"
-                    />
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="31"
-                      height="31"
-                      rx="15.5"
-                      stroke={color === selectedColor ? '#0F0F11' : 'E2E6E9'}
-                    />
-                  </svg>
-                </button>
+                  color={color}
+                  prodColor={product.color}
+                  prodCapacity={product.capacity}
+                  changedId={changedId}
+                />
               ))}
             </div>
 
@@ -198,19 +124,16 @@ export const ProductPage = () => {
             </h5>
 
             <div className="product__capacity-list">
-              {product?.capacityAvailable.map((capacityItem) => (
-                <button
-                  key={capacityItem}
-                  type="button"
-                  className={classNames('product__capacity-item', {
-                    active: selectedCapacity === capacityItem,
-                  })}
-                  onClick={() => changeCapacityHandler(capacityItem)}
-                >
-                  {capacityItem}
-                </button>
+              {product?.capacityAvailable.map((capacity) => (
+                <CapacityLink
+                  capacity={capacity}
+                  prodCapacity={product.capacity}
+                  prodColor={product.color}
+                  changedId={changedId}
+                />
               ))}
             </div>
+
             <LineElement />
           </div>
 
@@ -287,45 +210,14 @@ export const ProductPage = () => {
           <LineElement />
 
           <ul className="product__specs-list">
-            <li className="product__specs-item">
-              <span className="product__specs-item--name">Screen</span>
-              {product?.screen}
-            </li>
-
-            <li className="product__specs-item">
-              <span className="product__specs-item--name">Resolution</span>
-              {product?.resolution}
-            </li>
-
-            <li className="product__specs-item">
-              <span className="product__specs-item--name">Processor</span>
-              {product?.processor}
-            </li>
-
-            <li className="product__specs-item">
-              <span className="product__specs-item--name">RAM</span>
-              {product?.ram}
-            </li>
-
-            <li className="product__specs-item">
-              <span className="product__specs-item--name">Built in memory</span>
-              {product?.capacity}
-            </li>
-
-            <li className="product__specs-item">
-              <span className="product__specs-item--name">Camera</span>
-              {product?.camera}
-            </li>
-
-            <li className="product__specs-item">
-              <span className="product__specs-item--name">Zoom</span>
-              {product?.zoom}
-            </li>
-
-            <li className="product__specs-item">
-              <span className="product__specs-item--name">Ceel</span>
-              {product?.cell.join(', ')}
-            </li>
+            <SpecItem name="Screen" value={product.screen} />
+            <SpecItem name="Resolution" value={product.resolution} />
+            <SpecItem name="Processor" value={product.processor} />
+            <SpecItem name="RAM" value={product.ram} />
+            <SpecItem name="Built in memory" value={product.capacity} />
+            <SpecItem name="Camera" value={product.camera} />
+            <SpecItem name="Zoom" value={product.zoom} />
+            <SpecItem name="Ceel" value={product.cell.join(', ')} />
           </ul>
         </div>
       </section>
