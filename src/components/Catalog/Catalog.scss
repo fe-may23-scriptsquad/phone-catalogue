@@ -115,16 +115,26 @@
 
   &__content {
     display: flex;
-    height: 16px;
   }
 
   &__home-link {
     display: flex;
     width: fit-content;
-    margin-right: 8px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: flex-start;
   }
 
   &__category {
+    &:first-child {
+      height: 16px; 
+    }
+    &:last-child {
+      line-height: 16px;
+      padding-top: 1px;
+    }
     margin-left: 8px;
     color: $color-secondary;
     font-size: 12px;
