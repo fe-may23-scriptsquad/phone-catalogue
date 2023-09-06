@@ -10,6 +10,8 @@ import { Quantities } from '../../types/Quantities';
 export const AppContext = React.createContext<AppContextType>({
   activeLink: '',
   setActiveLink: () => {},
+  isBurgerMenuActive: false,
+  setIsBurgerMenuActive: () => {},
   products: [],
   setProducts: () => {},
   cart: [],
