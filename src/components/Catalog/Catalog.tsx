@@ -12,6 +12,7 @@ import phonesFromServer from '../../api/phones.json';
 import { AppContext } from '../AppContext/AppContext';
 import { buildSortByParam } from '../../utils/functions';
 import { Loader } from '../Loader';
+import { Quantities } from '../../types/Quantities';
 
 type CatalogProps = {
   productName?: string;
@@ -46,14 +47,17 @@ export const Catalog = ({
   const {
     products,
     setProducts,
+    quantities,
   } = useContext(AppContext);
 
   useEffect(() => {
     const params = searchParams.toString();
 
-    const url = params ? `?${params}` : '';
+    let url = `?category=${pathName[0].toLowerCase()}`;
 
-    getAll<Phone[]>(url)
+    url += params ? `&${params}` : '';
+
+    getAll<Phone[]>(`${url}`)
       .then(setProducts)
       .finally(() => setIsLoading(false));
   }, [pathName, searchParams]);
@@ -138,7 +142,7 @@ export const Catalog = ({
           </h1>
 
           <p className="catalog__subtitle">
-            {`${phones.length} models`}
+            {`${quantities[pathName[0].toLowerCase() as keyof Quantities]} models`}
           </p>
 
           <div className="catalog__dropdown--container">
