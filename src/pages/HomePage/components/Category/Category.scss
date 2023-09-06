@@ -12,13 +12,16 @@
     border-radius: 8px;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    background-color: $color-elements;
 
     img {
       height: 100%;
       width: 100%;
-      object-fit: contain;
+      object-fit: cover;
       margin: 0 auto;
       display: block;
+      object-position: left bottom;
     }
 
     &:hover {
