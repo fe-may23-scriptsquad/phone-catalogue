@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useContext } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import React from 'react';
 import cn from 'classnames';
 import { Link, NavLink } from 'react-router-dom';
 import { AppContextType } from '../../types/AppContextType';

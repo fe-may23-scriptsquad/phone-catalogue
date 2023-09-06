@@ -20,8 +20,10 @@
 @import './components/ButtonBack/ButtonBack.scss';
 @import './components/LineElement/LineElement.scss';
 @import './components/BurgerMenu/BurgerMenu.scss';
-@import './components/Favourites/Favourites.scss';
-@import './components/Dropdown/Dropdown.scss';
+@import './components/ButtonLike/ButtonLike.scss';
 @import './components/Catalog/Catalog.scss';
 @import './pages/HomePage/HomePage.scss';
-@import './pages/HomePage/components/Category/Category.scss'
+@import './pages/HomePage/components/Category/Category.scss';
+@import './pages/Favourites/Favourites.scss';
+@import './components/EmptyValueComponent/EmptyValueComponent.scss';
+@import './components/Loader/Loader.scss';

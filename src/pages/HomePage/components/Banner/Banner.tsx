@@ -1,13 +1,20 @@
 import React, { useRef } from 'react';
 import { Swiper, SwiperClass, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 
-import testImg1 from '../../../../assets/img/banner/banner-accessories.png';
-import testImg2 from '../../../../assets/img/banner/banner-phones.png';
-import testImg3 from '../../../../assets/img/banner/banner-tablets.png';
+import banner1 from '../../../../assets/img/banner/banner-accessories.png';
+import banner2 from '../../../../assets/img/banner/banner-phones.png';
+import banner3 from '../../../../assets/img/banner/banner-tablets.png';
 
 import 'swiper/scss';
 import 'swiper/css/pagination';
+
+const images = [
+  ['accessories', banner1],
+  ['phones', banner2],
+  ['tablets', banner3],
+];
 
 export const Banner: React.FC = () => {
   const swiperOptions = {
@@ -53,18 +60,18 @@ export const Banner: React.FC = () => {
         }}
         className="swiperbanner"
       >
-        <SwiperSlide>
-          <img className="swiperblock__image" src={testImg1} alt="test" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="swiperblock__image" src={testImg2} alt="test" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="swiperblock__image" src={testImg3} alt="test" />
-        </SwiperSlide>
+        {images.map(([linkto, image]) => (
+          <SwiperSlide key={image}>
+            <Link to={`../${linkto}`}>
+              <img
+                className="swiperblock__image"
+                src={image}
+                alt="Sliderimage"
+              />
+            </Link>
+          </SwiperSlide>
+        ))}
       </Swiper>
-
-      {/* <span className="swiper-bullet" /> */}
 
       <button
         type="button"

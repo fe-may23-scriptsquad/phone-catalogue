@@ -11,6 +11,7 @@ import { AppProvider } from './components/AppContext/AppContext';
 import { CartPage } from './pages/CartPage';
 import { Catalog } from './components/Catalog';
 import { ProductPage } from './pages/ProductPage';
+import { Favourites } from './pages/Favourites';
 
 export const Root = () => (
   <Router>
@@ -19,31 +20,32 @@ export const Root = () => (
         <Route path="/" element={<App />}>
           <Route index path="home" element={<HomePage />} />
           <Route path="" element={<Navigate to="home" replace />} />
-          <Route
-            path="phones"
-            element={<Catalog productName="Mobile phones" />}
-          >
+          <Route path="phones">
+            <Route
+              index
+              element={(
+                <Catalog
+                  productName="Mobile phones"
+                  pathName={['Phones']}
+                />
+              )}
+            />
             <Route path=":phoneId?" element={<ProductPage />} />
           </Route>
           <Route
             path="tablets"
-            element={(
-              <Catalog
-                productName="Tablets"
-                pathName={['Tablets']}
-              />
-            )}
+            element={<Catalog productName="Tablets" pathName={['Tablets']} />}
           />
           <Route
             path="accessories"
-            element={(
-              <Catalog
-                productName="Accessories"
-                pathName={['Accessories']}
-              />
-            )}
+            element={
+              <Catalog productName="Accessories" pathName={['Accessories']} />
+            }
           />
-          <Route path="favorites" />
+          <Route
+            path="favorites"
+            element={<Favourites pathName={['Favourites']} />}
+          />
           <Route path="cart" element={<CartPage />} />
         </Route>
 

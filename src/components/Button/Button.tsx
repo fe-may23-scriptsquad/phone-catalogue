@@ -1,23 +1,34 @@
-import { useState } from 'react';
+import { useContext } from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import cn from 'classnames';
+import { CartProduct } from '../../types/CartProduct';
+import { AppContext } from '../AppContext/AppContext';
 
 type Props = {
   text: string;
+  product?: CartProduct;
 };
 
-export const Button: React.FC<Props> = ({ text }) => {
-  const [toggled, setToggled] = useState(false);
+export const Button: React.FC<Props> = ({ text, product }) => {
+  const {
+    cart,
+    toggleCartItem,
+  } = useContext(AppContext);
+  const isAdded = cart.find((order) => order.product.id === product?.id);
 
-  return (
+  return product ? (
     <button
       className={cn('button', {
-        'button--outlined': toggled,
+        'button--outlined': isAdded,
       })}
       type="button"
-      onClick={() => setToggled((prev) => !prev)}
+      onClick={() => toggleCartItem(product)}
     >
-      {!toggled ? text : 'Added'}
+      {!isAdded ? text : 'Added'}
+    </button>
+  ) : (
+    <button className={cn('button')} type="button" onClick={() => {}}>
+      {text}
     </button>
   );
 };

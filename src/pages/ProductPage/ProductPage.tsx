@@ -1,16 +1,16 @@
 /* eslint-disable max-len */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { useState } from 'react';
 import classNames from 'classnames';
 
 import homeIcon from '../../assets/icons/Home.svg';
 import arrowRight from '../../assets/icons/Arrow-right.svg';
-import like from '../../assets/icons/Favourites.svg';
-import likeFilled from '../../assets/icons/Favourites-filled.svg';
 
 import { ButtonBack } from '../../components/ButtonBack';
 import { Button } from '../../components/Button';
 import { LineElement } from '../../components/LineElement';
 import { SwiperPhones } from '../../components/SwiperPhones';
+import { ButtonLike } from '../../components/ButtonLike';
 
 const testData = {
   id: 'apple-iphone-8-64gb-gold',
@@ -96,8 +96,6 @@ export const ProductPage = () => {
     testData.capacity,
   );
 
-  const [isActive, setIsActive] = useState(false);
-
   const changeMainImgHandler = (img: string) => {
     if (img !== mainImg) {
       setMainImg(img);
@@ -145,14 +143,7 @@ export const ProductPage = () => {
                 backgroundRepeat: 'no-repeat',
               }}
               onClick={() => changeMainImgHandler(img)}
-            >
-              {/* <img
-                key={img}
-                src={img}
-                alt="img"
-                className="product__imgs-img"
-              /> */}
-            </button>
+            />
           ))}
         </div>
 
@@ -242,19 +233,17 @@ export const ProductPage = () => {
           </div>
 
           <div className="product__btns">
-            <Button text="Add to cart" />
+            <Button
+              text="Add to cart"
+              product={{
+                id: testData.id,
+                name: testData.name,
+                price: testData.priceDiscount || testData.priceRegular,
+                img: testImgs[0],
+              }}
+            />
 
-            <button
-              type="button"
-              className="product__button-like"
-              onClick={() => setIsActive((prev) => !prev)}
-            >
-              <img
-                className="icon"
-                src={!isActive ? like : likeFilled}
-                alt="like"
-              />
-            </button>
+            <ButtonLike itemId={testData.id} />
           </div>
 
           <div className="product__stats">
