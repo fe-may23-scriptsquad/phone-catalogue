@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import classNames from 'classnames';
+import { useParams } from 'react-router-dom';
 
 import homeIcon from '../../assets/icons/Home.svg';
 import arrowRight from '../../assets/icons/Arrow-right.svg';
@@ -11,67 +12,21 @@ import { Button } from '../../components/Button';
 import { LineElement } from '../../components/LineElement';
 import { SwiperPhones } from '../../components/SwiperPhones';
 import { ButtonLike } from '../../components/ButtonLike';
-
-const testData = {
-  id: 'apple-iphone-8-64gb-gold',
-  namespaceId: 'apple-iphone-8',
-  name: 'Apple iPhone 8 64GB Gold',
-  capacityAvailable: ['64GB'],
-  capacity: '64GB',
-  priceRegular: 600,
-  priceDiscount: 550,
-  colorsAvailable: ['spacegray', 'gold', 'silver'],
-  color: 'gold',
-  images: [
-    'img/phones/apple-iphone-8/gold/00.jpg',
-    'img/phones/apple-iphone-8/gold/01.jpg',
-    'img/phones/apple-iphone-8/gold/02.jpg',
-    'img/phones/apple-iphone-8/gold/03.jpg',
-  ],
-  description: [
-    {
-      title: 'And then there was Pro',
-      text: [
-        'A transformative triple-camera system that adds tons of capability without complexity.',
-        'An unprecedented leap in battery life. And a mind-blowing chip that doubles down on machine learning and pushes the boundaries of what a smartphone can do. Welcome to the first iPhone powerful enough to be called Pro.',
-      ],
-    },
-    {
-      title: 'Camera',
-      text: [
-        'Meet the first triple-camera system to combine cutting-edge technology with the legendary simplicity of iPhone. Capture up to four times more scene. Get beautiful images in drastically lower light. Shoot the highest-quality video in a smartphone — then edit with the same tools you love for photos. You’ve never shot with anything like it.',
-      ],
-    },
-    {
-      title:
-        'Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it. Love it.',
-      text: [
-        'iPhone 11 Pro lets you capture videos that are beautifully true to life, with greater detail and smoother motion. Epic processing power means it can shoot 4K video with extended dynamic range and cinematic video stabilization — all at 60 fps. You get more creative control, too, with four times more scene and powerful new editing tools to play with.',
-      ],
-    },
-  ],
-  screen: "4.7' IPS",
-  resolution: '1334x750',
-  processor: 'Apple A11 Bionic',
-  ram: '2GB',
-  camera: '12 Mp + 7 Mp',
-  zoom: 'Digital, 5x',
-  cell: ['GPRS', 'EDGE', 'WCDMA', 'UMTS', 'HSPA', 'LTE'],
-};
-
-const testImgs = [
-  'https://bigmag.ua/image/cache/catalog/new/kumunren/Iphone%20BU/1/iphone8-plus-spgray-select-2017_1_2_1_2_1-650x540.jpg',
-  'https://f.ua/statik/images/products/400x600/apple/apple_iphone_8_plus_128gb_product_red_1028772534254.png',
-  'https://cdn21vek.by/img/galleries/5722/743/preview_b/iphone8plus128gbgoldmx262_apple_5da41a7fd634a.png',
-  'https://i.ebayimg.com/images/g/yQUAAOSwrjRk0CyL/s-l1200.webp',
-  'https://i0.wp.com/cliktodeal.com/wp-content/uploads/2021/03/iphone-se-2020-white.jpg?fit=834%2C1000&ssl=1',
-];
+import { PhoneDetails } from '../../types/PhoneDetails';
+import { getDetailsById, getImgUrl } from '../../api/products';
+import { Loader } from '../../components/Loader';
 
 interface ColorsHex {
   spacegray: '#4c4c4c';
   gold: '#fcdbc1';
   silver: '#f0f0f0';
   midnightgreen: '#5f7170';
+  black: '#1F2020';
+  green: '#5bc236';
+  yellow: '#ffe983';
+  white: '#F9F6EF';
+  purple: '#B8AFE6';
+  red: '#BA0C2E';
 }
 
 const colorsHex: ColorsHex = {
@@ -79,22 +34,57 @@ const colorsHex: ColorsHex = {
   gold: '#fcdbc1',
   silver: '#f0f0f0',
   midnightgreen: '#5f7170',
+  black: '#1F2020',
+  green: '#5bc236',
+  yellow: '#ffe983',
+  white: '#F9F6EF',
+  purple: '#B8AFE6',
+  red: '#BA0C2E',
 };
 
 const setHexColor = (color: string) => {
   if (color in colorsHex) {
-    return (colorsHex as ColorsHex)[color as keyof ColorsHex];
+    return colorsHex[color as keyof ColorsHex];
   }
 
-  return '#fff';
+  return color;
 };
 
 export const ProductPage = () => {
-  const [mainImg, setMainImg] = useState(testImgs[0]);
-  const [selectedColor, setSelectedColor] = useState<string>(testData.color);
-  const [selectedCapacity, setSelectedCapacity] = useState<string>(
-    testData.capacity,
+  const [product, setProduct] = useState<PhoneDetails | null>(null);
+  const imgs = product?.images.map(getImgUrl) || [];
+
+  const [mainImg, setMainImg] = useState(imgs[0]);
+  const [selectedColor, setSelectedColor] = useState<string | undefined>(
+    product?.color,
   );
+  const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(
+    product?.capacity,
+  );
+
+  const { phoneId } = useParams();
+
+  useEffect(() => {
+    if (phoneId) {
+      getDetailsById<PhoneDetails>(phoneId).then(setProduct);
+    }
+  }, []);
+
+  useEffect(() => {
+    setSelectedColor(product?.color);
+    setSelectedCapacity(product?.capacity);
+    setMainImg(imgs[0]);
+  }, [product]);
+
+  // useEffect(() => {
+  //   const idArr = phoneId?.split('-').slice(0, -2);
+
+  //   if (idArr) {
+  //     const newId = [...idArr, selectedCapacity, selectedColor].join('-').toLowerCase();
+
+  //     console.log(newId);
+  //   }
+  // }, [selectedColor, selectedCapacity]);
 
   const changeMainImgHandler = (img: string) => {
     if (img !== mainImg) {
@@ -114,24 +104,27 @@ export const ProductPage = () => {
     }
   };
 
-  return (
+  return !product ? (
+    <Loader />
+  ) : (
     <div className="product">
       <div className="page__nav">
         <img src={homeIcon} alt="back" className="page__nav-icon" />
         <img src={arrowRight} alt="back" className="page__nav-icon" />
         <span className="page__nav-label">Phones</span>
         <img src={arrowRight} alt="back" className="page__nav-icon" />
-        <span className="page__nav-label">{testData.name}</span>
+        <span className="page__nav-label">{product?.name}</span>
       </div>
 
       <ButtonBack />
 
-      <h2 className="product__title">{testData.name}</h2>
+      <h2 className="product__title">{product?.name}</h2>
 
       <section className="product__section product__preview">
         <div className="product__imgs">
-          {testImgs.map((img) => (
+          {imgs.map((img) => (
             <button
+              key={img}
               type="button"
               className={classNames('product__imgs-item', {
                 'img-active': img === mainImg,
@@ -147,7 +140,7 @@ export const ProductPage = () => {
           ))}
         </div>
 
-        <img src={mainImg} alt={testData.name} className="product__img-main" />
+        <img src={mainImg} alt={product?.name} className="product__img-main" />
 
         <div className="product__info">
           <div className="product__colors">
@@ -155,11 +148,11 @@ export const ProductPage = () => {
               <h5 className="product__colors-label product__info-label">
                 Avaible Colors
               </h5>
-              <h6 className="product__colors-id">{`ID: ${testData.id}`}</h6>
+              <h6 className="product__colors-id">{`ID: ${product?.id}`}</h6>
             </div>
 
             <div className="product__colors-list">
-              {testData.colorsAvailable.map((color) => (
+              {product?.colorsAvailable.map((color) => (
                 <button
                   key={color}
                   type="button"
@@ -205,16 +198,16 @@ export const ProductPage = () => {
             </h5>
 
             <div className="product__capacity-list">
-              {testData.capacityAvailable.map((capacity) => (
+              {product?.capacityAvailable.map((capacityItem) => (
                 <button
-                  key={capacity}
+                  key={capacityItem}
                   type="button"
                   className={classNames('product__capacity-item', {
-                    active: selectedCapacity === capacity,
+                    active: selectedCapacity === capacityItem,
                   })}
-                  onClick={() => changeCapacityHandler(capacity)}
+                  onClick={() => changeCapacityHandler(capacityItem)}
                 >
-                  {testData.capacity}
+                  {capacityItem}
                 </button>
               ))}
             </div>
@@ -224,10 +217,10 @@ export const ProductPage = () => {
           <div className="product__price">
             <>
               <span className="product__price--bold">
-                {`$${testData.priceDiscount}`}
+                {`$${product?.priceDiscount}`}
               </span>
-              {testData.priceRegular && (
-                <span className="product__price--grey">{`$${testData.priceRegular}`}</span>
+              {product?.priceRegular && (
+                <span className="product__price--grey">{`$${product?.priceRegular}`}</span>
               )}
             </>
           </div>
@@ -236,28 +229,28 @@ export const ProductPage = () => {
             <Button
               text="Add to cart"
               product={{
-                id: testData.id,
-                name: testData.name,
-                price: testData.priceDiscount || testData.priceRegular,
-                img: testImgs[0],
+                id: product?.id,
+                name: product?.name,
+                price: product?.priceDiscount || product?.priceRegular,
+                img: mainImg,
               }}
             />
 
-            <ButtonLike itemId={testData.id} />
+            <ButtonLike itemId={product?.id} />
           </div>
 
           <div className="product__stats">
             <p className="product__stat">
               <span className="product__stat--name">Screen</span>
-              {testData.screen}
+              {product?.screen}
             </p>
             <p className="product__stat">
               <span className="product__stat--name">Capacity</span>
-              {testData.capacity}
+              {product?.capacity}
             </p>
             <p className="product__stat">
               <span className="product__stat--name">RAM</span>
-              {testData.ram}
+              {product?.ram}
             </p>
           </div>
         </div>
@@ -272,7 +265,7 @@ export const ProductPage = () => {
           <LineElement />
 
           <div className="product__about-description">
-            {testData.description.map(({ title, text }) => (
+            {product?.description.map(({ title, text }) => (
               <div className="product__about-content">
                 <h3 className="product__about-subtitle">{title}</h3>
 
@@ -296,42 +289,42 @@ export const ProductPage = () => {
           <ul className="product__specs-list">
             <li className="product__specs-item">
               <span className="product__specs-item--name">Screen</span>
-              {testData.screen}
+              {product?.screen}
             </li>
 
             <li className="product__specs-item">
               <span className="product__specs-item--name">Resolution</span>
-              {testData.resolution}
+              {product?.resolution}
             </li>
 
             <li className="product__specs-item">
               <span className="product__specs-item--name">Processor</span>
-              {testData.processor}
+              {product?.processor}
             </li>
 
             <li className="product__specs-item">
               <span className="product__specs-item--name">RAM</span>
-              {testData.ram}
+              {product?.ram}
             </li>
 
             <li className="product__specs-item">
               <span className="product__specs-item--name">Built in memory</span>
-              {testData.capacity}
+              {product?.capacity}
             </li>
 
             <li className="product__specs-item">
               <span className="product__specs-item--name">Camera</span>
-              {testData.camera}
+              {product?.camera}
             </li>
 
             <li className="product__specs-item">
               <span className="product__specs-item--name">Zoom</span>
-              {testData.zoom}
+              {product?.zoom}
             </li>
 
             <li className="product__specs-item">
               <span className="product__specs-item--name">Ceel</span>
-              {testData.cell.join(', ')}
+              {product?.cell.join(', ')}
             </li>
           </ul>
         </div>

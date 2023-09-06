@@ -45,7 +45,9 @@ export const CartPage: React.FC = () => {
             <div className="cart__info-price">
               <h2 className="cart__info-value">{`$${totalPrice}`}</h2>
 
-              <p className="cart__info-label">Total for 3 items</p>
+              <p className="cart__info-label">
+                {`Total for ${cart.length} items`}
+              </p>
             </div>
 
             <div className="cart__buybutton">
