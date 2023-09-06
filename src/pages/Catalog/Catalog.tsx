@@ -30,17 +30,15 @@ export const Catalog = ({ productName, phones, pathName }: CatalogProps) => {
   const [sortOption, setSortOption] = useState('Newest');
   const [phonesPerPage, setPhonesPerPage] = useState('8');
 
-  function handleChangeItemsPerPage(
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) {
-    setPhonesPerPage(event.target.value);
+  const handleChangeItemsPerPage = (selectedOption: { label: string; value: string }) => {
+    setPhonesPerPage(selectedOption.value);
     setCurrentPage(1);
-  }
+  };
 
-  function handleChangeSortOption(event: React.ChangeEvent<HTMLSelectElement>) {
-    setSortOption(event.target.value);
+  const handleChangeSortOption = (selectedOption: { label: string; value: string }) => {
+    setSortOption(selectedOption.value);
     setCurrentPage(1);
-  }
+  };
 
   const visiblePhones = phones
     .slice()
@@ -113,11 +111,11 @@ export const Catalog = ({ productName, phones, pathName }: CatalogProps) => {
           <div className="catalog__dropdown--container">
             <div className="catalog__dropdown">
               <label htmlFor="sortDropdown" className="dropdown__title">Sort by</label>
-              <Dropdown options={sortOptions} handleChange={handleChangeSortOption} value={sortOption} />
+              <Dropdown options={sortOptions.map((option) => ({ label: option, value: option }))} handleChange={handleChangeSortOption} value={{ label: sortOption, value: sortOption }} />
             </div>
             <div className="catalog__dropdown">
-              <label htmlFor="sortDropdown" className="dropdown__title">Items on page</label>
-              <Dropdown options={itemsOnPageOptions} handleChange={handleChangeItemsPerPage} value={phonesPerPage} />
+              <label htmlFor="itemsPerPageDropdown" className="dropdown__title">Items on page</label>
+              <Dropdown options={itemsOnPageOptions.map((option) => ({ label: option, value: option }))} handleChange={handleChangeItemsPerPage} value={{ label: phonesPerPage, value: phonesPerPage }} />
             </div>
           </div>
 
