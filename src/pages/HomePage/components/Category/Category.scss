@@ -14,6 +14,7 @@
     height: 100%;
     overflow: hidden;
     background-color: $color-elements;
+    aspect-ratio: 1;
 
     img {
       height: 100%;
@@ -21,7 +22,8 @@
       object-fit: cover;
       margin: 0 auto;
       display: block;
-      object-position: left bottom;
+      // object-position: left bottom;
+      object-position: -30% -40%;
     }
 
     &:hover {
