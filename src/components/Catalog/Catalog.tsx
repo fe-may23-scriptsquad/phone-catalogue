@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { useState, useEffect, useContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Pagination } from '../Pagination';
 import { CardItem } from '../CardItem';
 import { Phone } from '../../types/Phone';
@@ -9,6 +10,9 @@ import { getAll } from '../../api/products';
 
 import phonesFromServer from '../../api/phones.json';
 import { AppContext } from '../AppContext/AppContext';
+import { buildSortByParam } from '../../utils/functions';
+import { Loader } from '../Loader';
+import { Quantities } from '../../types/Quantities';
 
 type CatalogProps = {
   productName?: string;
@@ -36,52 +40,70 @@ export const Catalog = ({
 }: CatalogProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOption, setSortOption] = useState('Newest');
-  const [phonesPerPage, setPhonesPerPage] = useState('8');
+  const [phonesPerPage, setPhonesPerPage] = useState('16');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(true);
 
   const {
     products,
     setProducts,
+    quantities,
   } = useContext(AppContext);
 
   useEffect(() => {
-    getAll<Phone[]>().then(setProducts);
-  }, [pathName]);
+    const params = searchParams.toString();
+
+    let url = `?category=${pathName[0].toLowerCase()}`;
+
+    url += params ? `&${params}` : '';
+
+    getAll<Phone[]>(`${url}`)
+      .then(setProducts)
+      .finally(() => setIsLoading(false));
+  }, [pathName, searchParams]);
 
   function handleChangeItemsPerPage(
     event: React.ChangeEvent<HTMLSelectElement>,
   ) {
+    const { value } = event.target;
+    const params = new URLSearchParams(searchParams);
+
     setPhonesPerPage(event.target.value);
     setCurrentPage(1);
+
+    if (value === '16') {
+      params.delete('limit');
+    } else {
+      params.set('limit', value.toLowerCase());
+    }
+
+    setSearchParams(params);
   }
 
   function handleChangeSortOption(event: React.ChangeEvent<HTMLSelectElement>) {
-    setSortOption(event.target.value);
+    const { value } = event.target;
+
+    setSortOption(value);
     setCurrentPage(1);
+
+    const params = new URLSearchParams(searchParams);
+
+    setSearchParams(buildSortByParam(value, params));
   }
 
-  // const visiblePhones = phones
-  //   .slice()
-  //   .sort((a, b) => {
-  //     switch (sortOption) {
-  //       case 'Newest':
-  //         return b.year - a.year;
-  //       case 'Alphabetically':
-  //         return a.name.localeCompare(b.name);
-  //       case 'Cheapest':
-  //         return a.price - b.price;
-  //       default:
-  //         return 0;
-  //     }
-  //   })
-  //   .filter((_item, index) => {
-  //     if (phonesPerPage === 'All') {
-  //       return true;
-  //     }
+  function handlePageChange(newPage: number) {
+    setCurrentPage(newPage);
 
-  //     const pageNumber = Math.ceil(index / +phonesPerPage);
+    const params = new URLSearchParams(searchParams);
 
-  //     return pageNumber === currentPage;
-  //   });
+    if (newPage > 1) {
+      params.set('page', newPage.toString());
+    } else {
+      params.delete('page');
+    }
+
+    setSearchParams(params);
+  }
 
   return (
     <>
@@ -120,7 +142,7 @@ export const Catalog = ({
           </h1>
 
           <p className="catalog__subtitle">
-            {`${phones.length} models`}
+            {`${quantities[pathName[0].toLowerCase() as keyof Quantities]} models`}
           </p>
 
           <div className="catalog__dropdown--container">
@@ -142,21 +164,26 @@ export const Catalog = ({
             </div>
           </div>
 
-          <div className="catalog__list">
-            {products.map(phone => (
-              <div className="catalog__list--item" key={phone.id}>
-                <CardItem
-                  phone={phone}
-                />
-              </div>
-            ))}
-          </div>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <div className="catalog__list">
+              {products.map(phone => (
+                <div className="catalog__list--item" key={phone.id}>
+                  <CardItem
+                    phone={phone}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+
           <div className="catalog__pagination">
             <Pagination
               total={phones.length}
               perPage={phonesPerPage}
               currentPage={currentPage}
-              onPageChange={setCurrentPage}
+              onPageChange={handlePageChange}
             />
           </div>
         </div>

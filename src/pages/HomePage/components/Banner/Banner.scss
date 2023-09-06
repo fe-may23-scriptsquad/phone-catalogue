@@ -33,7 +33,8 @@
     .swiper-pagination-bullets.swiper-pagination-horizontal {
       left: 50%;
       bottom: 0;
-      transform: translateY(18px);
+      transform: translateY(18px) translateX(-50%);
+      width: fit-content;
     }
   
     &-pagination {

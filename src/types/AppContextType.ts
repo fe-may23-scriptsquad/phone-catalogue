@@ -1,6 +1,7 @@
 import { CartProduct } from './CartProduct';
 import { Order } from './Order';
 import { Phone } from './Phone';
+import { Quantities } from './Quantities';
 
 export interface AppContextType {
   activeLink: string;
@@ -13,4 +14,5 @@ export interface AppContextType {
   favouriteArr: string[];
   setFavouriteArr: (value: string[]) => void;
   toggleFavouriteArr: (id: string) => void;
+  quantities: Quantities,
 }
