@@ -62,7 +62,7 @@ export const Banner: React.FC = () => {
       >
         {images.map(([linkto, image]) => (
           <SwiperSlide key={image}>
-            <Link to={linkto}>
+            <Link to={`../${linkto}`}>
               <img
                 className="swiperblock__image"
                 src={image}
@@ -71,18 +71,7 @@ export const Banner: React.FC = () => {
             </Link>
           </SwiperSlide>
         ))}
-        {/* <SwiperSlide>
-          <img className="swiperblock__image" src={testImg1} alt="test" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="swiperblock__image" src={testImg2} alt="test" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img className="swiperblock__image" src={testImg3} alt="test" />
-        </SwiperSlide> */}
       </Swiper>
-
-      {/* <span className="swiper-bullet" /> */}
 
       <button
         type="button"

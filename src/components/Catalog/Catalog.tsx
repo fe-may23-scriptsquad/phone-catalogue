@@ -21,15 +21,16 @@ type CatalogProps = {
 
 const sortOptions = [
   'Newest',
+  'Oldest',
   'Alphabetically',
   'Cheapest',
+  'Expensive',
 ];
 
 const itemsOnPageOptions = [
   '4',
   '8',
   '16',
-  'All',
 ];
 
 export const Catalog = ({
