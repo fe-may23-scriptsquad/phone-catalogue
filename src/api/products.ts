@@ -15,3 +15,9 @@ export const getById = async <T>(id:number): Promise<T> => {
 export const getImgUrl = (url: string) => {
   return client.getImg(url);
 };
+
+export const getQuantities = async <T>() => {
+  const data = await client.get('/products/quantity');
+
+  return data as T;
+};

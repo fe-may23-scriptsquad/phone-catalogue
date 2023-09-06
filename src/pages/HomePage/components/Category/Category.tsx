@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import image from '../../../../assets/img/categories/category-tablets.png';
+// import image from '../../../../assets/img/categories/category-tablets.png';
 
 type Props = {
   linkTo: string,
   title: string,
+  image: string | undefined,
 };
 
 export const Category: React.FC<Props> = ({
   linkTo,
   title,
+  image,
 }) => {
   return (
     <div className="category">

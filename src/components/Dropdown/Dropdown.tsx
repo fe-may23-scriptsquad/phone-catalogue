@@ -1,28 +1,42 @@
+import React from 'react';
+import Select, { StylesConfig } from 'react-select';
+import { DropdownResponse } from '../../types/DropdownResponse';
+
 type DropdownProps = {
-  options: string[];
-  handleChange:
-  (event: React.ChangeEvent<HTMLSelectElement>) => void;
-  value: string;
+  options: { label: string; value: string }[];
+  handleChange: (data: DropdownResponse) => void;
+  currentValue: { label: string; value: string };
+};
+
+const customStyles: StylesConfig = {
+  indicatorSeparator: () => ({ display: 'none' }),
 };
 
 export const Dropdown = ({
   options,
   handleChange,
-  value,
-}:DropdownProps) => {
+  currentValue,
+}: DropdownProps) => {
   return (
     <div className="dropdown">
-      <select
-        value={value}
-        onChange={handleChange}
+      <Select
+        options={options}
+        value={currentValue}
+        onChange={(change) => handleChange(change as DropdownResponse)}
         className="dropdown__select"
-      >
-        {options.map((option) => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
+        isSearchable={false}
+        styles={customStyles}
+        theme={(theme) => ({
+          ...theme,
+          borderRadius: 4,
+          colors: {
+            ...theme.colors,
+            primary50: '#fafbfc',
+            primary25: '#fafbfc',
+            primary: '#b4bdc3',
+          },
+        })}
+      />
     </div>
   );
 };

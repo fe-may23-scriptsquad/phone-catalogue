@@ -3,9 +3,9 @@ import cn from 'classnames';
 import { SliderButton } from '../SliderButton';
 
 type PaginationProps = {
-  total:number;
-  perPage:string;
-  currentPage:number;
+  total: number;
+  perPage: string;
+  currentPage: number;
   onPageChange: (page: number) => void,
 };
 

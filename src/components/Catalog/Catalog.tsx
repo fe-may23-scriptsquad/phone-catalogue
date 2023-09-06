@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { useState, useEffect, useContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Pagination } from '../Pagination';
 import { CardItem } from '../CardItem';
 import { Phone } from '../../types/Phone';
@@ -7,81 +8,102 @@ import home from '../../assets/icons/Home.svg';
 import { Dropdown } from '../Dropdown';
 import { getAll } from '../../api/products';
 
-import phonesFromServer from '../../api/phones.json';
 import { AppContext } from '../AppContext/AppContext';
+import { buildSortByParam } from '../../utils/functions';
+import { Loader } from '../Loader';
+import { Quantities } from '../../types/Quantities';
+import { DropdownResponse } from '../../types/DropdownResponse';
 
 type CatalogProps = {
   productName?: string;
-  phones?: Phone[];
   pathName?: string[];
 };
 
 const sortOptions = [
   'Newest',
+  'Oldest',
   'Alphabetically',
   'Cheapest',
+  'Expensive',
 ];
 
 const itemsOnPageOptions = [
   '4',
   '8',
   '16',
-  'All',
 ];
 
 export const Catalog = ({
   productName = 'Mobile phones',
-  phones = phonesFromServer,
   pathName = ['Phones'],
 }: CatalogProps) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOption, setSortOption] = useState('Newest');
-  const [phonesPerPage, setPhonesPerPage] = useState('8');
+  const [phonesPerPage, setPhonesPerPage] = useState('16');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(true);
+  const quantitiesKey = pathName[0].toLowerCase() as keyof Quantities;
 
   const {
     products,
     setProducts,
+    quantities,
   } = useContext(AppContext);
 
   useEffect(() => {
-    getAll<Phone[]>().then(setProducts);
-  }, [pathName]);
+    const params = searchParams.toString();
+
+    let url = `?category=${pathName[0].toLowerCase()}`;
+
+    url += params ? `&${params}` : '';
+
+    getAll<Phone[]>(`${url}`)
+      .then(setProducts)
+      .finally(() => setIsLoading(false));
+  }, [pathName, searchParams]);
 
   function handleChangeItemsPerPage(
-    event: React.ChangeEvent<HTMLSelectElement>,
+    option: DropdownResponse,
   ) {
-    setPhonesPerPage(event.target.value);
+    const { value } = option;
+    const params = new URLSearchParams(searchParams);
+
+    setPhonesPerPage(value);
     setCurrentPage(1);
+
+    if (value === '16') {
+      params.delete('limit');
+    } else {
+      params.set('limit', value.toLowerCase());
+    }
+
+    setSearchParams(params);
   }
 
-  function handleChangeSortOption(event: React.ChangeEvent<HTMLSelectElement>) {
-    setSortOption(event.target.value);
+  function handleChangeSortOption(option: DropdownResponse) {
+    const { value } = option;
+
+    setSortOption(value);
     setCurrentPage(1);
+
+    const params = new URLSearchParams(searchParams);
+
+    setSearchParams(buildSortByParam(value, params));
   }
 
-  // const visiblePhones = phones
-  //   .slice()
-  //   .sort((a, b) => {
-  //     switch (sortOption) {
-  //       case 'Newest':
-  //         return b.year - a.year;
-  //       case 'Alphabetically':
-  //         return a.name.localeCompare(b.name);
-  //       case 'Cheapest':
-  //         return a.price - b.price;
-  //       default:
-  //         return 0;
-  //     }
-  //   })
-  //   .filter((_item, index) => {
-  //     if (phonesPerPage === 'All') {
-  //       return true;
-  //     }
+  function handlePageChange(newPage: number) {
+    setCurrentPage(newPage);
 
-  //     const pageNumber = Math.ceil(index / +phonesPerPage);
+    const params = new URLSearchParams(searchParams);
 
-  //     return pageNumber === currentPage;
-  //   });
+    if (newPage > 1) {
+      params.set('page', newPage.toString());
+    } else {
+      params.delete('page');
+    }
+
+    setSearchParams(params);
+  }
 
   return (
     <>
@@ -120,43 +142,48 @@ export const Catalog = ({
           </h1>
 
           <p className="catalog__subtitle">
-            {`${phones.length} models`}
+            {`${quantities ? quantities[quantitiesKey] : 0} models`}
           </p>
 
           <div className="catalog__dropdown--container">
             <div className="catalog__dropdown">
               <label htmlFor="sortDropdown" className="dropdown__title">Sort by</label>
               <Dropdown
-                options={sortOptions}
+                options={sortOptions.map((option) => ({ label: option, value: option }))}
                 handleChange={handleChangeSortOption}
-                value={sortOption}
+                currentValue={{ label: sortOption, value: sortOption }}
               />
             </div>
             <div className="catalog__dropdown">
-              <label htmlFor="sortDropdown" className="dropdown__title">Items on page</label>
+              <label htmlFor="itemsPerPageDropdown" className="dropdown__title">Items on page</label>
               <Dropdown
-                options={itemsOnPageOptions}
+                options={itemsOnPageOptions.map((option) => ({ label: option, value: option }))}
                 handleChange={handleChangeItemsPerPage}
-                value={phonesPerPage}
+                currentValue={{ label: phonesPerPage, value: phonesPerPage }}
               />
             </div>
           </div>
 
-          <div className="catalog__list">
-            {products.map(phone => (
-              <div className="catalog__list--item" key={phone.id}>
-                <CardItem
-                  phone={phone}
-                />
-              </div>
-            ))}
-          </div>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <div className="catalog__list">
+              {products.map(phone => (
+                <div className="catalog__list--item" key={phone.id}>
+                  <CardItem
+                    phone={phone}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+
           <div className="catalog__pagination">
             <Pagination
-              total={phones.length}
+              total={quantities ? quantities[quantitiesKey] : 0}
               perPage={phonesPerPage}
               currentPage={currentPage}
-              onPageChange={setCurrentPage}
+              onPageChange={handlePageChange}
             />
           </div>
         </div>

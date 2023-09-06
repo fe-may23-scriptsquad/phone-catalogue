@@ -3,15 +3,23 @@ import { SwiperPhones } from '../../components/SwiperPhones';
 import { Category } from './components/Category';
 import { Banner } from './components/Banner';
 
-const tempData = [{
+import phonesCategory from '../../assets/img/categories/category-phones.png';
+import tabletsCategory from '../../assets/img/categories/category-tablets.png';
+import accessoriesCategory
+  from '../../assets/img/categories/category-accessories.png';
+
+const categoriesData = [{
   linkTo: '/phones',
   title: 'Mobile phones',
+  image: phonesCategory,
 }, {
   linkTo: '/tablets',
   title: 'Tablets',
+  image: tabletsCategory,
 }, {
   linkTo: '/accessories',
   title: 'Accessories',
+  image: accessoriesCategory,
 }];
 
 export const HomePage: React.FC = () => {
@@ -34,11 +42,12 @@ export const HomePage: React.FC = () => {
           </h2>
 
           <div className="homepage__categories-links">
-            {tempData.map((category) => (
+            {categoriesData.map((category) => (
               <Category
                 linkTo={category.linkTo}
                 title={category.title}
                 key={category.title}
+                image={category.image}
               />
             ))}
           </div>
