@@ -3,16 +3,20 @@ import { SwiperPhones } from '../../components/SwiperPhones';
 import { Category } from './components/Category';
 import { Banner } from './components/Banner';
 
-const tempData = [{
-  linkTo: '/phones',
-  title: 'Mobile phones',
-}, {
-  linkTo: '/tablets',
-  title: 'Tablets',
-}, {
-  linkTo: '/accessories',
-  title: 'Accessories',
-}];
+const tempData = [
+  {
+    linkTo: '/phones',
+    title: 'Mobile phones',
+  },
+  {
+    linkTo: '/tablets',
+    title: 'Tablets',
+  },
+  {
+    linkTo: '/accessories',
+    title: 'Accessories',
+  },
+];
 
 export const HomePage: React.FC = () => {
   return (
@@ -29,9 +33,7 @@ export const HomePage: React.FC = () => {
         <SwiperPhones />
 
         <div className="homepage__categories">
-          <h2 className="homepage__blocktitle">
-            Shop by category
-          </h2>
+          <h2 className="homepage__blocktitle">Shop by category</h2>
 
           <div className="homepage__categories-links">
             {tempData.map((category) => (
@@ -44,7 +46,7 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
 
-        <SwiperPhones />
+        <SwiperPhones customTitle="Hot prices" />
       </div>
     </div>
   );
