@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import { useState, useEffect, useContext } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Pagination } from '../Pagination';
 import { CardItem } from '../CardItem';
 import { Phone } from '../../types/Phone';
@@ -9,6 +10,7 @@ import { getAll } from '../../api/products';
 
 import phonesFromServer from '../../api/phones.json';
 import { AppContext } from '../AppContext/AppContext';
+import { buildSortByParam } from '../../utils/functions';
 
 type CatalogProps = {
   productName?: string;
@@ -37,6 +39,7 @@ export const Catalog = ({
   const [currentPage, setCurrentPage] = useState(1);
   const [sortOption, setSortOption] = useState('Newest');
   const [phonesPerPage, setPhonesPerPage] = useState('16');
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const {
     products,
@@ -44,19 +47,54 @@ export const Catalog = ({
   } = useContext(AppContext);
 
   useEffect(() => {
-    getAll<Phone[]>().then(setProducts);
-  }, [pathName]);
+    const params = searchParams.toString();
+
+    const url = params ? `?${params}` : '';
+
+    getAll<Phone[]>(url).then(setProducts);
+  }, [pathName, searchParams]);
 
   function handleChangeItemsPerPage(
     event: React.ChangeEvent<HTMLSelectElement>,
   ) {
+    const { value } = event.target;
+    const params = new URLSearchParams(searchParams);
+
     setPhonesPerPage(event.target.value);
     setCurrentPage(1);
+
+    if (value === '16') {
+      params.delete('limit');
+    } else {
+      params.set('limit', value.toLowerCase());
+    }
+
+    setSearchParams(params);
   }
 
   function handleChangeSortOption(event: React.ChangeEvent<HTMLSelectElement>) {
-    setSortOption(event.target.value);
+    const { value } = event.target;
+
+    setSortOption(value);
     setCurrentPage(1);
+
+    const params = new URLSearchParams(searchParams);
+
+    setSearchParams(buildSortByParam(value, params));
+  }
+
+  function handlePageChange(newPage: number) {
+    setCurrentPage(newPage);
+
+    const params = new URLSearchParams(searchParams);
+
+    if (newPage > 1) {
+      params.set('page', newPage.toString());
+    } else {
+      params.delete('page');
+    }
+
+    setSearchParams(params);
   }
 
   return (
@@ -136,7 +174,7 @@ export const Catalog = ({
               total={phones.length}
               perPage={phonesPerPage}
               currentPage={currentPage}
-              onPageChange={setCurrentPage}
+              onPageChange={handlePageChange}
             />
           </div>
         </div>
