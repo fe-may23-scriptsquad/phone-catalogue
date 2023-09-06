@@ -36,15 +36,16 @@ export const BurgerMenu: React.FC = () => {
           </NavLink>
         </div>
         <div
-          className="burger__right"
-          onClick={() => setIsBurgerMenuActive(false)}
+          onClick={() => {
+            setIsBurgerMenuActive(false);
+          }}
         >
-          <div className="icon__left icon__left--borders">
-            <span className="icon__logo">
+          <div className="burger-icon__left icon__left--borders">
+            <span className="burger-icon__logo">
               <img
                 src={closeImage}
                 alt="favourites"
-                className="icon__logo-img"
+                className="burger-icon__logo-img"
               />
             </span>
           </div>
@@ -54,7 +55,8 @@ export const BurgerMenu: React.FC = () => {
         <ul
           className="nav__list
                      nav__list--column
-                     nav__list--centered"
+                     nav__list--centered
+                     burger__nav"
         >
           <li>
             <NavLink
@@ -62,7 +64,7 @@ export const BurgerMenu: React.FC = () => {
               className={buildClassnames}
               onClick={() => setIsBurgerMenuActive(false)}
             >
-              Home
+              HOME
             </NavLink>
           </li>
           <li className="nav__wraper">
@@ -71,7 +73,7 @@ export const BurgerMenu: React.FC = () => {
               className={buildClassnames}
               onClick={() => setIsBurgerMenuActive(false)}
             >
-              Phones
+              PHONES
             </NavLink>
           </li>
           <li className="nav__wraper">
@@ -80,7 +82,7 @@ export const BurgerMenu: React.FC = () => {
               className={buildClassnames}
               onClick={() => setIsBurgerMenuActive(false)}
             >
-              Tablets
+              TABLETS
             </NavLink>
           </li>
           <li className="nav__wraper">
@@ -89,7 +91,7 @@ export const BurgerMenu: React.FC = () => {
               className={buildClassnames}
               onClick={() => setIsBurgerMenuActive(false)}
             >
-              Accessories
+              ACCESSORIES
             </NavLink>
           </li>
         </ul>
@@ -97,25 +99,27 @@ export const BurgerMenu: React.FC = () => {
       <div className="burger__bottom">
         <div>
           <div
-            className="icon__left
-                       icon__hover"
+            className="burger-icon__left
+            burger-icon__hover"
           >
-            <a href="#favourites" className="icon__logo">
+            <a href="#favourites" className="burger-icon__logo">
               <img
                 src={likeImage}
                 alt="favourites"
-                className="icon__logo-img icon__logo-img--burger"
+                className="burger-icon__logo-img icon__logo-img--burger"
               />
             </a>
           </div>
         </div>
         <div>
-          <div className="icon__right icon__cart icon__hover">
+          <div
+            className="burger-icon__right burger-icon__cart burger-icon__hover"
+          >
             <a href="#cart" className="icon__logo">
               <img
                 src={cartImage}
                 alt="Cart"
-                className="icon__logo-img icon__logo-img--burger"
+                className="burger-icon__logo-img burger-icon__logo-img--burger"
                 onClick={() => setIsBurgerMenuActive(false)}
               />
             </a>
