@@ -4,8 +4,8 @@ import { useState, useEffect } from 'react';
 import classNames from 'classnames';
 import { useParams } from 'react-router-dom';
 
-import homeIcon from '../../assets/icons/Home.svg';
-import arrowRight from '../../assets/icons/Arrow-right.svg';
+// import homeIcon from '../../assets/icons/Home.svg';
+// import arrowRight from '../../assets/icons/Arrow-right.svg';
 
 import { ButtonBack } from '../../components/ButtonBack';
 import { Button } from '../../components/Button';
@@ -18,6 +18,7 @@ import { Loader } from '../../components/Loader';
 import { ColorLink } from './components/ColorLink';
 import { CapacityLink } from './components/CapacityLink';
 import { SpecItem } from './components/SpecItem';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductPage = () => {
   const [product, setProduct] = useState<PhoneDetails | null>(null);
@@ -70,13 +71,7 @@ export const ProductPage = () => {
     <Loader />
   ) : (
     <div className="product">
-      <div className="page__nav">
-        <img src={homeIcon} alt="back" className="page__nav-icon" />
-        <img src={arrowRight} alt="back" className="page__nav-icon" />
-        <span className="page__nav-label">Phones</span>
-        <img src={arrowRight} alt="back" className="page__nav-icon" />
-        <span className="page__nav-label">{product?.name}</span>
-      </div>
+      <Breadcrumbs />
 
       <ButtonBack />
 
