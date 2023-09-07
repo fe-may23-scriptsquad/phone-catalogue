@@ -3,8 +3,7 @@ import { AppContextType } from '../../types/AppContextType';
 import { Phone } from '../../types/Phone';
 import { useLocalStarage } from '../../hooks/useLocalStorage';
 import { Order } from '../../types/Order';
-import { CartProduct } from '../../types/CartProduct';
-import { getQuantities } from '../../api/products';
+import { getDetailsByIdsArr, getQuantities } from '../../api/products';
 import { Quantities } from '../../types/Quantities';
 
 export const AppContext = React.createContext<AppContextType>({
@@ -22,7 +21,8 @@ export const AppContext = React.createContext<AppContextType>({
   toggleFavouriteArr: () => {},
   quantities: null,
   totalCartQuantity: 0,
-  totalCartPrice: 0,
+  totalPrice: 0,
+  cartProducts: [],
 });
 
 type Props = {
@@ -40,10 +40,36 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
 
   const [quantities, setQuantities] = useState<Quantities | null>(null);
   const [cart, setCart] = useLocalStarage<Order[]>('cart', []);
+  const [cartProducts, setCartProducts] = useState<Phone[]>([]);
+  const [totalPrice, setTotalPrice] = useState<number>(0);
+
+  function calculateTotalPrice() {
+    let total = 0;
+
+    cart.forEach((order) => {
+      const product = cartProducts.find(
+        (prod) => prod.itemId === order.productId,
+      );
+
+      if (product) {
+        total += order.quantity * (product.price || product.fullPrice);
+      }
+    });
+
+    return total;
+  }
 
   useEffect(() => {
     getQuantities<Quantities>().then(setQuantities);
   }, [products]);
+
+  useEffect(() => {
+    const idsArr = cart.map((order) => order.productId);
+
+    getDetailsByIdsArr<Phone[]>(idsArr)
+      .then(setCartProducts)
+      .then(() => setTotalPrice(calculateTotalPrice()));
+  }, [cart]);
 
   const toggleFavouriteArr = (id: string) => {
     if (!favouriteArr.includes(id)) {
@@ -53,26 +79,26 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const toggleCartItem = (product: CartProduct) => {
-    const findedProduct = cart.find((order) => order.product.id === product.id);
+  const toggleCartItem = (id: string) => {
+    const findedProduct = cart.find((order) => order.productId === id);
 
     if (findedProduct) {
-      setCart(cart.filter((order) => order.product.id !== product.id));
+      setCart(cart.filter((order) => order.productId !== id));
 
       return;
     }
 
-    setCart([...cart, { product, quantity: 1 }]);
+    setCart([...cart, { productId: id, quantity: 1 }]);
   };
 
   const changeOrderItemQuantity = (value: number, prodId: string) => {
     setCart(
       cart.map((orderItem) => {
-        const { product } = orderItem;
+        const { productId } = orderItem;
 
-        if (product.id === prodId) {
+        if (productId === prodId) {
           return {
-            product,
+            productId,
             quantity: value,
           };
         }
@@ -107,7 +133,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
         changeOrderItemQuantity,
         quantities,
         totalCartQuantity,
-        totalCartPrice,
+        totalPrice,
+        cartProducts,
       }}
     >
       {children}

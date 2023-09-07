@@ -150,15 +150,7 @@ export const ProductPage = () => {
           </div>
 
           <div className="product__btns">
-            <Button
-              text="Add to cart"
-              product={{
-                id: product?.id,
-                name: product?.name,
-                price: product?.priceDiscount || product?.priceRegular,
-                img: mainImg,
-              }}
-            />
+            <Button text="Add to cart" productId={product.id} />
 
             <ButtonLike itemId={product?.id} />
           </div>
