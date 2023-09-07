@@ -13,7 +13,7 @@ export const CardItem: React.FC<Props> = ({ phone }) => {
   return (
     <div className="card">
       <Link
-        to={`/phones/${phone.itemId}`}
+        to={`/${phone.category}/${phone.itemId}`}
         onClick={() => window.scrollTo({ top: 0 })}
       >
         <img
@@ -24,7 +24,7 @@ export const CardItem: React.FC<Props> = ({ phone }) => {
       </Link>
 
       <Link
-        to={`/phones/${phone.itemId}`}
+        to={`/${phone.category}/${phone.itemId}`}
         onClick={() => window.scrollTo({ top: 0 })}
       >
         <h2 className="card__title">{phone.name}</h2>

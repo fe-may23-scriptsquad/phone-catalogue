@@ -20,6 +20,7 @@ export const Root = () => (
         <Route path="/" element={<App />}>
           <Route index path="home" element={<HomePage />} />
           <Route path="" element={<Navigate to="home" replace />} />
+
           <Route path="phones">
             <Route
               index
@@ -30,18 +31,35 @@ export const Root = () => (
                 />
               )}
             />
-            <Route path=":phoneId?" element={<ProductPage />} />
+            <Route path=":productId?" element={<ProductPage />} />
           </Route>
-          <Route
-            path="tablets"
-            element={<Catalog productName="Tablets" pathName={['Tablets']} />}
-          />
-          <Route
-            path="accessories"
-            element={
-              <Catalog productName="Accessories" pathName={['Accessories']} />
-            }
-          />
+
+          <Route path="tablets">
+            <Route
+              index
+              element={(
+                <Catalog
+                  productName="Tablets"
+                  pathName={['Tablets']}
+                />
+              )}
+            />
+            <Route path=":productId?" element={<ProductPage />} />
+          </Route>
+
+          <Route path="accessories">
+            <Route
+              index
+              element={(
+                <Catalog
+                  productName="Accessories"
+                  pathName={['Accessories']}
+                />
+              )}
+            />
+            <Route path=":productId?" element={<ProductPage />} />
+          </Route>
+
           <Route
             path="favorites"
             element={<Favourites pathName={['Favourites']} />}
