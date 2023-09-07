@@ -67,16 +67,27 @@
 
   &__content {
     display: flex;
-    height: 16px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
   }
 
   &__home-link {
     display: flex;
     width: fit-content;
-    margin-right: 8px;
   }
 
   &__category {
+    transition: 0.3s;
+    &:first-child {
+      height: 16px;
+    }
+    &:last-child {
+      line-height: 16px;
+      padding-top: 1px;
+    }
     margin-left: 8px;
     color: $color-secondary;
     font-size: 12px;

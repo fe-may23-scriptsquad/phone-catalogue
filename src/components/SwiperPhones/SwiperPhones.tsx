@@ -7,6 +7,7 @@ import 'swiper/scss/navigation';
 import { CardItem } from '../CardItem';
 import { getAll } from '../../api/products';
 import { Phone } from '../../types/Phone';
+import { Loader } from '../Loader';
 
 type Props = {
   customTitle?: string;
@@ -67,15 +68,19 @@ export const SwiperPhones: React.FC<Props> = ({
         {customTitle || 'Brand new models'}
       </div>
 
-      <Swiper {...swiperOptions} onSlideChange={handleOnSwipe}>
-        {productsForSwiper.map((product) => {
-          return (
-            <SwiperSlide key={product.itemId}>
-              <CardItem phone={product} />
-            </SwiperSlide>
-          );
-        })}
-      </Swiper>
+      {productsForSwiper.length ? (
+        <Swiper {...swiperOptions} onSlideChange={handleOnSwipe}>
+          {productsForSwiper.map((product) => {
+            return (
+              <SwiperSlide key={product.itemId}>
+                <CardItem phone={product} />
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };
