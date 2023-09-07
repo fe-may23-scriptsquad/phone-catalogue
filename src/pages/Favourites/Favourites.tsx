@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 
 import home from '../../assets/icons/Home.svg';
-import phonesFromServer from '../../api/phones.json';
 import { CardItem } from '../../components/CardItem';
 import { AppContext } from '../../components/AppContext/AppContext';
 import { AppContextType } from '../../types/AppContextType';
@@ -23,11 +22,7 @@ export const Favourites = ({ pathName }: FavouritesProps) => {
     getDetailsByIdsArr<Phone[]>(favouriteArr)
       .then(setLoadedIds)
       .finally(() => setIsLoading(!isLoading));
-  }, []);
-
-  const favouriteItems = phonesFromServer.filter((phone) => {
-    return favouriteArr.includes(phone.itemId);
-  });
+  }, [favouriteArr]);
 
   return (
     <>
