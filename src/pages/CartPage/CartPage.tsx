@@ -1,13 +1,13 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router';
 
 import { Button } from '../../components/Button';
 import { ButtonBack } from '../../components/ButtonBack';
-// import { CartItem } from './components/CartItem';
 import { AppContext } from '../../components/AppContext/AppContext';
-// import { EmptyValueComponent } from '../../components/EmptyValueComponent';
 import { AppContextType } from '../../types/AppContextType';
 import { CartItem } from './components/CartItem';
 import { EmptyValueComponent } from '../../components/EmptyValueComponent';
+import { Modal } from '../../components/Modal';
 
 export const CartPage: React.FC = () => {
   const {
@@ -15,12 +15,26 @@ export const CartPage: React.FC = () => {
     cartProducts,
     totalCartQuantity,
     totalPrice,
-  } = useContext(
-    AppContext,
-  ) as AppContextType;
+    cleanCart,
+  } = useContext(AppContext) as AppContextType;
+
+  const [modalIsActive, setModalIsActive] = useState(false);
+
+  const navigate = useNavigate();
+
+  const checkoutHandler = () => {
+    setModalIsActive(true);
+
+    setTimeout(() => {
+      cleanCart();
+      setModalIsActive(false);
+      navigate('/home');
+    }, 5000);
+  };
 
   return (
     <div className="cart">
+      {modalIsActive && <Modal />}
       <ButtonBack />
 
       <h1 className="cart__title">Cart</h1>
@@ -57,7 +71,7 @@ export const CartPage: React.FC = () => {
             </div>
 
             <div className="cart__buybutton">
-              <Button text="Checkout" />
+              <Button text="Checkout" handler={checkoutHandler} />
             </div>
           </div>
         )}
