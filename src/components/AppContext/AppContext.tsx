@@ -32,9 +32,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     'favPhone',
     [],
   );
-
   const [quantities, setQuantities] = useState<Quantities>({});
-
   const [cart, setCart] = useLocalStarage<Order[]>('cart', []);
 
   useEffect(() => {

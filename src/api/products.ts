@@ -6,7 +6,7 @@ export const getAll = async <T>(params = ''): Promise<T> => {
   return data as T;
 };
 
-export const getById = async <T>(id:number): Promise<T> => {
+export const getById = async <T>(id: number): Promise<T> => {
   const data = await client.get(`/products/${id}`);
 
   return data as T;
