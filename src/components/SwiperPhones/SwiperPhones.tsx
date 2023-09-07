@@ -8,15 +8,20 @@ import { CardItem } from '../CardItem';
 import { getAll } from '../../api/products';
 import { Phone } from '../../types/Phone';
 import { Loader } from '../Loader';
+import { getRecommendations } from '../../api/details';
 
 type Props = {
-  customTitle?: string;
+  customTitle: string;
   sortValue?: string;
+  recommendations?: boolean,
+  productId?: string,
 };
 
 export const SwiperPhones: React.FC<Props> = ({
   customTitle,
   sortValue = 'year',
+  recommendations,
+  productId = '',
 }) => {
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(10);
@@ -30,12 +35,20 @@ export const SwiperPhones: React.FC<Props> = ({
     spaceBetween: 16,
   };
 
-  const url = `?limit=${limit}&page=${page}&sortBy=${sortValue}`;
-
   useEffect(() => {
-    getAll<Phone[]>(url).then((data) => {
-      setProductsForSwiper((prod) => [...prod, ...data]);
-    });
+    if (!recommendations) {
+      const url = `?limit=${limit}&page=${page}&sortBy=${sortValue}`;
+
+      getAll<Phone[]>(url).then((data) => {
+        setProductsForSwiper((prod) => [...prod, ...data]);
+      });
+    } else {
+      const url = `?limit=${limit}&page=${page}&sortBy=${sortValue}`;
+
+      getRecommendations<Phone[]>(productId, url).then((data) => {
+        setProductsForSwiper((prod) => [...prod, ...data]);
+      });
+    }
   }, [page]);
 
   useEffect(() => {

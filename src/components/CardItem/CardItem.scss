@@ -80,10 +80,15 @@
     display: flex;
     justify-content: space-between;
     margin: 8px 0;
+    gap: 16px;
 
     &--name {
       color: $color-secondary;
       font-weight: 600;
+    }
+
+    &--text {
+      text-align: right;
     }
   }
 

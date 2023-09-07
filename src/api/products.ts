@@ -27,11 +27,3 @@ export const getDetailsById = async <T>(itemId: string): Promise<T> => {
 
   return data as T;
 };
-
-export const getDetailsByIdsArr = async <T>(
-  itemIdArr: string[],
-): Promise<T> => {
-  const data = await client.post('/getProductsByIds/', { itemIds: itemIdArr });
-
-  return data as T;
-};

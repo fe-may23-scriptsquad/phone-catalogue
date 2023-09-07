@@ -39,7 +39,7 @@ export const HomePage: React.FC = () => {
       </div>
 
       <div className="homepage__body">
-        <SwiperPhones />
+        <SwiperPhones customTitle="Brand new models" />
 
         <div className="homepage__categories">
           <h2 className="homepage__blocktitle">Shop by category</h2>

@@ -105,13 +105,13 @@ export const Catalog = ({
         <div className="catalog__content">
           <div className="catalog-navigation">
             <div className="catalog-navigation__content">
-              <a href="/" className="catalog-navigation__home-link">
+              <Link to="/home" className="catalog-navigation__home-link">
                 <img
                   src={home}
                   alt="home"
                   className="catalog-navigation__home"
                 />
-              </a>
+              </Link>
 
               {pathName.map((part) => {
                 const title = part.split('-').join(' ');

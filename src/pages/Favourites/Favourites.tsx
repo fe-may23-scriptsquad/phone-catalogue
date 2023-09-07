@@ -7,9 +7,9 @@ import { CardItem } from '../../components/CardItem';
 import { AppContext } from '../../components/AppContext/AppContext';
 import { AppContextType } from '../../types/AppContextType';
 import { EmptyValueComponent } from '../../components/EmptyValueComponent';
-import { getDetailsByIdsArr } from '../../api/products';
 import { Phone } from '../../types/Phone';
 import { Loader } from '../../components/Loader';
+import { getDetailsByIdsArr } from '../../api/details';
 
 type FavouritesProps = {
   pathName: string[];

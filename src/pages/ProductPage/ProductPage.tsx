@@ -191,12 +191,12 @@ export const ProductPage = () => {
 
           <div className="product__about-description">
             {product?.description.map(({ title, text }) => (
-              <div className="product__about-content">
+              <div className="product__about-content" key={title}>
                 <h3 className="product__about-subtitle">{title}</h3>
 
                 <div className="product__about-text">
                   {text.map((paragraph) => (
-                    <p className="product__about-paragraph">{paragraph}</p>
+                    <p key={paragraph} className="product__about-paragraph">{paragraph}</p>
                   ))}
                 </div>
               </div>
@@ -225,7 +225,11 @@ export const ProductPage = () => {
       </section>
 
       <section className="product__section product__swiper">
-        <SwiperPhones customTitle="You may also like" />
+        <SwiperPhones
+          customTitle="You may also like"
+          recommendations
+          productId={productId}
+        />
       </section>
     </div>
   );

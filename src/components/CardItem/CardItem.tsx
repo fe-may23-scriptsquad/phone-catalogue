@@ -44,15 +44,21 @@ export const CardItem: React.FC<Props> = ({ phone }) => {
       <div className="card__stats">
         <p className="card__stat">
           <span className="card__stat--name">Screen</span>
-          {phone.screen}
+          <span className="card__stat--text">
+            {phone.screen}
+          </span>
         </p>
         <p className="card__stat">
           <span className="card__stat--name">Capacity</span>
-          {phone.capacity}
+          <span className="card__stat--text">
+            {phone.capacity}
+          </span>
         </p>
         <p className="card__stat">
           <span className="card__stat--name">RAM</span>
-          {phone.ram}
+          <span className="card__stat--text">
+            {phone.ram}
+          </span>
         </p>
       </div>
 
