@@ -111,8 +111,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
 
   const cleanCart = () => setCart([]);
 
-  const totalCartQuantity =
-    cart.reduce((a: number, b: Order) => a + b.quantity, 0) || 0;
+  const totalCartQuantity
+    = cart.reduce((a: number, b: Order) => a + b.quantity, 0) || 0;
 
   return (
     <AppContext.Provider

@@ -48,16 +48,8 @@
       top: 10px;
       left: 10px;
       display: block;
-      width: 300px;
+      max-width: 100px;
       height: auto;
-
-      @include onTablet {
-        width: 250px;
-      }
-
-      @include onMobile {
-        width: 150px;
-      }
     }
 
     &-main {

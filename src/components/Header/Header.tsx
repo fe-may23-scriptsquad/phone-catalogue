@@ -13,10 +13,11 @@ import { AppContext } from '../AppContext/AppContext';
 import { BurgerMenu } from '../BurgerMenu';
 import { Counter } from './components';
 
-const buildClassnames = ({ isActive }: { isActive: boolean }): string =>
-  cn('link', 'nav__link', {
+const buildClassnames = ({ isActive }: { isActive: boolean }): string => {
+  return cn('link', 'nav__link', {
     'nav__is-active': isActive,
   });
+};
 
 export const Header: React.FC = () => {
   const context = useContext(AppContext) as AppContextType;

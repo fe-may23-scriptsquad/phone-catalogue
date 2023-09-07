@@ -10,8 +10,13 @@ import { EmptyValueComponent } from '../../components/EmptyValueComponent';
 import { Modal } from '../../components/Modal';
 
 export const CartPage: React.FC = () => {
-  const { cart, cartProducts, totalCartQuantity, totalPrice, cleanCart } =
-    useContext(AppContext) as AppContextType;
+  const {
+    cart,
+    cartProducts,
+    totalCartQuantity,
+    totalPrice,
+    cleanCart,
+  } = useContext(AppContext) as AppContextType;
 
   const [modalIsActive, setModalIsActive] = useState(false);
 
