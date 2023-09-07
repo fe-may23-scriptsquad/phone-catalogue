@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { useState, useEffect, useContext } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../Pagination';
 import { CardItem } from '../CardItem';
 import { Phone } from '../../types/Phone';
@@ -134,7 +134,7 @@ export const Catalog = ({
                         />
                       </svg>
                     </div>
-                    <p className="catalog-navigation__category">{title}</p>
+                    <Link to={`/${title.toLowerCase()}`} className="catalog-navigation__category">{title}</Link>
                   </span>
                 );
               })}

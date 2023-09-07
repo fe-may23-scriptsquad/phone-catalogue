@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useContext } from 'react';
 import cn from 'classnames';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logoImage from '../../assets/img/Logo.png';
 import likeImage from '../../assets/icons/Favourites.svg';
 import cartImage from '../../assets/icons/Shopping-cart.svg';
@@ -102,27 +102,34 @@ export const BurgerMenu: React.FC = () => {
             className="burger-icon__left
             burger-icon__hover"
           >
-            <a href="#favourites" className="burger-icon__logo">
+            <Link
+              to="favorites"
+              className="burger-icon__logo"
+              onClick={() => setIsBurgerMenuActive(false)}
+            >
               <img
                 src={likeImage}
-                alt="favourites"
+                alt="favorites"
                 className="burger-icon__logo-img icon__logo-img--burger"
               />
-            </a>
+            </Link>
           </div>
         </div>
         <div>
           <div
             className="burger-icon__right burger-icon__cart burger-icon__hover"
           >
-            <a href="#cart" className="icon__logo">
+            <Link
+              to="cart"
+              className="icon__logo"
+              onClick={() => setIsBurgerMenuActive(false)}
+            >
               <img
                 src={cartImage}
                 alt="Cart"
                 className="burger-icon__logo-img burger-icon__logo-img--burger"
-                onClick={() => setIsBurgerMenuActive(false)}
               />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
