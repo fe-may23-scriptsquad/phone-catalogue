@@ -19,4 +19,5 @@ export interface AppContextType {
   totalCartQuantity: number;
   totalPrice: number;
   cartProducts: Phone[];
+  cleanCart: () => void;
 }

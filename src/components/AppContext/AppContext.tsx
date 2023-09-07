@@ -23,6 +23,7 @@ export const AppContext = React.createContext<AppContextType>({
   totalCartQuantity: 0,
   totalPrice: 0,
   cartProducts: [],
+  cleanCart: () => {},
 });
 
 type Props = {
@@ -108,8 +109,10 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     );
   };
 
-  const totalCartQuantity
-    = cart.reduce((a: number, b: Order) => a + b.quantity, 0) || 0;
+  const cleanCart = () => setCart([]);
+
+  const totalCartQuantity =
+    cart.reduce((a: number, b: Order) => a + b.quantity, 0) || 0;
 
   return (
     <AppContext.Provider
@@ -130,6 +133,7 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
         totalCartQuantity,
         totalPrice,
         cartProducts,
+        cleanCart,
       }}
     >
       {children}
