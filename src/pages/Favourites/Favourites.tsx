@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+
 import { useContext, useEffect, useState } from 'react';
 
 import home from '../../assets/icons/Home.svg';
