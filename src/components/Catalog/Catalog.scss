@@ -16,7 +16,7 @@
   }
 
   &__subtitle {
-    grid-column: 1 / -1; 
+    grid-column: 1 / -1;
     margin-bottom: 40px;
     font-size: 14px;
     font-weight: 600;
@@ -29,7 +29,7 @@
   }
 
   &__dropdown--container {
-    grid-column: 1 / -1; 
+    grid-column: 1 / -1;
     display: flex;
     gap: 16px;
     margin-bottom: 24px;
@@ -68,7 +68,7 @@
   &__list {
     margin: 0 auto;
     width: fit-content;
-    grid-column: 1 / -1; 
+    grid-column: 1 / -1;
     display: grid;
     gap: 16px;
     --columns: 4;
@@ -95,10 +95,10 @@
   }
 
   &__pagination {
-    grid-column: 1 / -1; 
+    grid-column: 1 / -1;
     display: flex;
     justify-content: center;
-    
+
     @include onMobile {
       padding-bottom: 64px;
     }
@@ -130,7 +130,7 @@
 
   &__category {
     &:first-child {
-      height: 16px; 
+      height: 16px;
     }
     &:last-child {
       line-height: 16px;
@@ -141,4 +141,3 @@
     font-size: 12px;
   }
 }
-
