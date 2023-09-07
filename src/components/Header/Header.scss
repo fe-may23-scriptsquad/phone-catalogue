@@ -71,6 +71,21 @@
   &__list {
     display: flex;
     gap: 64px;
+    margin: 0;
+    list-style-type: none;
+    padding: 0;
+
+    &--burger {
+      margin-top: 40px;
+    }
+
+    &--column {
+      flex-direction: column;
+    }
+
+    &--centered {
+      align-items: center;
+    }
 
     @include onTablet {
       gap: 32px;
@@ -115,7 +130,7 @@
   height: 100%;
   display: flex;
   justify-content: center;
-
+ 
   &__logo {
     height: 16px;
   }
@@ -208,6 +223,10 @@
 
     @include onTablet {
       width: 48px;
+    }
+
+    &--burger {
+      margin-top: 13px;
     }
 
     @include onMobile {

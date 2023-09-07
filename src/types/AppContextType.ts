@@ -5,6 +5,8 @@ import { Quantities } from './Quantities';
 
 export interface AppContextType {
   activeLink: string;
+  isBurgerMenuActive: boolean;
+  setIsBurgerMenuActive: React.Dispatch<React.SetStateAction<boolean>>;
   setActiveLink: React.Dispatch<React.SetStateAction<string>>;
   products: Phone[];
   setProducts: React.Dispatch<React.SetStateAction<Phone[]>>;
