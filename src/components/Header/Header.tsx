@@ -12,10 +12,10 @@ import menuImage from '../../assets/icons/Burger-menu.svg';
 import { AppContext } from '../AppContext/AppContext';
 import { BurgerMenu } from '../BurgerMenu';
 
-const buildClassnames = ({ isActive }: { isActive: boolean }): string => (
+const buildClassnames = ({ isActive }: { isActive: boolean }): string =>
   cn('link', 'nav__link', {
     'nav__is-active': isActive,
-  }));
+  });
 
 export const Header: React.FC = () => {
   const context = useContext(AppContext) as AppContextType;
@@ -29,10 +29,7 @@ export const Header: React.FC = () => {
     <header className="header">
       <div className="header__container">
         <div className="header__container--left">
-          <NavLink
-            to="/"
-            className="header__logo"
-          >
+          <NavLink to="/" className="header__logo">
             <img
               src={logoImage}
               alt="NICE gadgets"
@@ -44,34 +41,22 @@ export const Header: React.FC = () => {
             <div className="nav">
               <ul className="nav__list">
                 <li>
-                  <NavLink
-                    to="home"
-                    className={buildClassnames}
-                  >
+                  <NavLink to="home" className={buildClassnames}>
                     Home
                   </NavLink>
                 </li>
                 <li className="nav__wraper">
-                  <NavLink
-                    to="phones"
-                    className={buildClassnames}
-                  >
+                  <NavLink to="phones" className={buildClassnames}>
                     Phones
                   </NavLink>
                 </li>
                 <li className="nav__wraper">
-                  <NavLink
-                    to="tablets"
-                    className={buildClassnames}
-                  >
+                  <NavLink to="tablets" className={buildClassnames}>
                     Tablets
                   </NavLink>
                 </li>
                 <li className="nav__wraper">
-                  <NavLink
-                    to="accessories"
-                    className={buildClassnames}
-                  >
+                  <NavLink to="accessories" className={buildClassnames}>
                     Accessories
                   </NavLink>
                 </li>

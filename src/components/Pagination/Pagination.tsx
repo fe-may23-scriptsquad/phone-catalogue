@@ -6,12 +6,15 @@ type PaginationProps = {
   total: number;
   perPage: string;
   currentPage: number;
-  onPageChange: (page: number) => void,
+  onPageChange: (page: number) => void;
 };
 
 export const Pagination = ({
-  total, perPage, currentPage, onPageChange,
-}:PaginationProps) => {
+  total,
+  perPage,
+  currentPage,
+  onPageChange,
+}: PaginationProps) => {
   let totalPages = Math.ceil(total / +perPage);
 
   if (perPage === 'All') {
@@ -37,8 +40,8 @@ export const Pagination = ({
 
   const handlePagination = (pageNumber: number) => {
     if (
-      pageNumber < pageNumers[0]
-      || pageNumber > pageNumers[pageNumers.length - 1]
+      pageNumber < pageNumers[0] ||
+      pageNumber > pageNumers[pageNumers.length - 1]
     ) {
       return;
     }
