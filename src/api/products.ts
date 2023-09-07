@@ -21,3 +21,9 @@ export const getQuantities = async <T>() => {
 
   return data as T;
 };
+
+export const getDetailsById = async <T>(itemId: string): Promise<T> => {
+  const data = await client.get(`/details/${itemId}`);
+
+  return data as T;
+};

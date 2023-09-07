@@ -71,9 +71,15 @@
     grid-column: 1 / -1; 
     display: grid;
     gap: 16px;
-    --columns: 4;;
+    --columns: 4;
+    margin-bottom: 40px;
 
     grid-template-columns: repeat(var(--columns), 1fr);
+    row-gap: 40px;
+
+    &--item {
+      grid-column: 1 span;
+    }
 
     @media (max-width: 1200px) {
       --columns: 3;
@@ -88,16 +94,10 @@
     }
   }
 
-  .catalog__list--item {
-    margin-bottom: 40px;
-    grid-column: 1 span;
-  }
-
   &__pagination {
     grid-column: 1 / -1; 
     display: flex;
     justify-content: center;
-    padding-bottom: 80px;
     
     @include onMobile {
       padding-bottom: 64px;

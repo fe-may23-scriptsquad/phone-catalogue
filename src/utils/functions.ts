@@ -1,24 +1,24 @@
 export function buildSortByParam(word: string, params: URLSearchParams) {
   switch (word) {
-    case ('Cheapest'): {
+    case 'Cheapest': {
       params.set('sortBy', 'price');
       params.set('orderIn', 'ASC');
       break;
     }
 
-    case ('Expensive'): {
+    case 'Expensive': {
       params.set('sortBy', 'price');
       params.delete('orderIn');
       break;
     }
 
-    case ('Oldest'): {
+    case 'Oldest': {
       params.set('sortBy', 'year');
       params.set('orderIn', 'ASC');
       break;
     }
 
-    case ('Alphabetically'): {
+    case 'Alphabetically': {
       params.set('sortBy', 'name');
       params.delete('orderIn');
       break;

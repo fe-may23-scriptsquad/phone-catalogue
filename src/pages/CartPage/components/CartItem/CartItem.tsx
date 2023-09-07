@@ -13,10 +13,7 @@ type Props = {
 export const CartItem: React.FC<Props> = ({ orderItem }) => {
   const { product, quantity } = orderItem;
 
-  const {
-    changeOrderItemQuantity,
-    toggleCartItem,
-  } = useContext(AppContext);
+  const { changeOrderItemQuantity, toggleCartItem } = useContext(AppContext);
 
   const [number, setNumber] = useState(quantity);
 

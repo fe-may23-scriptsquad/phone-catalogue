@@ -10,10 +10,7 @@ type Props = {
 };
 
 export const Button: React.FC<Props> = ({ text, product }) => {
-  const {
-    cart,
-    toggleCartItem,
-  } = useContext(AppContext);
+  const { cart, toggleCartItem } = useContext(AppContext);
   const isAdded = cart.find((order) => order.product.id === product?.id);
 
   return product ? (
