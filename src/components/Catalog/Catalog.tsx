@@ -95,6 +95,10 @@ export const Catalog = ({
     setSearchParams(params);
   }
 
+  useEffect(() => {
+    handlePageChange(1);
+  }, [phonesPerPage]);
+
   return (
     <>
       <div className="catalog">
@@ -157,7 +161,6 @@ export const Catalog = ({
               />
             </div>
             <div className="catalog__dropdown">
-              <label htmlFor="sortDropdown" className="dropdown__title">
               <label htmlFor="itemsPerPageDropdown" className="dropdown__title">
                 Items on page
               </label>
