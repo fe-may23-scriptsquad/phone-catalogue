@@ -31,6 +31,16 @@ export const ProductPage = () => {
 
   const preparedId = productId?.split('-').slice(0, -2) || [];
 
+  const changeColor = (newColor: string) => {
+    const idParts = productId?.split('-');
+
+    if (idParts) {
+      idParts[idParts?.length - 1] = newColor;
+    }
+
+    return idParts?.join('-') || '';
+  };
+
   const changedId = (...params: string[]) => {
     const normalizedParams = params.map((param) => param.toLowerCase());
 
@@ -109,8 +119,7 @@ export const ProductPage = () => {
                   key={color}
                   color={color}
                   prodColor={product.color}
-                  prodCapacity={product.capacity}
-                  changedId={changedId}
+                  changedId={changeColor}
                 />
               ))}
             </div>

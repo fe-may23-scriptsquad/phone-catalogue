@@ -36,19 +36,17 @@ const setHexColor = (color: string) => {
 
 type Props = {
   color: string;
-  prodCapacity: string;
   prodColor: string;
-  changedId: (...arr: string[]) => string;
+  changedId: (newColor: string) => string;
 };
 
 export const ColorLink: React.FC<Props> = ({
   color,
-  prodCapacity,
   prodColor,
   changedId,
 }) => {
   return (
-    <Link to={`../${changedId(prodCapacity, color)}`}>
+    <Link to={`../${changedId(color)}`}>
       <div className="product__colors-item">
         <svg
           xmlns="http://www.w3.org/2000/svg"
