@@ -9,9 +9,9 @@
     position: relative;
     overflow-y: visible;
 
-    // &-button-lock {
-    //   display: block;
-    // }
+    &-slide {
+      height: auto;
+    }
 
     &-button-prev {
       width: 32px;
