@@ -10,7 +10,12 @@ import { CartItem } from './components/CartItem';
 import { EmptyValueComponent } from '../../components/EmptyValueComponent';
 
 export const CartPage: React.FC = () => {
-  const { cart, cartProducts, totalCartQuantity, totalPrice } = useContext(
+  const {
+    cart,
+    cartProducts,
+    totalCartQuantity,
+    totalPrice,
+  } = useContext(
     AppContext,
   ) as AppContextType;
 
