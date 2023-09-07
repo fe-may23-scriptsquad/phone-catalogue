@@ -49,7 +49,7 @@ export const Catalog = ({
 
     url += params ? `&${params}` : '';
 
-    getAll<Phone[]>(`${url}`)
+    getAll<Phone[]>(url)
       .then(setProducts)
       .finally(() => setIsLoading(false));
   }, [pathName, searchParams]);
@@ -157,6 +157,7 @@ export const Catalog = ({
               />
             </div>
             <div className="catalog__dropdown">
+              <label htmlFor="sortDropdown" className="dropdown__title">
               <label htmlFor="itemsPerPageDropdown" className="dropdown__title">
                 Items on page
               </label>

@@ -39,7 +39,6 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   );
 
   const [quantities, setQuantities] = useState<Quantities | null>(null);
-
   const [cart, setCart] = useLocalStarage<Order[]>('cart', []);
 
   useEffect(() => {
