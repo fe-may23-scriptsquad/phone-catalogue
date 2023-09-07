@@ -21,7 +21,7 @@ export const Favourites = ({ pathName }: FavouritesProps) => {
   useEffect(() => {
     getDetailsByIdsArr<Phone[]>(favouriteArr)
       .then(setLoadedIds)
-      .finally(() => setIsLoading(!isLoading));
+      .finally(() => setIsLoading(false));
   }, [favouriteArr]);
 
   return (
