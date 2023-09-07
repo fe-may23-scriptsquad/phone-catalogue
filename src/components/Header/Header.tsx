@@ -11,12 +11,12 @@ import cartImage from '../../assets/icons/Shopping-cart.svg';
 import menuImage from '../../assets/icons/Burger-menu.svg';
 import { AppContext } from '../AppContext/AppContext';
 import { BurgerMenu } from '../BurgerMenu';
+import { Counter } from './components';
 
-const buildClassnames = ({ isActive }: { isActive: boolean }): string => (
+const buildClassnames = ({ isActive }: { isActive: boolean }): string =>
   cn('link', 'nav__link', {
     'nav__is-active': isActive,
-  })
-);
+  });
 
 export const Header: React.FC = () => {
   const context = useContext(AppContext) as AppContextType;
@@ -70,12 +70,14 @@ export const Header: React.FC = () => {
           <NavLink
             to="favorites"
             className={({ isActive }) => {
-              return cn('icon__left',
+              return cn(
+                'icon__left',
                 'icon__left--borders',
                 'icon__left--invisible',
                 {
                   'icon__left--active': isActive,
-                });
+                },
+              );
             }}
           >
             <span className="icon__logo">
@@ -84,17 +86,18 @@ export const Header: React.FC = () => {
                 alt="favourites"
                 className="icon__logo-img icon__logo-img--margins"
               />
+              {context.favouriteArr.length !== 0 && (
+                <Counter num={context.favouriteArr.length} />
+              )}
             </span>
           </NavLink>
 
           <NavLink
             to="cart"
             className={({ isActive }) => {
-              return cn('icon__right',
-                'icon__right--invisible',
-                {
-                  'icon__left--active': isActive,
-                });
+              return cn('icon__right', 'icon__right--invisible', {
+                'icon__left--active': isActive,
+              });
             }}
           >
             <span className="icon__logo">
@@ -103,6 +106,9 @@ export const Header: React.FC = () => {
                 alt="Cart"
                 className="icon__logo-img icon__logo-img--margins"
               />
+              {context.totalCartQuantity !== 0 && (
+                <Counter num={context.totalCartQuantity} />
+              )}
             </span>
           </NavLink>
 

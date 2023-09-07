@@ -111,11 +111,6 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   const totalCartQuantity =
     cart.reduce((a: number, b: Order) => a + b.quantity, 0) || 0;
 
-  const totalCartPrice =
-    cart.reduce((a: number, b: Order) => {
-      return a + b.quantity * b.product.price;
-    }, 0) || 0;
-
   return (
     <AppContext.Provider
       value={{
