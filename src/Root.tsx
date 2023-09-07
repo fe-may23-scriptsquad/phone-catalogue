@@ -62,7 +62,7 @@ export const Root = () => (
 
           <Route
             path="favorites"
-            element={<Favourites pathName={['Favourites']} />}
+            element={<Favourites />}
           />
           <Route path="cart" element={<CartPage />} />
         </Route>
