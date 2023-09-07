@@ -2,17 +2,24 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
-  width: 100vw;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
   background-color: white;
   box-sizing: border-box;
-  height: 100vh;
-  overflow: auto;
+  height: 100%;
+  overflow: hidden;
 
   &__top {
+    height: 48px;
     display: flex;
     justify-content: space-between;
-    border-bottom: solid black 1px;
+    align-items: center;
+    border-bottom: solid $color-elements 1px;
+  }
+
+  &__nav {
+    gap: 16px;
   }
 
   &__bottom {
@@ -21,22 +28,33 @@
     width: 100%;
 
     justify-content: center;
-    border-top: solid black 1px;
+    border-top: solid $color-elements 1px;
     left: 0;
     bottom: 0;
   }
+
+  &__left {
+    margin-left: 16px;
+  }
+
+  &__right {
+    cursor: pointer;
+  }
+
+  &__menu {
+    margin-top: 24px;
+  }
 }
 
-.icon {
+.burger-icon {
   display: flex;
   justify-content: center;
 
+  &__logo {
+    height: 16px;
+  }
+
   &__logo-img {
-
-
-    @media (max-width: 639px) {
-      margin-top: 18px;
-    }
 
     &--margins {
       margin-top: 24px;
@@ -51,6 +69,7 @@
   &__left {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 64px;
     height: 64px;
     position: relative;
@@ -66,7 +85,7 @@
         position: absolute;
         width: 1px;
         height: 100%;
-        background-color: $color-icons;
+        background-color: $color-elements;
       }
       &::before {
         left: -1px;
@@ -96,7 +115,7 @@
       position: absolute;
       width: 1px;
       height: 100%;
-      background-color: $color-secondary;
+      background-color: $color-elements;
     }
     &::before {
       left: -1px;
@@ -115,7 +134,7 @@
       position: absolute;
       width: 1px;
       height: 100%;
-      background-color: $color-secondary;
+      background-color: $color-elements;
     }
     &::before {
       left: -1px;
@@ -129,6 +148,7 @@
   &__right {
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 64px;
     height: 64px;
 
