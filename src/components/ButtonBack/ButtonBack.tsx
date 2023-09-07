@@ -1,13 +1,19 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import arrowLeft from '../../assets/icons/Arrow-left.svg';
 
 export const ButtonBack = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="back">
+    <button
+      className="back"
+      onClick={() => navigate(-1)}
+      type="button"
+    >
       <img src={arrowLeft} alt="back" className="back-icon" />
-      <Link to="/" className="back-label">
+      <span className="back-label">
         Back
-      </Link>
-    </div>
+      </span>
+    </button>
   );
 };

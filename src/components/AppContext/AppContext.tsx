@@ -3,8 +3,9 @@ import { AppContextType } from '../../types/AppContextType';
 import { Phone } from '../../types/Phone';
 import { useLocalStarage } from '../../hooks/useLocalStorage';
 import { Order } from '../../types/Order';
-import { getDetailsByIdsArr, getQuantities } from '../../api/products';
+import { getQuantities } from '../../api/products';
 import { Quantities } from '../../types/Quantities';
+import { getDetailsByIdsArr } from '../../api/details';
 
 export const AppContext = React.createContext<AppContextType>({
   activeLink: '',
