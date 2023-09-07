@@ -10,6 +10,8 @@ import { Quantities } from '../../types/Quantities';
 export const AppContext = React.createContext<AppContextType>({
   activeLink: '',
   setActiveLink: () => {},
+  isBurgerMenuActive: false,
+  setIsBurgerMenuActive: () => {},
   products: [],
   setProducts: () => {},
   cart: [],
@@ -18,7 +20,9 @@ export const AppContext = React.createContext<AppContextType>({
   favouriteArr: [],
   setFavouriteArr: () => {},
   toggleFavouriteArr: () => {},
-  quantities: {},
+  quantities: null,
+  totalCartQuantity: 0,
+  totalCartPrice: 0,
 });
 
 type Props = {
@@ -27,12 +31,14 @@ type Props = {
 
 export const AppProvider: React.FC<Props> = ({ children }) => {
   const [activeLink, setActiveLink] = useState('');
+  const [isBurgerMenuActive, setIsBurgerMenuActive] = useState(false);
   const [products, setProducts] = useState<Phone[]>([]);
   const [favouriteArr, setFavouriteArr] = useLocalStarage<string[]>(
     'favPhone',
     [],
   );
-  const [quantities, setQuantities] = useState<Quantities>({});
+
+  const [quantities, setQuantities] = useState<Quantities | null>(null);
   const [cart, setCart] = useLocalStarage<Order[]>('cart', []);
 
   useEffect(() => {
@@ -76,9 +82,19 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     );
   };
 
+  const totalCartQuantity
+    = cart.reduce((a: number, b: Order) => a + b.quantity, 0) || 0;
+
+  const totalCartPrice
+    = cart.reduce((a: number, b: Order) => {
+      return a + b.quantity * b.product.price;
+    }, 0) || 0;
+
   return (
     <AppContext.Provider
       value={{
+        isBurgerMenuActive,
+        setIsBurgerMenuActive,
         activeLink,
         setActiveLink,
         products,
@@ -90,6 +106,8 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
         toggleCartItem,
         changeOrderItemQuantity,
         quantities,
+        totalCartQuantity,
+        totalCartPrice,
       }}
     >
       {children}

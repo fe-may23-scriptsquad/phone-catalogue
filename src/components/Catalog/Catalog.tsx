@@ -8,25 +8,29 @@ import home from '../../assets/icons/Home.svg';
 import { Dropdown } from '../Dropdown';
 import { getAll } from '../../api/products';
 
-import phonesFromServer from '../../api/phones.json';
 import { AppContext } from '../AppContext/AppContext';
 import { buildSortByParam } from '../../utils/functions';
 import { Loader } from '../Loader';
 import { Quantities } from '../../types/Quantities';
+import { DropdownResponse } from '../../types/DropdownResponse';
 
 type CatalogProps = {
   productName?: string;
-  phones?: Phone[];
   pathName?: string[];
 };
 
-const sortOptions = ['Newest', 'Alphabetically', 'Cheapest'];
+const sortOptions = [
+  'Newest',
+  'Oldest',
+  'Alphabetically',
+  'Cheapest',
+  'Expensive',
+];
 
-const itemsOnPageOptions = ['4', '8', '16', 'All'];
+const itemsOnPageOptions = ['4', '8', '16'];
 
 export const Catalog = ({
   productName = 'Mobile phones',
-  phones = phonesFromServer,
   pathName = ['Phones'],
 }: CatalogProps) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -34,6 +38,7 @@ export const Catalog = ({
   const [phonesPerPage, setPhonesPerPage] = useState('16');
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
+  const quantitiesKey = pathName[0].toLowerCase() as keyof Quantities;
 
   const { products, setProducts, quantities } = useContext(AppContext);
 
@@ -49,13 +54,11 @@ export const Catalog = ({
       .finally(() => setIsLoading(false));
   }, [pathName, searchParams]);
 
-  function handleChangeItemsPerPage(
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) {
-    const { value } = event.target;
+  function handleChangeItemsPerPage(option: DropdownResponse) {
+    const { value } = option;
     const params = new URLSearchParams(searchParams);
 
-    setPhonesPerPage(event.target.value);
+    setPhonesPerPage(value);
     setCurrentPage(1);
 
     if (value === '16') {
@@ -67,8 +70,8 @@ export const Catalog = ({
     setSearchParams(params);
   }
 
-  function handleChangeSortOption(event: React.ChangeEvent<HTMLSelectElement>) {
-    const { value } = event.target;
+  function handleChangeSortOption(option: DropdownResponse) {
+    const { value } = option;
 
     setSortOption(value);
     setCurrentPage(1);
@@ -136,9 +139,7 @@ export const Catalog = ({
           <h1 className="catalog__title">{productName}</h1>
 
           <p className="catalog__subtitle">
-            {`${
-              quantities[pathName[0].toLowerCase() as keyof Quantities]
-            } models`}
+            {`${quantities ? quantities[quantitiesKey] : 0} models`}
           </p>
 
           <div className="catalog__dropdown--container">
@@ -147,19 +148,26 @@ export const Catalog = ({
                 Sort by
               </label>
               <Dropdown
-                options={sortOptions}
+                options={sortOptions.map((option) => ({
+                  label: option,
+                  value: option,
+                }))}
                 handleChange={handleChangeSortOption}
-                value={sortOption}
+                currentValue={{ label: sortOption, value: sortOption }}
               />
             </div>
             <div className="catalog__dropdown">
               <label htmlFor="sortDropdown" className="dropdown__title">
+              <label htmlFor="itemsPerPageDropdown" className="dropdown__title">
                 Items on page
               </label>
               <Dropdown
-                options={itemsOnPageOptions}
+                options={itemsOnPageOptions.map((option) => ({
+                  label: option,
+                  value: option,
+                }))}
                 handleChange={handleChangeItemsPerPage}
-                value={phonesPerPage}
+                currentValue={{ label: phonesPerPage, value: phonesPerPage }}
               />
             </div>
           </div>
@@ -178,7 +186,7 @@ export const Catalog = ({
 
           <div className="catalog__pagination">
             <Pagination
-              total={phones.length}
+              total={quantities ? quantities[quantitiesKey] : 0}
               perPage={phonesPerPage}
               currentPage={currentPage}
               onPageChange={handlePageChange}
