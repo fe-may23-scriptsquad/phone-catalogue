@@ -76,23 +76,21 @@ export const Favourites = ({ pathName }: FavouritesProps) => {
           <h1 className="favourites__title">Favourites</h1>
 
           <p className="favourites__subtitle">
-            {` ${favouriteItems.length}
+            {` ${loadedIds.length}
             items `}
           </p>
+
+          {loadedIds.length === 0 && !isLoading && <EmptyValueComponent />}
 
           {isLoading ? (
             <Loader />
           ) : (
             <div className="favourites__list">
-              {loadedIds.length === 0 ? (
-                <EmptyValueComponent />
-              ) : (
-                favouriteItems.map((phone) => (
-                  <div className="favourites__list--item" key={phone.id}>
-                    <CardItem phone={phone} />
-                  </div>
-                ))
-              )}
+              {loadedIds.map((phone) => (
+                <div className="favourites__list--item" key={phone.id}>
+                  <CardItem phone={phone} />
+                </div>
+              ))}
             </div>
           )}
         </div>
