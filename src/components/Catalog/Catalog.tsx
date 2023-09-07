@@ -49,7 +49,7 @@ export const Catalog = ({
 
     url += params ? `&${params}` : '';
 
-    getAll<Phone[]>(`${url}`)
+    getAll<Phone[]>(url)
       .then(setProducts)
       .finally(() => setIsLoading(false));
   }, [pathName, searchParams]);
@@ -94,6 +94,10 @@ export const Catalog = ({
 
     setSearchParams(params);
   }
+
+  useEffect(() => {
+    handlePageChange(1);
+  }, [phonesPerPage]);
 
   return (
     <>

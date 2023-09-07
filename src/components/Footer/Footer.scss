@@ -20,16 +20,16 @@
       gap: 32px;
       align-items: flex-start;
       max-width: 1136px;
-  
+
       & > :nth-child(3) {
         align-self: center;
       }
     }
-  
+
     @include onTablet {
       padding-inline: 24px;
     }
-  
+
     @include onMobile {
       padding-inline: 16px;
       justify-content: space-evenly;

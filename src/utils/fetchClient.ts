@@ -17,14 +17,13 @@ function request<T>(
     };
   }
 
-  return fetch(fullUrl, options)
-    .then((response) => {
-      if (!response.ok) {
-        throw Error();
-      }
+  return fetch(fullUrl, options).then((response) => {
+    if (!response.ok) {
+      throw Error();
+    }
 
-      return response.json();
-    });
+    return response.json();
+  });
 }
 
 export const client = {

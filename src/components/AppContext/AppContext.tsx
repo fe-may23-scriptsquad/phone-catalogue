@@ -39,7 +39,6 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
   );
 
   const [quantities, setQuantities] = useState<Quantities | null>(null);
-
   const [cart, setCart] = useLocalStarage<Order[]>('cart', []);
   const [cartProducts, setCartProducts] = useState<Phone[]>([]);
   const [totalPrice, setTotalPrice] = useState<number>(0);
@@ -109,8 +108,13 @@ export const AppProvider: React.FC<Props> = ({ children }) => {
     );
   };
 
-  const totalCartQuantity
-    = cart.reduce((a: number, b: Order) => a + b.quantity, 0) || 0;
+  const totalCartQuantity =
+    cart.reduce((a: number, b: Order) => a + b.quantity, 0) || 0;
+
+  const totalCartPrice =
+    cart.reduce((a: number, b: Order) => {
+      return a + b.quantity * b.product.price;
+    }, 0) || 0;
 
   return (
     <AppContext.Provider

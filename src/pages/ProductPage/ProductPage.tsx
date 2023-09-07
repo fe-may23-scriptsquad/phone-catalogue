@@ -27,9 +27,9 @@ export const ProductPage = () => {
 
   const [mainImg, setMainImg] = useState(imgs[0]);
 
-  const { phoneId } = useParams();
+  const { productId } = useParams();
 
-  const preparedId = phoneId?.split('-').slice(0, -2) || [];
+  const preparedId = productId?.split('-').slice(0, -2) || [];
 
   const changedId = (...params: string[]) => {
     const normalizedParams = params.map((param) => param.toLowerCase());
@@ -39,12 +39,12 @@ export const ProductPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    if (phoneId) {
-      getDetailsById<PhoneDetails>(phoneId)
+    if (productId) {
+      getDetailsById<PhoneDetails>(productId)
         .then(setProduct)
         .finally(() => setLoading(false));
     }
-  }, [phoneId]);
+  }, [productId]);
 
   useEffect(() => {
     setMainImg(imgs[0]);

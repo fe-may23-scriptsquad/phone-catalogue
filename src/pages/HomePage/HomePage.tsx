@@ -56,7 +56,7 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
 
-        <SwiperPhones />
+        <SwiperPhones customTitle="Hot prices" />
       </div>
     </div>
   );
