@@ -126,6 +126,7 @@ export const ProductPage = () => {
             <div className="product__capacity-list">
               {product?.capacityAvailable.map((capacity) => (
                 <CapacityLink
+                  key={capacity}
                   capacity={capacity}
                   prodCapacity={product.capacity}
                   prodColor={product.color}

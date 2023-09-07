@@ -3,7 +3,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useContext } from 'react';
 import cn from 'classnames';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { AppContextType } from '../../types/AppContextType';
 import logoImage from '../../assets/img/Logo.png';
 import likeImage from '../../assets/icons/Favourites.svg';
@@ -12,10 +12,11 @@ import menuImage from '../../assets/icons/Burger-menu.svg';
 import { AppContext } from '../AppContext/AppContext';
 import { BurgerMenu } from '../BurgerMenu';
 
-const buildClassnames = ({ isActive }: { isActive: boolean }): string =>
+const buildClassnames = ({ isActive }: { isActive: boolean }): string => (
   cn('link', 'nav__link', {
     'nav__is-active': isActive,
-  });
+  })
+);
 
 export const Header: React.FC = () => {
   const context = useContext(AppContext) as AppContextType;
@@ -109,9 +110,9 @@ export const Header: React.FC = () => {
             className="icon__burger"
             onClick={() => setIsBurgerMenuActive(true)}
           >
-            <Link to="home" className="icon__logo">
+            <button type="button" className="icon__logo">
               <img src={menuImage} alt="Menu" className="icon__logo-img" />
-            </Link>
+            </button>
           </div>
         </div>
       </div>

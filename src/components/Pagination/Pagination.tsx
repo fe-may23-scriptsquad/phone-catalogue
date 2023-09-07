@@ -40,8 +40,8 @@ export const Pagination = ({
 
   const handlePagination = (pageNumber: number) => {
     if (
-      pageNumber < pageNumers[0] ||
-      pageNumber > pageNumers[pageNumers.length - 1]
+      pageNumber < pageNumers[0]
+        || pageNumber > pageNumers[pageNumers.length - 1]
     ) {
       return;
     }
