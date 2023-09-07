@@ -95,6 +95,10 @@ export const Catalog = ({
     setSearchParams(params);
   }
 
+  useEffect(() => {
+    handlePageChange(1);
+  }, [phonesPerPage]);
+
   return (
     <>
       <div className="catalog">
