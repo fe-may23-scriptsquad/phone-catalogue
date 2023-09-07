@@ -1,11 +1,8 @@
 {
   "files": {
-    "main.css": "/phone-catalogue-fe/static/css/main.051ba6d5.css",
-    "main.js": "/phone-catalogue-fe/static/js/main.eaae0b63.js",
-    "static/media/category-tablets.png": "/phone-catalogue-fe/static/media/category-tablets.51782e18205a1ca01ce8.png",
-    "static/media/category-phones.png": "/phone-catalogue-fe/static/media/category-phones.af93d992917380dfe206.png",
+    "main.css": "/phone-catalogue-fe/static/css/main.466eb244.css",
+    "main.js": "/phone-catalogue-fe/static/js/main.50a3380f.js",
     "static/media/banner-phones.png": "/phone-catalogue-fe/static/media/banner-phones.b4eeda8bd82b712057a2.png",
-    "static/media/category-accessories.png": "/phone-catalogue-fe/static/media/category-accessories.e47d6d6df68a6548e82b.png",
     "static/media/banner-tablets.png": "/phone-catalogue-fe/static/media/banner-tablets.a962057c1043a08f7737.png",
     "static/media/Mont-Bold.eot": "/phone-catalogue-fe/static/media/Mont-Bold.8cbc302cbcaf01cbe245.eot",
     "static/media/Mont-Regular.eot": "/phone-catalogue-fe/static/media/Mont-Regular.37c884fa90ad7debecef.eot",
@@ -13,9 +10,12 @@
     "static/media/Mont-Regular.ttf": "/phone-catalogue-fe/static/media/Mont-Regular.b98fc1cb281f6fa7b4c7.ttf",
     "static/media/Mont-SemiBold.eot": "/phone-catalogue-fe/static/media/Mont-SemiBold.40c58f6679e06c30b7f6.eot",
     "static/media/Mont-SemiBold.ttf": "/phone-catalogue-fe/static/media/Mont-SemiBold.eb4ec46caeb3d818c818.ttf",
+    "static/media/category-accessories.png": "/phone-catalogue-fe/static/media/category-accessories.ca41c40df628caa719e1.png",
+    "static/media/category-tablets.png": "/phone-catalogue-fe/static/media/category-tablets.8925e5a0ce876216fdf8.png",
     "static/media/Mont-SemiBold.woff": "/phone-catalogue-fe/static/media/Mont-SemiBold.54c461f1a4f80aea080c.woff",
     "static/media/Mont-Regular.woff": "/phone-catalogue-fe/static/media/Mont-Regular.db22fbf6fd85f9648cd0.woff",
     "static/media/Mont-Bold.woff": "/phone-catalogue-fe/static/media/Mont-Bold.562beef0913bb220a2f1.woff",
+    "static/media/category-phones.png": "/phone-catalogue-fe/static/media/category-phones.a2839732f77f63e38be3.png",
     "static/media/banner-accessories.png": "/phone-catalogue-fe/static/media/banner-accessories.bdd2e0fca0159e52f41c.png",
     "static/media/Mont-SemiBold.woff2": "/phone-catalogue-fe/static/media/Mont-SemiBold.8149a7bf48c364d07dd9.woff2",
     "static/media/Mont-Regular.woff2": "/phone-catalogue-fe/static/media/Mont-Regular.6a5019e626fedb9a332b.woff2",
@@ -32,13 +32,12 @@
     "static/media/Arrow-button.svg": "/phone-catalogue-fe/static/media/Arrow-button.4d4aa85654860c34f7a3.svg",
     "static/media/Arrow-button-Hover.svg": "/phone-catalogue-fe/static/media/Arrow-button-Hover.0d07dae95a435fa4bf6b.svg",
     "static/media/Arrow-left.svg": "/phone-catalogue-fe/static/media/Arrow-left.e539d9abebf1b6f6a4f9026f98d5dd96.svg",
-    "static/media/Arrow-right.svg": "/phone-catalogue-fe/static/media/Arrow-right.474a52a363ff8d27461871ed29939bc2.svg",
     "static/media/Minus.svg": "/phone-catalogue-fe/static/media/Minus.d9886bb317630447804c126ffc8a5dc2.svg",
-    "main.051ba6d5.css.map": "/phone-catalogue-fe/static/css/main.051ba6d5.css.map",
-    "main.eaae0b63.js.map": "/phone-catalogue-fe/static/js/main.eaae0b63.js.map"
+    "main.466eb244.css.map": "/phone-catalogue-fe/static/css/main.466eb244.css.map",
+    "main.50a3380f.js.map": "/phone-catalogue-fe/static/js/main.50a3380f.js.map"
   },
   "entrypoints": [
-    "static/css/main.051ba6d5.css",
-    "static/js/main.eaae0b63.js"
+    "static/css/main.466eb244.css",
+    "static/js/main.50a3380f.js"
   ]
 }
