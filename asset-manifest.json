@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/phone-catalogue-fe/static/css/main.714a657a.css",
-    "main.js": "/phone-catalogue-fe/static/js/main.f2e656e5.js",
+    "main.css": "/phone-catalogue-fe/static/css/main.a07a7e69.css",
+    "main.js": "/phone-catalogue-fe/static/js/main.30eacc1b.js",
     "static/media/category-tablets.png": "/phone-catalogue-fe/static/media/category-tablets.51782e18205a1ca01ce8.png",
     "static/media/category-phones.png": "/phone-catalogue-fe/static/media/category-phones.af93d992917380dfe206.png",
     "static/media/banner-phones.png": "/phone-catalogue-fe/static/media/banner-phones.b4eeda8bd82b712057a2.png",
@@ -34,11 +34,11 @@
     "static/media/Arrow-left.svg": "/phone-catalogue-fe/static/media/Arrow-left.e539d9abebf1b6f6a4f9026f98d5dd96.svg",
     "static/media/Arrow-right.svg": "/phone-catalogue-fe/static/media/Arrow-right.474a52a363ff8d27461871ed29939bc2.svg",
     "static/media/Minus.svg": "/phone-catalogue-fe/static/media/Minus.d9886bb317630447804c126ffc8a5dc2.svg",
-    "main.714a657a.css.map": "/phone-catalogue-fe/static/css/main.714a657a.css.map",
-    "main.f2e656e5.js.map": "/phone-catalogue-fe/static/js/main.f2e656e5.js.map"
+    "main.a07a7e69.css.map": "/phone-catalogue-fe/static/css/main.a07a7e69.css.map",
+    "main.30eacc1b.js.map": "/phone-catalogue-fe/static/js/main.30eacc1b.js.map"
   },
   "entrypoints": [
-    "static/css/main.714a657a.css",
-    "static/js/main.f2e656e5.js"
+    "static/css/main.a07a7e69.css",
+    "static/js/main.30eacc1b.js"
   ]
 }
