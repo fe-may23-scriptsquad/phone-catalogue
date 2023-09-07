@@ -1,24 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import home from '../../assets/icons/Home.svg';
-
-const capitalizeCrumbPart = (part: string) => {
-  return part.slice(0, 1).toUpperCase() + part.slice(1).toLowerCase();
-};
-
-const validateCrumb = (crumb: string) => {
-  const validParts = crumb.split('-');
-
-  return validParts.map(capitalizeCrumbPart).join(' ');
-};
-
-const buildLink = (crumb: string, crumbs: string[]) => {
-  const indexOfCrumb = crumbs.indexOf(crumb);
-
-  const cookedLink = crumbs.slice(0, indexOfCrumb + 1).join('/');
-
-  return [`/${cookedLink}`, validateCrumb(crumb)];
-};
+import { buildLink } from '../../utils/functions';
 
 export const Breadcrumbs: React.FC = () => {
   const [crumbs, setCrumbs] = useState<string[]>([]);
